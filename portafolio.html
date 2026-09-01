@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portafolio | Studio Byluly</title>
+<meta name="description" content="Trabajos de branding, identidad visual, packaging y redes sociales de Studio Byluly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="porta">
+
+<header class="site-header" id="header">
+  <div class="header__inner">
+    <a href="index.html" class="logo" aria-label="Studio Byluly - inicio">
+      <!-- Reemplazar por el logo real (SVG/PNG) -->
+      <span class="logo__text">byluly</span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__link">Home</a>
+      <div class="nav__group">
+        <button class="nav__link nav__toggle" aria-expanded="false" aria-controls="submenu">Servicios</button>
+        <div class="nav__sub" id="submenu">
+          <a href="branding.html" class="nav__sublink">Branding</a>
+          <a href="redes-sociales.html" class="nav__sublink">Redes Sociales</a>
+        </div>
+      </div>
+      <a href="cositas-gratis.html" class="nav__link">Cositas Gratis</a>
+      <a href="contacto.html" class="nav__link">Contacto</a>
+      <a href="portafolio.html" class="nav__link is-active">Portafolio</a>
+      <a href="tienda.html" class="nav__link">Tienda</a>
+    </nav>
+
+    <div class="header__right">
+      <div class="socials socials--header">
+        <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20hablar%20de%20mi%20proyecto" target="_blank" rel="noopener" aria-label="WhatsApp" class="ico ico--wpp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.488"/></svg></a>
+        <a href="https://www.instagram.com/nanusalinas/" target="_blank" rel="noopener" aria-label="Instagram" class="ico"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.43.42.7.82.92 1.4.17.42.37 1.05.42 2.24.06 1.28.07 1.66.07 4.88 0 3.2 0 3.6-.07 4.88-.05 1.2-.25 1.82-.42 2.24-.22.58-.49.98-.91 1.4-.43.42-.83.68-1.4.9-.43.17-1.06.37-2.25.42-1.27.06-1.65.07-4.88.07s-3.6 0-4.88-.07c-1.2-.05-1.82-.25-2.24-.42-.58-.22-.98-.48-1.4-.9a3.8 3.8 0 0 1-.91-1.4c-.17-.42-.37-1.05-.42-2.24C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.88c.05-1.2.25-1.82.42-2.24.22-.58.48-.98.9-1.4.43-.42.83-.68 1.4-.9.43-.17 1.06-.37 2.25-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.87-.4.4-.66.8-.87 1.35-.16.4-.35 1.03-.4 2.17-.06 1.23-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.87 1.35.4.4.8.66 1.35.87.4.16 1.03.35 2.17.4 1.23.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.87.4-.4.66-.8.87-1.35.16-.4.35-1.03.4-2.17.06-1.23.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.87-1.35 3.6 3.6 0 0 0-1.35-.87c-.4-.16-1.03-.35-2.17-.4C15.5 4 15.15 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a>
+        <a href="https://www.tiktok.com/@nanusalinas" target="_blank" rel="noopener" aria-label="TikTok" class="ico"><svg viewBox="0 0 24 24"><path d="M16.3 2h-3.1v13.1a2.6 2.6 0 1 1-2-2.53V9.4a5.7 5.7 0 1 0 5.1 5.67V8.6c.98.72 2.17 1.15 3.46 1.17V6.66c-2-.09-3.46-1.7-3.46-4.66Z"/></svg></a>
+      </div>
+      <a href="carrito.html" class="cart" aria-label="Carrito de compras">
+        <svg viewBox="0 0 24 24"><path d="M7 4h-2l-1 2H2v2h2l2.6 8.6c.13.42.5.7.95.7H18c.44 0 .82-.28.95-.7L22 8H6.4l-.4-1.2A1 1 0 0 0 5.06 6H7V4Zm2 15a1.7 1.7 0 1 0 0 3.4A1.7 1.7 0 0 0 9 19Zm8 0a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4Z"/></svg>
+        <span class="cart__count" id="cartCount">0</span>
+      </a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="page-hero">
+  <p class="page-hero__kicker">Trabajos</p>
+  <h1 class="page-hero__title">My Portfolio</h1>
+  <p class="page-hero__sub">Bienvenida a mi portafolio. Acá vas a encontrar el estilo gráfico que me define. Chusmeá todo lo que quieras y descubrí cómo podemos trabajar juntas para darle vida a tus ideas.</p>
+</section>
+
+<section class="gallery-page">
+  <div class="tags reveal">
+    <span class="tag is-active">Branding</span>
+    <span class="tag">Redes Sociales</span>
+    <span class="tag">Identidad Visual</span>
+    <span class="tag">Packaging</span>
+  </div>
+
+  <div class="gallery">
+    <figure class="gallery__item reveal"><img src="img/proyecto-1.jpg" alt="Proyecto 1"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-2.jpg" alt="Proyecto 2"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-3.jpg" alt="Proyecto 3"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-4.jpg" alt="Proyecto 4"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-5.jpg" alt="Proyecto 5"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-6.jpg" alt="Proyecto 6"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-7.jpg" alt="Proyecto 7"></figure>
+    <figure class="gallery__item reveal"><img src="img/proyecto-8.jpg" alt="Proyecto 8"></figure>
+  </div>
+
+  <p class="gallery__note reveal">Estas son fotos de placeholder. Cuando tengas las piezas de cada marca, reemplazá los archivos <code>img/proyecto-N.jpg</code>.</p>
+</section>
+
+<section class="cta-band">
+  <h2 class="reveal">¿Te gusta lo que ves?</h2>
+  <a href="contacto.html" class="btn btn--pistachio reveal">Trabajemos juntas</a>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer__contact">
+    <a href="mailto:byluly.dsg@gmail.com" class="footer__mail">byluly.dsg@gmail.com</a>
+    <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20hablar%20de%20mi%20proyecto" target="_blank" rel="noopener" class="footer__mail">+54 9 11 6016-9886</a>
+  </div>
+  <div class="socials socials--footer">
+    <a href="https://ca.pinterest.com/nanusalinas/" target="_blank" rel="noopener" aria-label="Pinterest" class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.65 19.31c-.09-.78-.17-1.98.03-2.83.19-.78 1.2-4.96 1.2-4.96s-.3-.61-.3-1.52c0-1.42.82-2.48 1.85-2.48.87 0 1.29.66 1.29 1.45 0 .88-.56 2.2-.85 3.43-.24 1.02.51 1.86 1.52 1.86 1.83 0 3.23-1.93 3.23-4.71 0-2.46-1.77-4.18-4.3-4.18-2.93 0-4.65 2.2-4.65 4.47 0 .89.34 1.84.77 2.35.08.1.1.19.07.3l-.28 1.16c-.05.19-.15.23-.35.14-1.3-.6-2.11-2.5-2.11-4.02 0-3.27 2.38-6.28 6.85-6.28 3.6 0 6.4 2.56 6.4 5.99 0 3.57-2.25 6.45-5.38 6.45-1.05 0-2.03-.55-2.37-1.19l-.65 2.46c-.23.9-.86 2.03-1.28 2.72A10 10 0 1 0 12 2Z"/></svg></a>
+    <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20hablar%20de%20mi%20proyecto" target="_blank" rel="noopener" aria-label="WhatsApp" class="ico ico--wpp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.488"/></svg></a>
+    <a href="https://www.instagram.com/nanusalinas/" target="_blank" rel="noopener" aria-label="Instagram" class="ico"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.43.42.7.82.92 1.4.17.42.37 1.05.42 2.24.06 1.28.07 1.66.07 4.88 0 3.2 0 3.6-.07 4.88-.05 1.2-.25 1.82-.42 2.24-.22.58-.49.98-.91 1.4-.43.42-.83.68-1.4.9-.43.17-1.06.37-2.25.42-1.27.06-1.65.07-4.88.07s-3.6 0-4.88-.07c-1.2-.05-1.82-.25-2.24-.42-.58-.22-.98-.48-1.4-.9a3.8 3.8 0 0 1-.91-1.4c-.17-.42-.37-1.05-.42-2.24C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.88c.05-1.2.25-1.82.42-2.24.22-.58.48-.98.9-1.4.43-.42.83-.68 1.4-.9.43-.17 1.06-.37 2.25-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.87-.4.4-.66.8-.87 1.35-.16.4-.35 1.03-.4 2.17-.06 1.23-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.87 1.35.4.4.8.66 1.35.87.4.16 1.03.35 2.17.4 1.23.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.87.4-.4.66-.8.87-1.35.16-.4.35-1.03.4-2.17.06-1.23.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.87-1.35 3.6 3.6 0 0 0-1.35-.87c-.4-.16-1.03-.35-2.17-.4C15.5 4 15.15 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg></a>
+    <a href="https://www.tiktok.com/@nanusalinas" target="_blank" rel="noopener" aria-label="TikTok" class="ico"><svg viewBox="0 0 24 24"><path d="M16.3 2h-3.1v13.1a2.6 2.6 0 1 1-2-2.53V9.4a5.7 5.7 0 1 0 5.1 5.67V8.6c.98.72 2.17 1.15 3.46 1.17V6.66c-2-.09-3.46-1.7-3.46-4.66Z"/></svg></a>
+  </div>
+  <nav class="footer__nav">
+    <a href="index.html">Home</a>
+    <a href="branding.html">Branding</a>
+    <a href="redes-sociales.html">Redes Sociales</a>
+    <a href="cositas-gratis.html">Cositas Gratis</a>
+    <a href="portafolio.html">Portafolio</a>
+    <a href="tienda.html">Tienda</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <p class="footer__legal">© <span id="year"></span> Studio Byluly · Branding &amp; Diseño</p>
+</footer>
+
+<a class="wpp-float" href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20hablar%20de%20mi%20proyecto" target="_blank" rel="noopener"
+   aria-label="Escribime por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.488"/></svg>
+  <span>Hablemos</span>
+</a>
+
+
+<script src="script.js"></script>
+</body>
+</html>
