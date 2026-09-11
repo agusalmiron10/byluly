@@ -7,7 +7,18 @@ página vive en pages/. Este script los junta y escribe los .html de la raíz.
 
 Cada vez que toques partials/ o pages/, corré esto de nuevo.
 """
+import hashlib
 import os
+
+def file_ver(path):
+    """Hash corto del contenido: cambia el número y el navegador de cada
+    visitante descarga la versión nueva de styles.css / script.js sin
+    quedarse con una copia vieja en caché."""
+    with open(path, 'rb') as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
+
+VER_CSS = file_ver('styles.css')
+VER_JS  = file_ver('script.js')
 
 # WhatsApp: se cambia acá y se actualiza en todo el sitio.
 # El formato del link es 54 (país) + 9 (celular) + 11 (área, sin el 0) + número (sin el 15).
@@ -56,7 +67,7 @@ popup      = read('partials/popup.html')
 wpp_float  = read('partials/wpp.html')
 
 for out, (title, desc, active) in PAGES.items():
-    head = head_tpl.replace('{{title}}', title).replace('{{desc}}', desc)
+    head = head_tpl.replace('{{title}}', title).replace('{{desc}}', desc).replace('{{ver_css}}', VER_CSS)
 
     header = header_tpl
     for key in ACTIVE_KEYS:
@@ -83,7 +94,7 @@ for out, (title, desc, active) in PAGES.items():
         + footer + '\n'
         + wpp_fill(wpp_float) + '\n'
         + (popup if out == 'index.html' else '') +
-        '\n<script src="script.js"></script>\n</body>\n</html>\n'
+        '\n<script src="script.js?v=' + VER_JS + '"></script>\n</body>\n</html>\n'
     )
     with open(out, 'w', encoding='utf-8') as f:
         f.write(page)

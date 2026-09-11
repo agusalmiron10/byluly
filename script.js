@@ -108,6 +108,17 @@
   var mt = $('#marqueeTrack');
   if (mt) mt.innerHTML += mt.innerHTML;
 
+  /* ---------- Tira de proyectos: mismo truco, imágenes duplicadas para el loop ---------- */
+  var tiraTrack = $('#tiraTrack');
+  if (tiraTrack) {
+    Array.prototype.slice.call(tiraTrack.children).forEach(function (img) {
+      var clone = img.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.setAttribute('alt', '');
+      tiraTrack.appendChild(clone);
+    });
+  }
+
   /* =========================================================
      CARRITO
      Se guarda en el navegador de cada visitante (localStorage).
@@ -176,22 +187,23 @@
     });
   }
 
-  /* ---------- Formulario de contacto ---------- */
-  var form = $('#form');
-  if (form) {
+  /* ---------- Formularios de contacto ---------- */
+  [['#form', '#formMsg'], ['#formContacto', '#formContactoMsg']].forEach(function (pair) {
+    var form = $(pair[0]);
+    if (!form) return;
+    var msg = $(pair[1], form) || $(pair[1]);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var data = new FormData(form);
-      var msg = $('#formMsg');
       if (!data.get('nombre') || !data.get('email')) {
-        msg.textContent = 'Completá al menos tu nombre y tu email.';
+        if (msg) msg.textContent = 'Completá al menos tu nombre y tu email.';
         return;
       }
       // TODO: conectar con el servicio de envío (Formspree, Netlify Forms, backend propio...)
-      msg.textContent = '¡Gracias! Te voy a estar escribiendo en menos de un día.';
+      if (msg) msg.textContent = '¡Gracias! Te voy a estar escribiendo en menos de un día.';
       form.reset();
     });
-  }
+  });
 
   /* ---------- Formulario del recurso gratis ---------- */
   var freebie = $('#freebieForm');
