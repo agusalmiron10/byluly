@@ -38,7 +38,8 @@ for key in build.ACTIVE_KEYS:
 for k, v in build.ICONS.items():
     header = header.replace('{{%s}}' % k, v)
 
-footer = open('partials/footer.html', encoding='utf-8').read()
+footer = (open('partials/hablemos.html', encoding='utf-8').read()
+          + open('partials/site-footer.html', encoding='utf-8').read())
 for k, v in build.ICONS.items():
     footer = footer.replace('{{%s}}' % k, v)
 

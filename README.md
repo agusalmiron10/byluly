@@ -54,7 +54,10 @@ Sigue el PDF de arriba a abajo:
    (el nombre del remitente lleva su color en el atributo `style="--de:#…"`).
 5. **Proyectos** — texto + tira de 5 mockups a todo el ancho.
 6. **Tienda** — bloque rosa.
-7. **Hablemos!** — está en `partials/footer.html`, así que aparece en las 8 páginas.
+7. **Hablemos!** — está en `partials/hablemos.html`, así que aparece en 7 de las 8 páginas.
+   **Contacto es la excepción**: arma su propio bloque "Hablemos!" (fondo rosa, formulario
+   ampliado) directo en `pages/contacto.html`, así que `_build.py` no le agrega el genérico
+   para no repetir el formulario dos veces.
 
 ## Las fotos y los mockups
 
@@ -73,7 +76,10 @@ Las **fotos de Luly** salieron de la carpeta de Drive. Los originales quedaron e
 | `mac-cafe.png`, `star-pink.png`, `star-gold.png`, `tulips.png`, `heart.png` | recortes con fondo transparente del PDF |
 | `bg-rosa.jpg` | textura de fondo de la sección Social Media |
 | `logo-byluly.png` | logo del menú |
-| `badge-ring.png`, `badge-logo.png` | sello del pie: el aro gira, el "by luly" del centro queda fijo |
+| `badge-ring.png`, `badge-logo.png` | sello del "Hablemos!" genérico: el aro gira, el "by luly" del centro queda fijo |
+| `badge-peony-ring.png` | mismo truco, versión rosa: sello del "Hablemos!" propio de Contacto |
+| `branding-*.jpg/png` | mockups y recortes con transparencia de la página Branding |
+| `contacto-hero.jpg`, `contacto-pin.png`, `contacto-sparkles.png`, `contacto-flower.png` | foto y decoraciones de la página Contacto |
 
 Para cambiar una: pisá el archivo en `img/` con el mismo nombre. Si el encuadre no te gusta,
 `_recortar.py` lo rehace desde el original:
@@ -86,9 +92,11 @@ El último número es el encuadre vertical: 0 pega la foto arriba, 1 la pega aba
 
 ## Qué falta conectar
 
-- **Formulario *Hablemos!*** (pie de las 8 páginas): hoy solo muestra un mensaje de éxito.
-  Para que envíe de verdad hay que conectarlo a Formspree, Netlify Forms, EmailJS o un backend.
-  Está marcado con un `TODO` en `script.js`.
+- **Formularios *Hablemos!*** (el genérico de 7 páginas y el propio de Contacto): hoy solo
+  muestran un mensaje de éxito. Para que envíen de verdad hay que conectarlos a Formspree,
+  Netlify Forms, EmailJS o un backend. Está marcado con un `TODO` en `script.js`.
+- **"Política de privacidad"** en el formulario de Contacto: el texto está en negrita pero no
+  linkea a ningún lado porque esa página todavía no existe.
 - **Popup del calendario de contenido**: tampoco envía el mail todavía.
 - **Carrito**: suma productos y calcula el total, pero se guarda solo en el navegador de cada
   visitante y el botón "Finalizar compra" no cobra nada. Para vender hay que enchufar una

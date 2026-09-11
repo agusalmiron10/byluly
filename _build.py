@@ -60,11 +60,16 @@ def read(p):
     with open(p, encoding='utf-8') as f:
         return f.read()
 
-head_tpl   = read('partials/head.html')
-header_tpl = read('partials/header.html')
-footer_tpl = read('partials/footer.html')
-popup      = read('partials/popup.html')
-wpp_float  = read('partials/wpp.html')
+head_tpl     = read('partials/head.html')
+header_tpl   = read('partials/header.html')
+hablemos_tpl = read('partials/hablemos.html')
+footer_tpl   = read('partials/site-footer.html')
+popup        = read('partials/popup.html')
+wpp_float    = read('partials/wpp.html')
+
+# La página de Contacto arma su propio bloque "Hablemos!" (pages/contacto.html),
+# así que no repite el genérico que sí llevan las otras 7 páginas.
+PAGES_SIN_HABLEMOS_COMPARTIDO = {'contacto.html'}
 
 for out, (title, desc, active) in PAGES.items():
     head = head_tpl.replace('{{title}}', title).replace('{{desc}}', desc).replace('{{ver_css}}', VER_CSS)
@@ -76,6 +81,8 @@ for out, (title, desc, active) in PAGES.items():
     for k, v in ICONS.items():
         header = header.replace('{{%s}}' % k, v)
     header = wpp_fill(header)
+
+    hablemos = '' if out in PAGES_SIN_HABLEMOS_COMPARTIDO else wpp_fill(hablemos_tpl)
 
     footer = footer_tpl
     for k, v in ICONS.items():
@@ -91,6 +98,7 @@ for out, (title, desc, active) in PAGES.items():
         '</head>\n<body data-page="' + active + '">\n\n'
         + header + '\n'
         + body + '\n'
+        + hablemos + '\n'
         + footer + '\n'
         + wpp_fill(wpp_float) + '\n'
         + (popup if out == 'index.html' else '') +

@@ -2,16 +2,79 @@
 
 <section class="about">
   <div class="about__body">
-    <div class="about__media reveal"><img src="img/sobre-mi.jpg" alt="Luly, diseñadora gráfica de Studio Byluly" width="860" height="1075"></div>
     <div class="about__text reveal">
-      <p class="about__hello">Hello, soy Luly</p>
-      <h1 class="about__role">Diseñadora Gráfica</h1>
-      <p>Hace 2 años me dedico a construir marcas y a impulsar negocios a crecer con propósito. Me mueve una pasión muy fuerte por ayudar a otros como yo a destacar en el mundo digital a través del diseño.</p>
-      <p>No se trata solo de crear una identidad visual, sino de darle sentido a cada marca: definir su lugar en el mundo, su voz y el impacto real que quiere generar en las personas.</p>
-      <p>Mi enfoque está en crear marcas que se puedan vivir en el día a día, con herramientas y elementos claros, coherentes y aplicables, para que cada decisión comunique de forma auténtica y estratégica.</p>
-      <a href="#hablemos" class="btn btn--peony">Contame de tu proyecto</a>
+      <h1 class="about__hello"><img class="about__flower" src="img/contacto-flower.png" alt="" width="140" height="135">Hola, soy <img class="about__luly" src="img/contacto-luly.png" alt="luly" width="460" height="282"></h1>
+      <p><b>Hace 4 años empecé</b> a diseñar y, desde entonces, el diseño se convirtió en mucho más que una profesión: <b>es mi forma de crear, comunicar y darle vida a las ideas.</b></p>
+      <p>Durante este tiempo trabajé con marcas, creé identidades, contenido y estrategias, aprendí de cada proyecto y descubrí todo lo que sucede detrás de una idea antes de verla terminada.</p>
+      <p>Hoy estoy en el proceso de construir <b>mi propia agencia creativa, AL CUADRADO,</b> mientras sigo explorando mi lado más personal como diseñadora: creando, sacando fotos, editando, buscando inspiración y compartiendo todo lo que pasa detrás de cada proyecto.</p>
+      <p>Creo en las ideas que <b>tienen intención, pero también en la creatividad que nace de lo cotidiano.</b> De una charla, una referencia guardada, un lugar nuevo, una canción o simplemente de mirar las cosas desde otro lugar.</p>
+      <p><b>by luly</b> es ese espacio donde comparto <b>mi proceso creativo, mi trabajo y todo lo que voy descubriendo</b> mientras construyo mi camino en el mundo del diseño.</p>
+    </div>
+    <div class="about__media reveal">
+      <img src="img/contacto-hero.jpg" alt="Luly, diseñadora gráfica de Studio Byluly, sentada con su notebook y celular" width="820" height="1459">
+      <img class="about__pin" src="img/contacto-pin.png" alt="" width="160" height="102">
+      <img class="about__sparkles" src="img/contacto-sparkles.png" alt="" width="180" height="198">
     </div>
   </div>
 </section>
+
+<section class="hablemos hablemos--light" id="hablemos">
+  <div class="hablemos__badge hablemos__badge--light" aria-hidden="true">
+    <img class="hablemos__badge-ring" src="img/badge-peony-ring.png" alt="" width="290" height="287" loading="lazy">
+    <img class="hablemos__badge-logo" src="img/badge-logo.png" alt="" width="270" height="152" loading="lazy">
+  </div>
+  <h2 class="hablemos__title hablemos__title--light">Hablemos!</h2>
+  <p class="hablemos__lead hablemos__lead--center">Toma el siguiente paso en tu negocio. Juntas lograremos una comunicación acertada para tu cliente.</p>
+  <ol class="pasos pasos--center">
+    <li><span>1</span>Rellena el Formulario y en cuestión de un día me estaré comunicando con vos.</li>
+    <li><span>2</span>Agendaremos una llamada para hablar de tus necesidades.</li>
+    <li><span>3</span>Armamos juntas la propuesta y arrancamos.</li>
+  </ol>
+
+  <form class="form-contacto form-contacto--light" id="formContacto" novalidate>
+    <div class="form-contacto__row">
+      <label class="field field--light"><span>Nombre</span><input type="text" name="nombre" required></label>
+      <label class="field field--light"><span>Apellido</span><input type="text" name="apellido"></label>
+    </div>
+    <div class="form-contacto__row">
+      <label class="field field--light"><span>País</span><input type="text" name="pais"></label>
+      <label class="field field--light"><span>Ciudad</span><input type="text" name="ciudad"></label>
+    </div>
+    <div class="form-contacto__row">
+      <label class="field field--light"><span>Celular</span><input type="tel" name="tel"></label>
+      <label class="field field--light"><span>Email</span><input type="email" name="email" required></label>
+    </div>
+    <div class="form-contacto__row">
+      <label class="field field--light"><span>Que negocio tenes? Adjunta Ig o Web</span><input type="text" name="negocio"></label>
+      <label class="field field--light">
+        <span>¿Cuál es tu presupuesto para este proyecto?</span>
+        <select name="presupuesto">
+          <option value="">Elegí una opción</option>
+          <option>Menos de 500 USD</option>
+          <option>500 - 1.000 USD</option>
+          <option>1.000 - 2.000 USD</option>
+          <option>Más de 2.000 USD</option>
+          <option>Prefiero contarte por WhatsApp</option>
+        </select>
+      </label>
+    </div>
+    <label class="field field--light field--full"><span>Cuéntanos más sobre tu proyecto o marca</span><textarea name="mensaje" rows="3"></textarea></label>
+
+    <p class="form-contacto__privacy">Al enviar este formulario, aceptás que almacenemos tus datos para gestionar tu consulta. Consultá nuestra <b>Política de privacidad.</b></p>
+
+    <button type="submit" class="btn btn--cream">Trabajemos juntos</button>
+    <p class="form-msg" id="formContactoMsg" role="status"></p>
+  </form>
+</section>
+
+<div class="tira" id="tira">
+  <div class="tira__track" id="tiraTrack">
+    <img src="img/mk-regalo.jpg" alt="Pieza de marca — el regalo que sigue sorprendiendo" loading="lazy">
+    <img src="img/mk-eleva.jpg" alt="Packaging Eleva" loading="lazy">
+    <img src="img/mk-greta.jpg" alt="Branding grETa coffee spot" loading="lazy">
+    <img src="img/mk-vigno.jpg" alt="Tote bag Vigno Bar" loading="lazy">
+    <img src="img/mk-viveliviano.jpg" alt="Papelería Vive Liviano" loading="lazy">
+  </div>
+</div>
 
 </main>
