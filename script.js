@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  var timer, popupTimer;
+  var timer;
 
   var $  = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
@@ -137,38 +137,8 @@
     });
   });
 
-  /* ---------- Popup del recurso gratis (solo en la home) ---------- */
-  var lb = $('#lightbox');
-  if (lb) {
-    var openLb = function () {
-      lb.hidden = false;
-      requestAnimationFrame(function () { lb.classList.add('is-open'); });
-    };
-    var closeLb = function () {
-      lb.classList.remove('is-open');
-      setTimeout(function () { lb.hidden = true; }, 350);
-      try { sessionStorage.setItem('byluly_lb', '1'); } catch (err) {}
-    };
-
-    var seen = false;
-    try { seen = sessionStorage.getItem('byluly_lb') === '1'; } catch (err) {}
-    if (!seen) popupTimer = setTimeout(openLb, 7000);
-
-    $('#lbClose').addEventListener('click', closeLb);
-    lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !lb.hidden) closeLb();
-    });
-    $('#lbForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      // TODO: conectar con el servicio de email marketing
-      e.target.innerHTML = '<p style="margin:0;font-size:15px">¡Listo! Revisá tu casilla en los próximos días.</p>';
-      setTimeout(closeLb, 2200);
-    });
-  }
-
   /* ---------- Gancho de limpieza (lo usa preview.html) ---------- */
-  window.__bylulyCleanup = function () { clearInterval(timer); clearTimeout(popupTimer); };
+  window.__bylulyCleanup = function () { clearInterval(timer); };
 
   /* ---------- Año del footer ---------- */
   var year = $('#year');

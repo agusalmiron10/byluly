@@ -61,11 +61,10 @@ head_tpl     = read('partials/head.html')
 header_tpl   = read('partials/header.html')
 hablemos_tpl = read('partials/hablemos.html')
 footer_tpl   = read('partials/site-footer.html')
-popup        = read('partials/popup.html')
 wpp_float    = read('partials/wpp.html')
 
 # La página de Contacto arma su propio bloque "Hablemos!" (pages/contacto.html),
-# así que no repite el genérico que sí llevan las otras 7 páginas.
+# así que no repite el genérico que sí llevan las otras 4 páginas.
 PAGES_SIN_HABLEMOS_COMPARTIDO = {'contacto.html'}
 
 for out, (title, desc, active) in PAGES.items():
@@ -97,8 +96,7 @@ for out, (title, desc, active) in PAGES.items():
         + body + '\n'
         + hablemos + '\n'
         + footer + '\n'
-        + wpp_fill(wpp_float) + '\n'
-        + (popup if out == 'index.html' else '') +
+        + wpp_fill(wpp_float) +
         '\n<script src="script.js?v=' + VER_JS + '"></script>\n</body>\n</html>\n'
     )
     with open(out, 'w', encoding='utf-8') as f:

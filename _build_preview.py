@@ -43,7 +43,6 @@ footer = (open('partials/hablemos.html', encoding='utf-8').read()
 for k, v in build.ICONS.items():
     footer = footer.replace('{{%s}}' % k, v)
 
-popup = open('partials/popup.html', encoding='utf-8').read()
 css   = open('styles.css', encoding='utf-8').read()
 js    = open('script.js', encoding='utf-8').read()
 
@@ -121,7 +120,6 @@ out = (
     + inline(header) + '\n'
     '<div id="app"></div>\n'
     + inline(footer) + '\n'
-    + popup + '\n'
     '<script>\n' + js_fn + '\n' + router + '\n</script>\n'
 )
 open('preview.html', 'w', encoding='utf-8').write(out)

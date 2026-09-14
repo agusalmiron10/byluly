@@ -28,7 +28,7 @@ partials/     el menú, el pie y el <head>: viven UNA sola vez
 pages/        el contenido de cada página, sin menú ni pie
 _build.py     junta partials + pages y escribe los .html de la raíz
 styles.css    todos los estilos (la paleta está arriba de todo, en :root)
-script.js     menú, carrito, formularios, popup
+script.js     menú, formularios, animaciones
 img/          las fotos y mockups que usa el sitio
 originales/   las fotos de Drive sin recortar
 _serve.py     servidor local para previsualizar: python3 _serve.py → localhost:8765
@@ -91,16 +91,15 @@ El último número es el encuadre vertical: 0 pega la foto arriba, 1 la pega aba
 
 ## Qué falta conectar
 
-- **Formularios *Hablemos!*** (el genérico de 7 páginas y el propio de Contacto): hoy solo
+- **Formularios *Hablemos!*** (el genérico de 4 páginas y el propio de Contacto): hoy solo
   muestran un mensaje de éxito. Para que envíen de verdad hay que conectarlos a Formspree,
   Netlify Forms, EmailJS o un backend. Está marcado con un `TODO` en `script.js`.
 - **"Política de privacidad"** en el formulario de Contacto: el texto está en negrita pero no
   linkea a ningún lado porque esa página todavía no existe.
-- **Popup del calendario de contenido** (aparece en la home a los 7 segundos): tampoco envía
-  el mail todavía.
-- **Usuarios de redes**: quedaron apuntando a `@byluly.dsg` en Instagram y TikTok y a
-  `bylulydsg` en Pinterest. Si los usuarios reales son otros, se cambian en
-  `partials/header.html` y `partials/footer.html`.
+- **Pinterest**: sigue apuntando a `bylulydsg`, que era una cuenta de referencia del sitio
+  original. Si la cuenta real es otra, se cambia en `partials/header.html` y
+  `partials/site-footer.html` (Instagram y TikTok ya son las cuentas reales:
+  `@bylulystudio` y `@luly.dgs`).
 - **Nombres del portafolio**: puse los de los mockups del PDF. Si alguno no corresponde,
   se edita el `<figcaption>` en `pages/portafolio.html`.
 
