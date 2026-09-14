@@ -6,18 +6,20 @@ se abre haciendo doble clic en `index.html` y se sube a cualquier hosting arrast
 La **home replica el diseño de `web inicio - byluly.pdf`** (el mockup de Illustrator): mismos
 textos, mismos colores, mismas fotos y mockups de marca, mismo orden de secciones.
 
-## Las 8 páginas
+## Las 5 páginas
 
 | Archivo | Página |
 |---|---|
 | `index.html` | Home |
 | `branding.html` | Servicios → Branding |
 | `redes-sociales.html` | Servicios → Redes Sociales |
-| `cositas-gratis.html` | Cositas Gratis |
 | `portafolio.html` | Portafolio |
-| `tienda.html` | Tienda |
-| `carrito.html` | Carrito |
 | `contacto.html` | Contacto |
+
+**Tienda, Cositas Gratis y Carrito se sacaron del sitio** (páginas, nav, pie y el carrito
+de compras entero). Si en algún momento se quiere volver a vender productos digitales,
+`pages/tienda.html`, `pages/cositas-gratis.html` y `pages/carrito.html` están en el
+historial de git para recuperarlos.
 
 ## Cómo editar
 
@@ -39,7 +41,7 @@ _serve.py     servidor local para previsualizar: python3 _serve.py → localhost
 python3 _build.py
 ```
 
-Así el menú y el pie se cambian en un solo lugar y se actualizan las 8 páginas juntas.
+Así el menú y el pie se cambian en un solo lugar y se actualizan las 5 páginas juntas.
 
 ## Estructura de la home
 
@@ -53,8 +55,7 @@ Sigue el PDF de arriba a abajo:
    **Las burbujas están hechas en HTML/CSS, no son capturas**: se editan en `pages/index.html`
    (el nombre del remitente lleva su color en el atributo `style="--de:#…"`).
 5. **Proyectos** — texto + tira de 5 mockups a todo el ancho.
-6. **Tienda** — bloque rosa.
-7. **Hablemos!** — está en `partials/hablemos.html`, así que aparece en 7 de las 8 páginas.
+6. **Hablemos!** — está en `partials/hablemos.html`, así que aparece en 4 de las 5 páginas.
    **Contacto es la excepción**: arma su propio bloque "Hablemos!" (fondo rosa, formulario
    ampliado) directo en `pages/contacto.html`, así que `_build.py` no le agrega el genérico
    para no repetir el formulario dos veces.
@@ -70,9 +71,7 @@ Las **fotos de Luly** salieron de la carpeta de Drive. Los originales quedaron e
 | Archivo | Dónde aparece |
 |---|---|
 | `hero-luly.jpg` | foto principal de la home |
-| `sobre-mi.jpg` | Contacto |
-| `mk-*.jpg` | Branding, Proyectos, Portafolio, Tienda |
-| `producto-*.jpg` | Tienda y Cositas Gratis |
+| `mk-*.jpg` | Branding, Proyectos, Portafolio |
 | `mac-cafe.png`, `star-pink.png`, `star-gold.png`, `tulips.png`, `heart.png` | recortes con fondo transparente del PDF |
 | `bg-rosa.jpg` | textura de fondo de la sección Social Media |
 | `logo-byluly.png` | logo del menú |
@@ -97,10 +96,8 @@ El último número es el encuadre vertical: 0 pega la foto arriba, 1 la pega aba
   Netlify Forms, EmailJS o un backend. Está marcado con un `TODO` en `script.js`.
 - **"Política de privacidad"** en el formulario de Contacto: el texto está en negrita pero no
   linkea a ningún lado porque esa página todavía no existe.
-- **Popup del calendario de contenido**: tampoco envía el mail todavía.
-- **Carrito**: suma productos y calcula el total, pero se guarda solo en el navegador de cada
-  visitante y el botón "Finalizar compra" no cobra nada. Para vender hay que enchufar una
-  pasarela (Mercado Pago, Lemon Squeezy, Gumroad).
+- **Popup del calendario de contenido** (aparece en la home a los 7 segundos): tampoco envía
+  el mail todavía.
 - **Usuarios de redes**: quedaron apuntando a `@byluly.dsg` en Instagram y TikTok y a
   `bylulydsg` en Pinterest. Si los usuarios reales son otros, se cambian en
   `partials/header.html` y `partials/footer.html`.
@@ -157,7 +154,7 @@ burgundy      #770523   bordó         → hero, cabeceras, Hablemos!
 burgundy dark #55041A   bordó oscuro  → barra final del pie
 cream         #F2E8D4   crema         → fondo general de las secciones
 cream light   #FBF5E7   crema claro   → fondo del menú
-peony         #FAD2E1   rosa claro    → botones, Tienda, textos sobre bordó
+peony         #FAD2E1   rosa claro    → botones, textos sobre bordó
 pistachio     #D0D996   verde         → "branding", "Hablemos!", botones
 fuchsia       #EF0066   fucsia        → fondo de Testimonios, acentos
 blood orange  #DD4E28   naranja       → botón de WhatsApp, badge del carrito

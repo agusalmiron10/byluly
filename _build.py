@@ -38,14 +38,11 @@ PAGES = {
  'index.html':          ('Studio Byluly | Branding', 'Studio de branding y diseño para marcas conscientes: veganas, sostenibles, con proyectos sociales o de bienestar.', 'home'),
  'branding.html':       ('Branding | Studio Byluly', 'Packs de branding: esencial, packaging, social media, web y gold. Identidad visual con estrategia.', 'branding'),
  'redes-sociales.html': ('Redes Sociales | Studio Byluly', 'Gestión de redes sociales: diseño, edición y estrategia para que tu marca conecte con su comunidad.', 'redes'),
- 'cositas-gratis.html': ('Cositas Gratis | Studio Byluly', 'Recursos gratis y plantillas para creativos: calendario de contenido, manual de marca y más.', 'gratis'),
  'contacto.html':       ('Contacto | Studio Byluly', 'Hello, soy Byluly, diseñadora gráfica. Contame de tu proyecto y armamos juntas la propuesta.', 'contacto'),
  'portafolio.html':     ('Portafolio | Studio Byluly', 'Trabajos de branding, identidad visual, packaging y redes sociales de Studio Byluly.', 'porta'),
- 'tienda.html':         ('Tienda | Studio Byluly', 'Plantillas y recursos descargables para ordenar tu marca y tu forma de trabajar.', 'tienda'),
- 'carrito.html':        ('Carrito | Studio Byluly', 'Tu carrito de compras en Studio Byluly.', 'tienda'),
 }
 
-ACTIVE_KEYS = ['home', 'serv', 'branding', 'redes', 'gratis', 'contacto', 'porta', 'tienda']
+ACTIVE_KEYS = ['home', 'serv', 'branding', 'redes', 'contacto', 'porta']
 
 import urllib.parse
 WPP_URL = 'https://wa.me/%s?text=%s' % (WPP_NUMERO, urllib.parse.quote(WPP_TEXTO))

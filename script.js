@@ -119,74 +119,6 @@
     });
   }
 
-  /* =========================================================
-     CARRITO
-     Se guarda en el navegador de cada visitante (localStorage).
-     No hay cobro conectado todavía.
-     ========================================================= */
-  var CART_KEY = 'byluly_cart';
-
-  var readCart = function () {
-    try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
-    catch (err) { return []; }
-  };
-  var writeCart = function (items) {
-    try { localStorage.setItem(CART_KEY, JSON.stringify(items)); } catch (err) {}
-    paintCount();
-  };
-  var money = function (n) {
-    return '$ ' + n.toLocaleString('es-AR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  };
-  function paintCount() {
-    var el = $('#cartCount');
-    if (el) el.textContent = readCart().length;
-  }
-  paintCount();
-
-  $$('.product__add').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var items = readCart();
-      items.push({ name: btn.dataset.name, price: Number(btn.dataset.price) || 0 });
-      writeCart(items);
-      var original = btn.textContent;
-      btn.textContent = 'Agregado ✓';
-      btn.disabled = true;
-      setTimeout(function () { btn.textContent = original; btn.disabled = false; }, 1600);
-    });
-  });
-
-  var cartList = $('#cartList');
-  if (cartList) {
-    var paintCart = function () {
-      var items = readCart();
-      cartList.innerHTML = '';
-      items.forEach(function (it, i) {
-        var li = document.createElement('li');
-        li.innerHTML = '<span class="cart-item__name"></span>' +
-                       '<span class="cart-item__price"></span>' +
-                       '<button type="button" aria-label="Quitar">&times;</button>';
-        $('.cart-item__name', li).textContent = it.name;
-        $('.cart-item__price', li).textContent = money(it.price);
-        $('button', li).addEventListener('click', function () {
-          var next = readCart(); next.splice(i, 1); writeCart(next); paintCart();
-        });
-        cartList.appendChild(li);
-      });
-
-      var total = items.reduce(function (a, b) { return a + b.price; }, 0);
-      $('#cartEmpty').hidden = items.length > 0;
-      $('#cartTotal').hidden = items.length === 0;
-      $('#checkout').hidden = items.length === 0;
-      $('#cartTotalValue').textContent = money(total);
-    };
-    paintCart();
-
-    $('#checkout').addEventListener('click', function () {
-      // TODO: conectar con la pasarela de pago (Mercado Pago, Lemon Squeezy, Gumroad...)
-      alert('El checkout todavía no está conectado a una pasarela de pago.');
-    });
-  }
-
   /* ---------- Formularios de contacto ---------- */
   [['#form', '#formMsg'], ['#formContacto', '#formContactoMsg']].forEach(function (pair) {
     var form = $(pair[0]);
@@ -204,17 +136,6 @@
       form.reset();
     });
   });
-
-  /* ---------- Formulario del recurso gratis ---------- */
-  var freebie = $('#freebieForm');
-  if (freebie) {
-    freebie.addEventListener('submit', function (e) {
-      e.preventDefault();
-      // TODO: conectar con el servicio de email marketing
-      $('#freebieMsg').textContent = '¡Listo! Revisá tu casilla en los próximos días.';
-      freebie.reset();
-    });
-  }
 
   /* ---------- Popup del recurso gratis (solo en la home) ---------- */
   var lb = $('#lightbox');
