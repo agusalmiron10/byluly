@@ -583,6 +583,26 @@ a{ color:inherit; }
 }
 .svc-hero .btn{ margin-top:clamp(22px,2.6vw,38px); }
 
+/* ---------- hero de servicio (Redes Sociales) ---------- */
+.social-hero{ background:var(--cream); padding:clamp(36px,4.6vw,80px) var(--pad); }
+.social-hero__row{
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:clamp(32px,5vw,90px); align-items:start;
+  max-width:1280px; margin:0 auto;
+}
+.social-hero__title-wrap{ position:relative; }
+.social-hero__title{ font-size:clamp(34px,5.2vw,86px); margin-top:.15em; }
+.social-hero__heart{ position:absolute; width:13%; min-width:48px; left:-13%; bottom:-.1em; }
+.social-hero__star{ position:absolute; width:14%; min-width:56px; right:-7%; top:-.6em; }
+.social-hero__desc{
+  margin-top:1.4em; color:var(--burgundy); font-size:clamp(14px,1.1vw,17px); line-height:1.6;
+  max-width:38ch;
+}
+.social-hero__body{ position:relative; padding-top:clamp(8px,3vw,64px); }
+.social-hero__body p{ color:var(--body); font-size:clamp(14px,1.1vw,17px); line-height:1.6; margin:0 0 1.4em; }
+.social-hero__body b{ font-weight:700; color:var(--burgundy); }
+.social-hero__phone{ width:38%; min-width:110px; max-width:220px; margin-top:1em; }
+
 /* ---------- "¿Por qué tu marca necesita branding?" ---------- */
 .why{
   position:relative; overflow:hidden;
@@ -656,6 +676,8 @@ a{ color:inherit; }
   font-family:var(--serif); font-size:clamp(20px,2vw,28px);
   color:var(--burgundy); margin:0 0 .9em;
 }
+.pack-feature__per{ font-family:var(--sans); font-size:14px; opacity:.75; }
+.pack-feature--peony{ background:var(--peony); }
 .pack-feature__tiers{
   list-style:none; margin:0 0 1.6em; padding:0; display:grid; gap:.5em;
   max-width:46ch;
@@ -743,6 +765,27 @@ a{ color:inherit; }
 .prod__body{ padding:clamp(16px,1.8vw,24px); display:flex; flex-direction:column; gap:.55em; flex:1; }
 .prod__body h3{ font-family:var(--serif); font-size:22px; color:var(--burgundy); margin:0; }
 .prod__tag{ font-size:12.5px; letter-spacing:.1em; color:var(--fuchsia); margin:0; }
+
+/* producciones (redes sociales, banda destacada) */
+.prod-band{
+  position:relative; background:var(--burgundy); overflow:hidden;
+  padding:clamp(56px,9vw,130px) var(--pad); text-align:center;
+}
+.prod-band__camera{
+  position:absolute; left:4%; top:50%; transform:translateY(-55%) rotate(-8deg);
+  width:18%; max-width:220px;
+}
+.prod-band__laptop{
+  position:absolute; right:4%; top:50%; transform:translateY(-45%);
+  width:26%; max-width:340px;
+}
+.prod-band__body{ position:relative; max-width:620px; margin:0 auto; }
+.prod-band__title{
+  font-family:var(--serif); font-weight:400; letter-spacing:.03em;
+  font-size:clamp(40px,5.6vw,76px); color:var(--cream-light); margin:0 0 .5em;
+}
+.prod-band__body p{ font-size:clamp(14px,1.1vw,17px); line-height:1.6; color:var(--peony); margin:0 0 .9em; }
+.prod-band__body .btn{ margin-top:.8em; }
 
 /* galería / portafolio */
 .gallery-page{ background:var(--cream); padding:clamp(28px,3.2vw,52px) var(--pad); }
@@ -898,6 +941,19 @@ a{ color:inherit; }
   .pack-feature__row--reverse .pack-feature__media{ order:-1; }
   .pack-feature__desc{ margin-left:auto; margin-right:auto; }
   .pack-feature__collage{ margin-top:24px; }
+
+  .social-hero__row{ grid-template-columns:1fr; text-align:center; gap:44px; }
+  .social-hero__desc{ margin-left:auto; margin-right:auto; }
+  .social-hero__body{ padding-top:0; }
+  .social-hero__body p{ max-width:48ch; margin-left:auto; margin-right:auto; }
+  .social-hero__phone{ margin-left:auto; margin-right:auto; }
+  .social-hero__heart,.social-hero__star{ display:none; }
+
+  .prod-band{ display:flex; flex-direction:column; align-items:center; padding:clamp(36px,5vw,64px) var(--pad); }
+  .prod-band__camera,.prod-band__laptop{ position:static; transform:none; width:44%; max-width:200px; margin:0 0 20px; }
+  .prod-band__camera{ order:1; }
+  .prod-band__body{ order:2; }
+  .prod-band__laptop{ order:3; margin:20px 0 0; }
 }
 
 @media (max-width:860px){
