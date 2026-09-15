@@ -22,7 +22,7 @@ def enc(name):
     im.save(buf, 'JPEG', quality=70, optimize=True, progressive=True)
     return 'data:image/jpeg;base64,' + base64.b64encode(buf.getvalue()).decode()
 
-IMGS = {n: enc(n) for n in sorted(os.listdir('img'))}
+IMGS = {n: enc(n) for n in sorted(os.listdir('img')) if not n.endswith('.svg')}
 def inline(html):
     for n, uri in IMGS.items():
         html = html.replace('img/' + n, uri)
@@ -46,8 +46,15 @@ for k, v in build.ICONS.items():
 css   = open('styles.css', encoding='utf-8').read()
 js    = open('script.js', encoding='utf-8').read()
 
+# la única imagen que se referencia desde el CSS (el fondo de estrellitas del popup)
+stars_svg = base64.b64encode(open('img/popup-stars-bg.svg', 'rb').read()).decode()
+css = css.replace('img/popup-stars-bg.svg', 'data:image/svg+xml;base64,' + stars_svg)
+
+popup = open('partials/popup.html', encoding='utf-8').read()
+
 routes = {out: inline(open('pages/' + out, encoding='utf-8').read())
           for out in build.PAGES}
+routes['index.html'] += '\n' + popup
 titles = {out: meta[0] for out, meta in build.PAGES.items()}
 actives = {out: meta[2] for out, meta in build.PAGES.items()}
 

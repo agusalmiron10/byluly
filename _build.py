@@ -62,6 +62,7 @@ header_tpl   = read('partials/header.html')
 hablemos_tpl = read('partials/hablemos.html')
 footer_tpl   = read('partials/site-footer.html')
 wpp_float    = read('partials/wpp.html')
+popup_tpl    = read('partials/popup.html')
 
 # La página de Contacto arma su propio bloque "Hablemos!" (pages/contacto.html),
 # así que no repite el genérico que sí llevan las otras 4 páginas.
@@ -96,7 +97,8 @@ for out, (title, desc, active) in PAGES.items():
         + body + '\n'
         + hablemos + '\n'
         + footer + '\n'
-        + wpp_fill(wpp_float) +
+        + wpp_fill(wpp_float) + '\n'
+        + (popup_tpl if out == 'index.html' else '') +
         '\n<script src="script.js?v=' + VER_JS + '"></script>\n</body>\n</html>\n'
     )
     with open(out, 'w', encoding='utf-8') as f:
