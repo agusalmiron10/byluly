@@ -105,25 +105,31 @@ El último número es el encuadre vertical: 0 pega la foto arriba, 1 la pega aba
 
 ## Los precios
 
-Salieron de los lightboxes "Lee toda la info" del sitio de referencia (están en USD) con un 30%
-de descuento aplicado. Cada tarjeta muestra el precio nuevo y el anterior tachado.
+En `pages/branding.html` están los packs de branding, con el precio final (sin tachado,
+salieron así de los PDF de referencia):
+
+| Pack | Incluye | Inversión |
+|---|---|---|
+| THE CORE | Branding | 350 USD |
+| THE OBJECT | Branding + Packaging | 550 USD |
+| THE VOICE | Branding + Social Media | 430 USD |
+| THE SPACE | Branding + Web | desde 600 USD (landing 600, web profesional 850, tienda online 1050) |
+| THE UNIVERSE | Branding + Packaging + Social Media | 690 USD |
+
+En `pages/redes-sociales.html` están los planes mensuales de redes (esos sí tienen precio
+anterior tachado, con un 30% de descuento aplicado):
 
 | Pack | Antes | Ahora (−30%) |
 |---|---|---|
-| branding esencial | 790 USD | **553 USD** |
-| branding packaging | 890 USD | **623 USD** |
-| branding social media | 890 USD | **623 USD** |
-| branding web | 800 USD | **desde 560 USD** |
-| branding gold | 990 USD | **693 USD** |
 | plan integral 360º | 450 USD | **desde 315 USD / mes** |
 | contratá a tu diseñadora | 300 USD | **desde 210 USD / mes** |
 
-"Desde" es porque esos tres tienen varios niveles: web va de 800 a 950 (con extras de 1100 y
-1300 según fotos propias o imágenes IA), integral 360º tiene 2 planes (450 y 550) y
+"Desde" es porque esos dos tienen varios niveles: integral 360º tiene 2 planes (450 y 550) y
 tu diseñadora tiene 3 (300, 350 y 400).
 
-Se editan en `pages/branding.html` y `pages/redes-sociales.html`, en las líneas
-`pack__price` y `pack__before` de cada tarjeta.
+Se editan en `pages/branding.html` (bloques `pack-feature__price` y `pack-feature__tiers`,
+y el bloque `pack-universe`) y en `pages/redes-sociales.html` (líneas `pack__price` y
+`pack__before` de cada tarjeta).
 
 ## WhatsApp
 
