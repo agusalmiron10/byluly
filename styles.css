@@ -873,9 +873,9 @@ a{ color:inherit; }
 }
 .lightbox.is-open{ opacity:1; visibility:visible; }
 .lightbox__frame{
-  position:relative; flex:0 1 520px; min-width:0; width:100%; max-width:520px;
-  background:var(--peony) url('img/popup-stars-bg.svg') repeat; background-size:230px 230px;
-  border-radius:32px; padding:14px;
+  position:relative; flex:0 1 580px; min-width:0; width:100%; max-width:580px;
+  background:var(--peony) url('img/popup-stars-bg.svg') repeat; background-size:150px 150px;
+  border-radius:34px; padding:clamp(20px,4.4vw,36px);
   box-shadow:0 24px 60px rgba(84,3,20,.35);
   transform:scale(.92) translateY(10px); transition:transform .3s ease;
 }
