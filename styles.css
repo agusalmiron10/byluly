@@ -683,11 +683,9 @@ a{ color:inherit; }
   max-width:46ch;
 }
 .pack-feature__tiers li{
-  display:flex; justify-content:space-between; gap:1em;
   font-size:clamp(14px,1.1vw,16px); color:var(--body);
   border-bottom:1px solid rgba(119,5,35,.14); padding-bottom:.5em;
 }
-.pack-feature__tiers b{ color:var(--burgundy); white-space:nowrap; }
 
 .pack-feature__collage{
   position:relative; width:100%; aspect-ratio:1/1; max-width:520px; margin:0 auto;
