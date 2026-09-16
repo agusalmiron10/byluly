@@ -590,10 +590,10 @@ a{ color:inherit; }
   gap:clamp(32px,5vw,90px); align-items:start;
   max-width:1280px; margin:0 auto;
 }
-.social-hero__title-wrap{ position:relative; }
+.social-hero__title-wrap{ position:relative; width:fit-content; }
 .social-hero__title{ font-size:clamp(34px,5.2vw,86px); margin-top:.15em; }
-.social-hero__heart{ position:absolute; width:13%; min-width:48px; left:-13%; bottom:-.1em; }
-.social-hero__star{ position:absolute; width:14%; min-width:56px; right:-7%; top:-.6em; }
+.social-hero__heart{ position:absolute; width:15%; min-width:52px; left:-14%; top:85%; }
+.social-hero__star{ position:absolute; width:19%; min-width:64px; left:97%; top:-22%; }
 .social-hero__desc{
   margin-top:1.4em; color:var(--burgundy); font-size:clamp(14px,1.1vw,17px); line-height:1.6;
   max-width:38ch;
@@ -601,7 +601,11 @@ a{ color:inherit; }
 .social-hero__body{ position:relative; padding-top:clamp(8px,3vw,64px); }
 .social-hero__body p{ color:var(--body); font-size:clamp(14px,1.1vw,17px); line-height:1.6; margin:0 0 1.4em; }
 .social-hero__body b{ font-weight:700; color:var(--burgundy); }
-.social-hero__phone{ width:38%; min-width:110px; max-width:220px; margin-top:1em; }
+.social-hero__phone{
+  width:44%; min-width:130px; max-width:260px;
+  margin:-1.6em 0 0 auto; display:block;
+  transform:rotate(14deg);
+}
 
 /* ---------- "¿Por qué tu marca necesita branding?" ---------- */
 .why{
@@ -1004,7 +1008,7 @@ a{ color:inherit; }
   .social-hero__desc{ margin-left:auto; margin-right:auto; }
   .social-hero__body{ padding-top:0; }
   .social-hero__body p{ max-width:48ch; margin-left:auto; margin-right:auto; }
-  .social-hero__phone{ margin-left:auto; margin-right:auto; }
+  .social-hero__phone{ margin:1.2em auto 0; transform:none; }
   .social-hero__heart,.social-hero__star{ display:none; }
 
   .prod-band{ display:flex; flex-direction:column; align-items:center; padding:clamp(36px,5vw,64px) var(--pad); }
