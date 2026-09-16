@@ -52,7 +52,7 @@ css = css.replace('img/popup-stars-bg.svg', 'data:image/svg+xml;base64,' + stars
 
 popup = open('partials/popup.html', encoding='utf-8').read()
 
-routes = {out: inline(open('pages/' + out, encoding='utf-8').read())
+routes = {out: build.wpp_fill(inline(open('pages/' + out, encoding='utf-8').read()))
           for out in build.PAGES}
 routes['index.html'] += '\n' + popup
 titles = {out: meta[0] for out, meta in build.PAGES.items()}

@@ -44,11 +44,19 @@ PAGES = {
 
 ACTIVE_KEYS = ['home', 'serv', 'branding', 'redes', 'contacto', 'porta']
 
+import re
 import urllib.parse
 WPP_URL = 'https://wa.me/%s?text=%s' % (WPP_NUMERO, urllib.parse.quote(WPP_TEXTO))
 
+def wpp_pack_url(pack):
+    """Link de WhatsApp con el nombre del pack ya escrito en el mensaje,
+    para que cada botón "LO NECESITOOOOO" avise cuál quiere el cliente."""
+    texto = 'Hola Byluly! Quiero el pack %s' % pack
+    return 'https://wa.me/%s?text=%s' % (WPP_NUMERO, urllib.parse.quote(texto))
+
 def wpp_fill(html):
     html = html.replace('{{wpp_url}}', WPP_URL).replace('{{wpp_display}}', WPP_DISPLAY)
+    html = re.sub(r'\{\{wpp_pack:([^}]+)\}\}', lambda m: wpp_pack_url(m.group(1)), html)
     for k, v in ICONS.items():
         html = html.replace('{{%s}}' % k, v)
     return html
