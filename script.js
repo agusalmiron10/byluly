@@ -167,6 +167,142 @@
     });
   }
 
+  /* ---------- Modal "qué incluye" de cada pack de Branding ---------- */
+  var packModal = $('#packModal');
+  if (packModal) {
+    var CALL = 'Con llamada de presentación';
+    var IDENTIDAD = {
+      h: 'Propuesta de Identidad de Marca',
+      items: ['Tipografías', 'Paleta de colores', 'Iconografía', 'Stickers/Ilustraciones de marca', 'Patrón de marca/Texturas', 'Slogan', 'Representaciones de Marca']
+    };
+    var ESTRATEGIA = {
+      h: 'Estrategia de Marketing + Dirección Creativa',
+      items: ['Brief', 'Estrategia de Marca', 'Análisis de competencia, definir la propuesta de valor, la visión, el propósito, los objetivos, la personalidad, el tono de voz como marca; público objetivo.', '2 Propuestas de Moodboard']
+    };
+    var EXTRAS_BASE = ['Regalo: 6 destacadas para Instagram', 'Manual de Marca', 'Archivos exportados en png, jpg, pdf y svg (aclarar si querés los editables en Illustrator)'];
+    var SEMANA1 = { h: 'Semana 1 — Conocernos', items: ['Preparación de Drive', 'Entrega de términos y condiciones / calendario / proporción de fotografía', 'Entrega del Brief', 'Investigación de mercado y análisis de marca', 'Entrega de los 2 Moodboard'], call: true };
+
+    var PACKS = {
+      core: {
+        eyebrow: 'BRANDING', title: 'THE CORE', duration: 'Duración: 4 semanas',
+        sections: [ESTRATEGIA, IDENTIDAD], extras: EXTRAS_BASE,
+        weeks: [
+          SEMANA1,
+          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
+          { h: 'Semana 3 — Correcciones', items: ['1 ronda de cambios'], call: true },
+          { h: 'Semana 4 — Entrega final', items: ['Preparación de los archivos a entregar | Manual de Marca'] }
+        ],
+        price: 'Inversión: 350 USD', wpp: 'THE CORE'
+      },
+      object: {
+        eyebrow: 'BRANDING · PACKAGING', title: 'THE OBJECT', duration: 'Duración: 4 semanas',
+        sections: [ESTRATEGIA, IDENTIDAD, { h: 'Packaging (hasta 6 a elección)', items: ['Ejemplos: cajas, vasos, servilletas, bolsas, ploteo para vidrio, cuadros, merchandising, etc.', 'Incluye el plano guía exportado listo para imprimir (las medidas y la maqueta)'] }],
+        extras: EXTRAS_BASE,
+        weeks: [
+          SEMANA1,
+          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
+          { h: 'Semana 3 — Correcciones', items: ['Preparación de los archivos a entregar | Manual de Marca', 'Incluye 1 ronda de cambios'] },
+          { h: 'Semana 4 — Entrega final', items: ['Preparación del packaging con las medidas respectivas y los planos guía', 'Incluye 1 ronda de cambios'], call: true }
+        ],
+        price: 'Inversión: 550 USD', wpp: 'THE OBJECT'
+      },
+      voice: {
+        eyebrow: 'BRANDING · SOCIAL MEDIA', title: 'THE VOICE', duration: 'Duración: 4 semanas',
+        sections: [ESTRATEGIA, IDENTIDAD, { h: 'Plantillas para Redes Sociales', items: ['Entregadas en Illustrator o Canva', '9 posts para Instagram', '4 historias para Instagram', '2 portadas para Reels', '(puede incluir banners)'] }],
+        extras: EXTRAS_BASE,
+        weeks: [
+          SEMANA1,
+          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
+          { h: 'Semana 3 — Correcciones', items: ['1 ronda de cambios'], call: true },
+          { h: 'Semana 4 — Entrega final', items: ['Preparación de los archivos a entregar | Manual de Marca'] }
+        ],
+        price: 'Inversión: 430 USD', wpp: 'THE VOICE'
+      },
+      space: {
+        eyebrow: 'BRANDING · WEB', title: 'THE SPACE', duration: 'Plan esencial + página web',
+        tiers: [
+          { name: 'Landing Page', audience: 'Ideal para: emprendedores, lanzamientos, servicios únicos, campañas en redes.', items: ['1 landing page estratégica', 'Diseño alineado al branding', 'Estructura pensada para conversión', 'Responsive (mobile)', 'Formulario de contacto o WhatsApp', 'Llamado a la acción claros', 'SEO básico', '1 ronda de cambios'], price: '600 USD' },
+          { name: 'Web profesional', audience: 'Ideal para: marcas que quieren presencia sólida y confianza.', items: ['Home + hasta 5 páginas (servicios, sobre, portfolio, blog básico, contacto)', 'Diseño alineado al branding', 'Copywriting', 'Responsive (mobile)', 'Formulario de contacto o WhatsApp', 'Llamado a la acción claros', 'SEO básico', '1 ronda de cambios'], price: '850 USD' },
+          { name: 'Tienda Online', audience: 'Ideal para: marcas que quieren vender y escalar.', items: ['Home + categorías + fichas de producto', 'Carga inicial de hasta 20 productos', 'Copy básico de productos', 'Carrito, checkout y pasarela de pago', 'Responsive, SEO básico'], price: '1050 USD' }
+        ],
+        weeks: [
+          SEMANA1,
+          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa + diseño web'], call: true },
+          { h: 'Semana 3 — Correcciones', items: ['Correcciones, construcción de la página'], call: true },
+          { h: 'Semana 4 — Entrega final', items: ['Preparación de los archivos finales, Manual de Marca y página web'] }
+        ],
+        wpp: 'THE SPACE'
+      },
+      universe: {
+        eyebrow: 'BRANDING · PACKAGING · SOCIAL MEDIA', title: 'THE UNIVERSE', duration: 'Duración: 5 semanas',
+        sections: [ESTRATEGIA, IDENTIDAD,
+          { h: 'Plantillas para Redes Sociales', items: ['Entregadas en Illustrator o Canva', '9 posts para Instagram', '4 historias para Instagram', '2 portadas para Reels', '(puede incluir banners)'] },
+          { h: 'Packaging', items: ['Ejemplos: cajas, vasos, servilletas, bolsas, ploteo para vidrio, cuadros, merchandising, etc.', 'En el caso de restaurantes puede incluir menú', 'Incluye el plano guía exportado listo para imprimir (las medidas y la maqueta)'] }
+        ],
+        extras: EXTRAS_BASE,
+        weeks: [
+          SEMANA1,
+          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
+          { h: 'Semana 3 — Correcciones', items: ['Preparación de los archivos finales'] },
+          { h: 'Semanas 4 y 5 — Entrega final', items: ['Preparación del packaging con las medidas respectivas y los planos guía', 'Preparación de las plantillas para redes sociales'] }
+        ],
+        price: 'Inversión: 690 USD', wpp: 'THE UNIVERSE'
+      }
+    };
+
+    var listHtml = function (items) {
+      return '<ul>' + items.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
+    };
+    var leftHtml = function (p) {
+      var h = '<p class="eyebrow">' + p.eyebrow + '</p><h3 id="packModalTitle">' + p.title + '</h3><p class="pack-modal__duration">' + p.duration + '</p>';
+      if (p.tiers) {
+        h += p.tiers.map(function (t) {
+          return '<div class="pack-modal__tier"><h4>' + t.name + '</h4><p class="pack-modal__audience">' + t.audience + '</p>' + listHtml(t.items) + '<p class="pack-modal__tier-price">Inversión: ' + t.price + '</p></div>';
+        }).join('');
+      } else {
+        h += p.sections.map(function (s) { return '<h4>' + s.h + '</h4>' + listHtml(s.items); }).join('');
+        h += p.extras.map(function (e) { return '<p class="pack-modal__extra">' + e + '</p>'; }).join('');
+      }
+      return h;
+    };
+    var rightHtml = function (p, wppHref) {
+      var h = '<h4 class="pack-modal__proceso">Proceso</h4>';
+      h += p.weeks.map(function (w) {
+        return '<div class="pack-modal__week"><h5>' + w.h + '</h5>' + listHtml(w.items) + (w.call ? '<p class="pack-modal__call">' + CALL + '</p>' : '') + '</div>';
+      }).join('');
+      if (p.price) h += '<p class="pack-modal__total">' + p.price + '</p>';
+      h += '<a href="' + wppHref + '" target="_blank" rel="noopener" class="btn btn--peony">TRABAJEMOS JUNTOS</a>';
+      return h;
+    };
+
+    var packLeft = $('#packModalLeft');
+    var packRight = $('#packModalRight');
+    var openPack = function (key, href) {
+      var p = PACKS[key];
+      if (!p) return;
+      packLeft.innerHTML = leftHtml(p);
+      packRight.innerHTML = rightHtml(p, href);
+      packModal.hidden = false;
+      requestAnimationFrame(function () { packModal.classList.add('is-open'); });
+    };
+    var closePack = function () {
+      packModal.classList.remove('is-open');
+      setTimeout(function () { packModal.hidden = true; }, 300);
+    };
+
+    $$('.pack-trigger').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        openPack(a.dataset.pack, a.href);
+      });
+    });
+    $('#packModalClose').addEventListener('click', closePack);
+    packModal.addEventListener('click', function (e) { if (e.target === packModal) closePack(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !packModal.hidden) closePack();
+    });
+  }
+
   /* ---------- Gancho de limpieza (lo usa preview.html) ---------- */
   window.__bylulyCleanup = function () { clearInterval(timer); clearTimeout(popupTimer); };
 

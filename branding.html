@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..900;1,300..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=cdb9d3c8">
+<link rel="stylesheet" href="styles.css?v=d261acae">
 </head>
 <body data-page="branding">
 
@@ -82,7 +82,7 @@
       <p class="pack-feature__time">Duración: 4 semanas</p>
       <p class="pack-feature__desc">Para marcas que recién <b>arrancan y necesitan una base clara.</b><br>Logo, colores, tipografías y todo lo necesario para empezar a mostrarse con una identidad propia, sin gastar de más.</p>
       <p class="pack-feature__price">Inversión: 350 USD</p>
-      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20CORE" target="_blank" rel="noopener" class="btn btn--peony">LO NECESITOOOOO</a>
+      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20CORE" class="btn btn--peony pack-trigger" data-pack="core">LO NECESITOOOOO</a>
     </div>
     <div class="pack-feature__collage reveal">
       <img class="pf-cards" src="img/branding-cards.jpg" alt="Papelería y tarjetas de Vive Liviano" loading="lazy">
@@ -103,7 +103,7 @@
       <p class="pack-feature__time">Duración: 4 semanas</p>
       <p class="pack-feature__desc">Para marcas que se tocan: locales, productos, envíos. <b>Diseñamos tu identidad y todo lo que la gente recibe,</b> desde la caja hasta la tarjetita de gracias, para que abrir tu marca también sea una experiencia.</p>
       <p class="pack-feature__price">Inversión: 550 USD</p>
-      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20OBJECT" target="_blank" rel="noopener" class="btn btn--peony">LO NECESITOOOOO</a>
+      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20OBJECT" class="btn btn--peony pack-trigger" data-pack="object">LO NECESITOOOOO</a>
     </div>
   </div>
 
@@ -114,7 +114,7 @@
       <p class="pack-feature__time">Duración: 4 semanas</p>
       <p class="pack-feature__desc">Para marcas que venden y se muestran en redes. Te armamos la <b>identidad y plantillas editables</b> para tus posteos, así dejás de pelearte con el diseño y te enfocás en contar lo que hacés.</p>
       <p class="pack-feature__price">Inversión: 430 USD</p>
-      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20VOICE" target="_blank" rel="noopener" class="btn btn--peony">LO NECESITOOOOO</a>
+      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20VOICE" class="btn btn--peony pack-trigger" data-pack="voice">LO NECESITOOOOO</a>
     </div>
     <div class="pack-feature__media reveal">
       <img src="img/branding-voice.jpg" alt="Plantillas de agenda para redes sociales de Vive Liviano" width="900" height="857" loading="lazy">
@@ -135,7 +135,7 @@
         <li><span>Web profesional</span><b>850 USD</b></li>
         <li><span>Tienda online</span><b>1050 USD</b></li>
       </ul>
-      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20SPACE" target="_blank" rel="noopener" class="btn btn--peony">LO NECESITOOOOO</a>
+      <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20SPACE" class="btn btn--peony pack-trigger" data-pack="space">LO NECESITOOOOO</a>
     </div>
   </div>
 </section>
@@ -148,7 +148,7 @@
     <p class="pack-universe__time">Duración: 5 semanas</p>
     <p class="pack-universe__desc">El pack completo: identidad de marca, packaging y plantillas para redes, con moodboards, manual de marca y 6 destacadas de regalo para Instagram.</p>
     <p class="pack-universe__price">Inversión: 690 USD</p>
-    <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20UNIVERSE" target="_blank" rel="noopener" class="btn btn--pistachio">LO NECESITOOOOO</a>
+    <a href="https://wa.me/5491160169886?text=Hola%20Byluly%21%20Quiero%20el%20pack%20THE%20UNIVERSE" class="btn btn--pistachio pack-trigger" data-pack="universe">LO NECESITOOOOO</a>
   </div>
 </section>
 
@@ -188,6 +188,16 @@
   <h2 class="reveal">¿Arrancamos?</h2>
   <a href="contacto.html" class="btn btn--pistachio reveal">Quiero mi branding</a>
 </section>
+
+<div class="pack-modal" id="packModal" hidden>
+  <div class="pack-modal__box" role="dialog" aria-modal="true" aria-labelledby="packModalTitle">
+    <button class="pack-modal__close" id="packModalClose" aria-label="Cerrar">&times;</button>
+    <div class="pack-modal__cols">
+      <div class="pack-modal__left" id="packModalLeft"></div>
+      <div class="pack-modal__right" id="packModalRight"></div>
+    </div>
+  </div>
+</div>
 
 </main>
 
@@ -258,6 +268,6 @@
 </a>
 
 
-<script src="script.js?v=53281965"></script>
+<script src="script.js?v=89bafb2b"></script>
 </body>
 </html>

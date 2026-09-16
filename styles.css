@@ -911,6 +911,52 @@ a{ color:inherit; }
 }
 .lightbox__submit{ align-self:center; margin-top:4px; border:0; cursor:pointer; font:inherit; }
 
+/* modal "qué incluye" de cada pack (Branding) */
+.pack-modal{
+  position:fixed; inset:0; z-index:95; display:flex; align-items:center; justify-content:center;
+  background:rgba(84,3,20,.6); padding:20px; overflow:auto;
+  opacity:0; visibility:hidden; transition:opacity .3s ease;
+}
+.pack-modal.is-open{ opacity:1; visibility:visible; }
+.pack-modal__box{
+  position:relative; width:100%; max-width:980px; max-height:88vh; overflow:auto;
+  background:var(--cream); border-radius:28px; box-shadow:0 24px 60px rgba(84,3,20,.35);
+  transform:scale(.94) translateY(10px); transition:transform .3s ease;
+}
+.pack-modal.is-open .pack-modal__box{ transform:none; }
+.pack-modal__close{
+  position:absolute; top:16px; right:20px; z-index:2; background:none; border:0;
+  font-size:30px; line-height:1; cursor:pointer; color:var(--burgundy);
+}
+.pack-modal__cols{ display:grid; grid-template-columns:1fr 1fr; align-items:stretch; }
+.pack-modal__left{ padding:clamp(30px,4vw,52px) clamp(26px,3.6vw,44px); background:var(--cream); border-radius:28px 0 0 28px; }
+.pack-modal__right{ padding:clamp(30px,4vw,52px) clamp(26px,3.6vw,44px); background:var(--peony); border-radius:0 28px 28px 0; }
+.pack-modal__left h3{
+  font-family:var(--serif); font-weight:400; color:var(--burgundy);
+  font-size:clamp(28px,3.4vw,44px); margin:.15em 0 .1em; line-height:1.05;
+}
+.pack-modal__duration{ font-size:14px; color:var(--burgundy); opacity:.85; margin:0 0 1.4em; }
+.pack-modal__left h4{ font-size:15px; color:var(--burgundy); margin:1.3em 0 .5em; }
+.pack-modal__left ul{ margin:0 0 .6em; padding-left:1.2em; color:var(--body); font-size:14.5px; line-height:1.55; }
+.pack-modal__left ul li{ margin-bottom:.3em; }
+.pack-modal__extra{ font-size:14.5px; color:var(--body); margin:.9em 0 0; }
+.pack-modal__tier{ margin-bottom:1.6em; padding-bottom:1.6em; border-bottom:1px solid rgba(119,5,35,.14); }
+.pack-modal__tier:last-child{ border-bottom:0; margin-bottom:0; padding-bottom:0; }
+.pack-modal__tier h4{ font-family:var(--serif); font-size:22px; font-weight:400; color:var(--burgundy); margin:0 0 .3em; }
+.pack-modal__audience{ font-size:13.5px; font-weight:700; color:var(--burgundy); margin:0 0 .5em; }
+.pack-modal__tier-price{ font-family:var(--serif); font-size:19px; color:var(--burgundy); margin:.6em 0 0; }
+.pack-modal__proceso{
+  font-family:var(--serif); font-weight:400; color:var(--burgundy);
+  font-size:clamp(22px,2.6vw,30px); margin:0 0 1em;
+}
+.pack-modal__week{ margin-bottom:1.3em; }
+.pack-modal__week h5{ font-size:13px; letter-spacing:.04em; color:var(--burgundy); margin:0 0 .4em; }
+.pack-modal__week ul{ margin:0; padding-left:1.2em; color:var(--body); font-size:14px; line-height:1.5; }
+.pack-modal__week ul li{ margin-bottom:.25em; }
+.pack-modal__call{ font-style:italic; color:var(--burgundy); font-size:13.5px; margin:.4em 0 0; }
+.pack-modal__total{ font-family:var(--serif); font-size:clamp(22px,2.4vw,30px); color:var(--burgundy); margin:1em 0 1em; }
+.pack-modal__right .btn{ width:100%; }
+
 /* animación de entrada */
 .reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease; }
 .reveal.is-in{ opacity:1; transform:none; }
@@ -939,6 +985,10 @@ a{ color:inherit; }
   .form-contacto__row{ grid-template-columns:1fr; gap:14px; }
 
   .why__cards{ grid-template-columns:1fr; max-width:560px; }
+
+  .pack-modal__cols{ grid-template-columns:1fr; }
+  .pack-modal__left{ border-radius:28px 28px 0 0; }
+  .pack-modal__right{ border-radius:0 0 28px 28px; }
 
   .pack-feature__row{ grid-template-columns:1fr; text-align:center; }
   .pack-feature__row + .pack-feature__row{ margin-top:64px; }
