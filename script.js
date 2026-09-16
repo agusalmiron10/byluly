@@ -271,7 +271,7 @@
         return '<div class="pack-modal__week"><h5>' + w.h + '</h5>' + listHtml(w.items) + (w.call ? '<p class="pack-modal__call">' + CALL + '</p>' : '') + '</div>';
       }).join('');
       if (p.price) h += '<p class="pack-modal__total">' + p.price + '</p>';
-      h += '<a href="' + wppHref + '" target="_blank" rel="noopener" class="btn btn--peony">TRABAJEMOS JUNTOS</a>';
+      h += '<a href="' + wppHref + '" target="_blank" rel="noopener" class="btn btn--fuchsia pack-modal__cta">TRABAJEMOS JUNTOS</a>';
       return h;
     };
 
