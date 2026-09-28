@@ -47,7 +47,7 @@
   }
 
   /* ---------- Aparición de secciones ---------- */
-  var reveals = $$('.reveal');
+  var reveals = $$('.reveal, .stagger');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (en) {

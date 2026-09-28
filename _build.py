@@ -68,14 +68,16 @@ def read(p):
 head_tpl     = read('partials/head.html')
 header_tpl   = read('partials/header.html')
 hablemos_tpl = read('partials/hablemos.html')
+hablemos_rosa_tpl = read('partials/hablemos-rosa.html')
 footer_tpl   = read('partials/site-footer.html')
 wpp_float    = read('partials/wpp.html')
 popup_tpl    = read('partials/popup.html')
 
-# Contacto y Redes Sociales arman su propio bloque "Hablemos!" (versión
-# rosa, en su propia página), así que no repiten el genérico bordó que
-# sí llevan las otras 3 páginas.
-PAGES_SIN_HABLEMOS_COMPARTIDO = {'contacto.html', 'redes-sociales.html'}
+# "Hablemos!": el genérico bordó (con formulario) va en Home y Portafolio.
+# Branding y Redes Sociales llevan la versión rosa de sus PDF (sello "ly",
+# pasos y botón a WhatsApp). Contacto arma el suyo dentro de la página.
+PAGES_HABLEMOS_ROSA = {'branding.html', 'redes-sociales.html'}
+PAGES_SIN_HABLEMOS_COMPARTIDO = {'contacto.html'}
 
 for out, (title, desc, active) in PAGES.items():
     head = head_tpl.replace('{{title}}', title).replace('{{desc}}', desc).replace('{{ver_css}}', VER_CSS)
@@ -88,7 +90,12 @@ for out, (title, desc, active) in PAGES.items():
         header = header.replace('{{%s}}' % k, v)
     header = wpp_fill(header)
 
-    hablemos = '' if out in PAGES_SIN_HABLEMOS_COMPARTIDO else wpp_fill(hablemos_tpl)
+    if out in PAGES_SIN_HABLEMOS_COMPARTIDO:
+        hablemos = ''
+    elif out in PAGES_HABLEMOS_ROSA:
+        hablemos = wpp_fill(hablemos_rosa_tpl)
+    else:
+        hablemos = wpp_fill(hablemos_tpl)
 
     footer = footer_tpl
     for k, v in ICONS.items():

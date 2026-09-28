@@ -11,7 +11,14 @@ from PIL import Image
 
 # ---------- imágenes a data URI ----------
 def enc(name):
-    im = Image.open('img/' + name).convert('RGB')
+    im = Image.open('img/' + name)
+    if im.mode in ('RGBA', 'LA', 'P'):
+        im = im.convert('RGBA')
+        im.thumbnail((680, 680))
+        buf = io.BytesIO()
+        im.save(buf, 'PNG', optimize=True)
+        return 'data:image/png;base64,' + base64.b64encode(buf.getvalue()).decode()
+    im = im.convert('RGB')
     if name.startswith('proyecto'):        box = (460, 640)
     elif name == 'hero.jpg':               box = (700, 1160)
     elif name == 'podcast.jpg':            box = (220, 220)
@@ -38,21 +45,26 @@ for key in build.ACTIVE_KEYS:
 for k, v in build.ICONS.items():
     header = header.replace('{{%s}}' % k, v)
 
-footer = (open('partials/hablemos.html', encoding='utf-8').read()
-          + open('partials/site-footer.html', encoding='utf-8').read())
-for k, v in build.ICONS.items():
-    footer = footer.replace('{{%s}}' % k, v)
+footer = build.wpp_fill(open('partials/site-footer.html', encoding='utf-8').read())
 
 css   = open('styles.css', encoding='utf-8').read()
 js    = open('script.js', encoding='utf-8').read()
 
-# la única imagen que se referencia desde el CSS (el fondo de estrellitas del popup)
+# imágenes referenciadas desde el CSS (fondos)
 stars_svg = base64.b64encode(open('img/popup-stars-bg.svg', 'rb').read()).decode()
 css = css.replace('img/popup-stars-bg.svg', 'data:image/svg+xml;base64,' + stars_svg)
+css = inline(css)
 
 popup = open('partials/popup.html', encoding='utf-8').read()
+hablemos_gen  = open('partials/hablemos.html', encoding='utf-8').read()
+hablemos_rosa = open('partials/hablemos-rosa.html', encoding='utf-8').read()
 
-routes = {out: build.wpp_fill(inline(open('pages/' + out, encoding='utf-8').read()))
+def hablemos_for(out):
+    if out in build.PAGES_SIN_HABLEMOS_COMPARTIDO: return ''
+    return hablemos_rosa if out in build.PAGES_HABLEMOS_ROSA else hablemos_gen
+
+routes = {out: build.wpp_fill(inline(open('pages/' + out, encoding='utf-8').read()
+                                     + '\n' + hablemos_for(out)))
           for out in build.PAGES}
 routes['index.html'] += '\n' + popup
 titles = {out: meta[0] for out, meta in build.PAGES.items()}
@@ -94,7 +106,7 @@ router = """
     paintNav(ACTIVES[route]);
     window.scrollTo(0, 0);
     window.__bylulyInit();
-    document.querySelectorAll('.reveal').forEach(function (e) { e.classList.add('is-in'); });
+    document.querySelectorAll('.reveal, .stagger').forEach(function (e) { e.classList.add('is-in'); });
     return true;
   }
 
