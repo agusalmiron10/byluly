@@ -49,6 +49,7 @@ footer = build.wpp_fill(open('partials/site-footer.html', encoding='utf-8').read
 
 css   = open('styles.css', encoding='utf-8').read()
 js    = open('script.js', encoding='utf-8').read()
+js    = inline(js)   # la lluvia de estrellas pide img/star-pink.png desde el JS
 
 # imágenes referenciadas desde el CSS (fondos)
 stars_svg = base64.b64encode(open('img/popup-stars-bg.svg', 'rb').read()).decode()

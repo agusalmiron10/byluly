@@ -484,26 +484,25 @@
   /* ---------- Pantalla de carga ----------
      Se ve solo la primera vez de la sesión: queda al menos 0.8 s (para que el
      logo llegue a aparecer) y se va cuando la página terminó de cargar. */
-  /* ---------- Lluvia de corazones de bienvenida ----------
+  /* ---------- Lluvia de estrellas de bienvenida ----------
      La primera vez que alguien entra (justo cuando se va la pantalla de carga)
-     caen corazones repartidos parejo por todo el ancho de la pantalla. */
-  var CORAZON = '<svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25.5S2.5 18.6 2.5 10.6A5.6 5.6 0 0 1 14 7.9a5.6 5.6 0 0 1 11.5 2.7c0 8-11.5 14.9-11.5 14.9z"/></svg>';
+     caen las estrellas rosas bordadas de la home, repartidas parejo por todo el ancho. */
   var lluvia = function () {
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var colores = ['#E0AAB8', '#EF0066', '#770523', '#FAD2E1', '#E0AAB8', '#EF0066'];
-    var total = window.innerWidth < 700 ? 30 : 60;
+    var total = window.innerWidth < 700 ? 24 : 44;
     for (var k = 0; k < total; k++) {
-      var p = document.createElement('span');
+      var p = document.createElement('img');
       p.className = 'lluvia';
-      p.innerHTML = CORAZON;
-      // cada corazón en su franja del ancho, así cubren toda la pantalla sin amontonarse
+      p.src = 'img/star-pink.png';
+      p.alt = '';
+      p.setAttribute('aria-hidden', 'true');
+      // cada estrella en su franja del ancho, así cubren toda la pantalla sin amontonarse
       p.style.left = (((k + Math.random()) / total) * 100).toFixed(2) + 'vw';
-      p.style.color = colores[Math.floor(Math.random() * colores.length)];
-      p.style.width = (16 + Math.random() * 22).toFixed(0) + 'px';
-      p.style.setProperty('--dur', (2.6 + Math.random() * 2.2).toFixed(2) + 's');
+      p.style.width = (22 + Math.random() * 26).toFixed(0) + 'px';
+      p.style.setProperty('--dur', (2.8 + Math.random() * 2.2).toFixed(2) + 's');
       p.style.setProperty('--delay', (Math.random() * 1.6).toFixed(2) + 's');
       p.style.setProperty('--sx', (Math.random() * 80 - 40).toFixed(0) + 'px');
-      p.style.setProperty('--rt', (Math.random() * 120 - 60).toFixed(0) + 'deg');
+      p.style.setProperty('--rt', (Math.random() * 540 - 270).toFixed(0) + 'deg');
       p.addEventListener('animationend', function () { this.remove(); });
       document.body.appendChild(p);
     }
