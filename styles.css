@@ -1156,6 +1156,116 @@ body.is-leaving::after{ animation:veil-in .28s ease both; }
 }
 
 /* ============================================================
+   DETALLES "PRO"
+   ============================================================ */
+
+/* ---------- textura de papel sobre toda la web (muy sutil) ---------- */
+body::before{
+  content:""; position:fixed; inset:0; z-index:9000; pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35  0 0 0 0 .12  0 0 0 0 .14  0 0 0 1.1 -.25'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url%28%23n%29'/%3E%3C/svg%3E") repeat; opacity:.11;
+}
+
+/* ---------- barra de progreso de lectura, pegada abajo del menú ---------- */
+.progress{
+  position:absolute; left:0; right:0; bottom:0; height:3px;
+  transform-origin:left; transform:scaleX(var(--p,0));
+  background:linear-gradient(90deg,var(--dusty-rose),var(--fuchsia));
+  pointer-events:none;
+}
+
+/* ---------- títulos que aparecen palabra por palabra (o letra por letra) ---------- */
+.split .w{ display:inline-block; opacity:0; transform:translateY(.45em) rotate(3deg); filter:blur(4px);
+  transition:opacity .6s ease, transform .75s cubic-bezier(.2,.7,.2,1), filter .6s ease;
+  transition-delay:calc(var(--i) * 55ms); }
+.split.is-split-in .w{ opacity:1; transform:none; filter:none; }
+
+/* ---------- fotos que se descubren con una cortina ---------- */
+.pack-feature__media.reveal,.gallery__item.reveal{ --curtain:var(--peony); }
+.pack-feature--peony .pack-feature__media.reveal{ --curtain:var(--wine); }
+.pack-feature__media.reveal::after,.gallery__item.reveal::after{
+  content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+  background:var(--curtain);
+  transform-origin:right; transition:transform 1.05s cubic-bezier(.77,0,.18,1) .15s;
+}
+.gallery__item{ position:relative; }
+.pack-feature__media.reveal.is-in::after,.gallery__item.reveal.is-in::after{ transform:scaleX(0); }
+
+/* ---------- fotos que se inclinan en 3D con el mouse ---------- */
+.tilt{ transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(var(--ts,1));
+  transition:transform .5s cubic-bezier(.2,.7,.2,1); will-change:transform; }
+.tilt.is-tilting{ transition-duration:.12s; }
+.gallery__item:hover img{ transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.05); }
+.glare{ position:absolute; inset:0; z-index:2; pointer-events:none; opacity:0; transition:opacity .4s ease;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.35), rgba(255,255,255,0) 55%); }
+.is-glaring > .glare{ opacity:1; }
+
+/* ---------- botones magnéticos ---------- */
+.btn.is-magnetic{ transition:translate .45s cubic-bezier(.2,.7,.2,1), transform .25s ease, background-color .25s ease, box-shadow .25s ease; }
+.btn.is-magnetic.is-pulling{ transition-duration:.15s, .25s, .25s, .25s; }
+.btn__txt{ display:inline-block; transition:translate .45s cubic-bezier(.2,.7,.2,1); }
+.is-pulling .btn__txt{ transition-duration:.15s; }
+
+/* ---------- brillitos al hacer clic ---------- */
+.chispa{
+  position:fixed; z-index:9500; pointer-events:none; margin:-7px 0 0 -7px;
+  width:14px; height:14px; line-height:14px; text-align:center; font-size:14px;
+  animation:chispa .75s cubic-bezier(.2,.7,.2,1) forwards;
+}
+@keyframes chispa{
+  0%{ transform:translate(0,0) scale(.4) rotate(0); opacity:1; }
+  100%{ transform:translate(var(--dx),var(--dy)) scale(1) rotate(var(--rt)); opacity:0; }
+}
+
+/* ---------- filtros del portafolio ---------- */
+.filtros{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:0 auto clamp(26px,3vw,44px); }
+.filtros__btn{
+  font:inherit; font-family:var(--poppins); font-size:15px; letter-spacing:.02em;
+  padding:.65em 1.5em; border-radius:999px; cursor:pointer;
+  border:1.5px solid var(--burgundy); background:transparent; color:var(--burgundy);
+  transition:background-color .25s ease, color .25s ease, transform .2s ease;
+}
+.filtros__btn:hover{ transform:translateY(-2px); }
+.filtros__btn.is-active{ background:var(--burgundy); color:var(--cream-light); }
+.gallery__item.is-filtered{ display:none; }
+.gallery__item.is-out{ opacity:0 !important; transform:scale(.9) !important; transition:opacity .2s ease, transform .2s ease !important; }
+
+/* ---------- lista de marcas de la home con foto flotante ---------- */
+.marcas{ position:relative; background:var(--cream-light); padding:clamp(56px,7vw,120px) var(--pad); }
+.marcas__eyebrow{ text-align:center; color:var(--burgundy); margin:0 0 clamp(20px,2.5vw,40px); font-family:var(--poppins); font-size:clamp(15px,1.4vw,22px); }
+.marcas__list{ list-style:none; margin:0 auto; padding:0; max-width:1200px; border-top:1px solid rgba(119,5,35,.25); }
+.marcas__list li{ border-bottom:1px solid rgba(119,5,35,.25); }
+.marcas__row{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:clamp(14px,1.6vw,26px) 4px; color:var(--burgundy); text-decoration:none;
+  transition:padding .35s cubic-bezier(.2,.7,.2,1), color .3s ease;
+}
+.marcas__name{ font-family:var(--serif); font-size:clamp(34px,5.2vw,86px); line-height:1; letter-spacing:-.035em; transition:color .3s ease; }
+.marcas__cat{ font-family:var(--poppins); font-size:clamp(12px,1vw,16px); letter-spacing:.08em; text-transform:uppercase; opacity:.75; text-align:right; }
+.marcas__thumb{ display:none; }
+.marcas__list:hover .marcas__name{ color:rgba(119,5,35,.28); }
+.marcas__list .marcas__row:hover .marcas__name{ color:var(--burgundy); }
+.marcas__row:hover{ padding-left:22px; }
+.marcas__preview{
+  position:fixed; left:0; top:0; z-index:50; pointer-events:none;
+  width:clamp(220px,20vw,320px); aspect-ratio:4/5; object-fit:cover; border-radius:14px;
+  box-shadow:0 22px 50px rgba(84,3,20,.3);
+  opacity:0; scale:.7; rotate:-6deg; transition:opacity .3s ease, scale .4s cubic-bezier(.2,.7,.2,1), rotate .4s ease;
+}
+.marcas__preview.is-on{ opacity:1; scale:1; rotate:-3deg; }
+@media (hover:none),(max-width:860px){
+  .marcas__preview{ display:none; }
+  .marcas__thumb{ display:block; width:62px; height:62px; object-fit:cover; border-radius:10px; flex:0 0 auto; }
+  .marcas__row{ gap:14px; }
+  .marcas__cat{ margin-left:auto; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .split .w{ opacity:1; transform:none; filter:none; transition:none; }
+  .pack-feature__media.reveal::after,.gallery__item.reveal::after{ display:none; }
+  .chispa{ display:none; }
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width:1100px){
@@ -1289,4 +1399,32 @@ body.is-leaving::after{ animation:veil-in .28s ease both; }
   .tira img{ flex:0 0 62vw; height:46vw; }
   .footer__nav{ gap:6px 14px; }
   .footer__contact{ gap:8px 16px; padding-right:56px; }
+}
+
+/* ---------- menú mobile a pantalla completa ---------- */
+@media (max-width:860px){
+  .logo,.burger{ position:relative; z-index:2; }
+  .nav{
+    position:fixed; inset:0; z-index:1; margin:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    background:var(--peony); padding:90px var(--pad) 40px; box-shadow:none;
+    opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s;
+  }
+  .nav.is-open{ opacity:1; visibility:visible; }
+  .nav .nav__link{
+    font-family:var(--serif); font-size:clamp(38px,11vw,58px); line-height:1.05; letter-spacing:-.03em;
+    padding:6px 0; text-align:center;
+    opacity:0; transform:translateY(24px); transition:opacity .45s ease, transform .55s cubic-bezier(.2,.7,.2,1);
+  }
+  .nav.is-open .nav__link{ opacity:1; transform:none; }
+  .nav.is-open > :nth-child(1) .nav__link,.nav.is-open > .nav__link:nth-child(1){ transition-delay:.08s; }
+  .nav.is-open > :nth-child(2) .nav__link{ transition-delay:.15s; }
+  .nav.is-open > .nav__link:nth-child(3){ transition-delay:.22s; }
+  .nav.is-open > .nav__link:nth-child(4){ transition-delay:.29s; }
+  .nav .nav__link.is-active{ font-style:italic; }
+  .nav__group{ display:flex; flex-direction:column; align-items:center; }
+  .nav__sub{ padding:0 0 8px; align-items:center; }
+  .nav__sublink{ font-family:var(--poppins); font-size:17px; padding:8px 16px; }
+  .nav__sublink.is-active{ background:rgba(255,255,255,.55); }
+  .menu-open{ overflow:hidden; }
 }
