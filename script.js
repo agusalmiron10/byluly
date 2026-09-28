@@ -465,6 +465,59 @@
     });
   }
 
+  /* ---------- Pantalla de carga ----------
+     Se ve solo la primera vez de la sesión: queda al menos 0.8 s (para que el
+     logo llegue a aparecer) y se va cuando la página terminó de cargar. */
+  var loader = $('#loader');
+  if (loader && !document.documentElement.classList.contains('no-loader')) {
+    var loaderStart = Date.now();
+    var hideLoader = function () {
+      setTimeout(function () {
+        loader.classList.add('is-done');
+        try { sessionStorage.setItem('byluly_loader', '1'); } catch (err) {}
+      }, Math.max(0, 800 - (Date.now() - loaderStart)));
+    };
+    if (document.readyState === 'complete') hideLoader();
+    else window.addEventListener('load', hideLoader);
+  }
+
+  /* ---------- Números que suben solos ---------- */
+  var counts = $$('.count');
+  if (counts.length && 'IntersectionObserver' in window &&
+      !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    var runCount = function (el) {
+      var to = parseInt(el.dataset.to, 10);
+      var t0 = null;
+      var dur = 1600;
+      var step = function (t) {
+        if (t0 === null) t0 = t;
+        var k = Math.min(1, (t - t0) / dur);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    var countIo = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { runCount(en.target); obs.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    counts.forEach(function (el) { el.textContent = '0'; countIo.observe(el); });
+  }
+
+  /* ---------- Botón "volver arriba" ---------- */
+  var toTop = $('#toTop');
+  if (toTop) {
+    var toTopCheck = function () {
+      toTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 1.2);
+    };
+    window.addEventListener('scroll', toTopCheck, { passive: true });
+    toTopCheck();
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   /* ---------- Gancho de limpieza (lo usa preview.html) ---------- */
   window.__bylulyCleanup = function () { clearInterval(timer); clearTimeout(popupTimer); };
 

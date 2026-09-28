@@ -1103,6 +1103,58 @@ body.is-leaving::after{ animation:veil-in .28s ease both; }
   input,textarea{ cursor:text; }
 }
 
+/* ---------- pantalla de carga con el logo ----------
+   script.js la saca cuando la página terminó de cargar; si no hubiera JS,
+   la animación loader-auto la esconde sola a los 3 segundos */
+.loader{
+  position:fixed; inset:0; z-index:10000;
+  display:grid; place-items:center;
+  background:var(--cream-light);
+  transition:opacity .5s ease, visibility .5s ease;
+  animation:loader-auto 0s 3s forwards;
+}
+.loader.is-done{ opacity:0; visibility:hidden; }
+.no-loader .loader{ display:none; }
+.loader__logo{ width:clamp(130px,14vw,210px); height:auto; animation:loader-pop .9s cubic-bezier(.2,.7,.2,1) both, loader-beat 1.4s ease-in-out .9s infinite; }
+@keyframes loader-pop{ from{ opacity:0; transform:scale(.8) rotate(-4deg); } }
+@keyframes loader-beat{ 0%,100%{ scale:1; } 50%{ scale:1.05; } }
+@keyframes loader-auto{ to{ opacity:0; visibility:hidden; } }
+
+/* ---------- números que suben solos (home) ---------- */
+.stats{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,48px);
+  background:var(--peony); padding:clamp(40px,5vw,84px) var(--pad);
+  text-align:center;
+}
+.stats__num{
+  margin:0; font-family:var(--serif); color:var(--burgundy);
+  font-size:clamp(52px,8vw,130px); line-height:.9; letter-spacing:-.04em;
+  font-variant-numeric:tabular-nums;
+}
+.stats__label{ margin:.2em 0 0; font-family:var(--poppins); color:var(--burgundy); font-size:clamp(16px,1.9vw,30px); }
+@media (max-width:560px){ .stats{ grid-template-columns:1fr; gap:26px; } }
+
+/* ---------- botón "volver arriba" con forma de corazón ---------- */
+.to-top{
+  position:fixed; right:22px; bottom:84px; z-index:70;
+  width:52px; height:48px; padding:0; border:0; background:none;
+  opacity:0; visibility:hidden; transform:translateY(16px) scale(.8);
+  transition:opacity .3s ease, transform .35s cubic-bezier(.2,.7,.2,1), visibility .3s;
+  filter:drop-shadow(0 6px 12px rgba(84,3,20,.25));
+}
+.to-top.is-visible{ opacity:1; visibility:visible; transform:none; }
+.to-top svg{ display:block; width:100%; height:100%; overflow:visible; }
+.to-top__heart{ fill:var(--dusty-rose); stroke:var(--burgundy); stroke-width:2; transition:fill .2s ease; }
+.to-top__arrow{ fill:none; stroke:var(--burgundy); stroke-width:3.2; stroke-linecap:round; stroke-linejoin:round; }
+.to-top:hover .to-top__heart{ fill:var(--peony); }
+.to-top:hover svg{ animation:heart-beat .8s ease-in-out infinite; }
+@keyframes heart-beat{ 0%,100%{ scale:1; } 30%{ scale:1.12; } 60%{ scale:.97; } }
+@media (max-width:560px){ .to-top{ right:18px; bottom:78px; width:46px; height:42px; } }
+
+@media (prefers-reduced-motion:reduce){
+  .loader__logo,.to-top:hover svg{ animation:none; }
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
