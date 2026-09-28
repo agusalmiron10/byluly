@@ -1113,6 +1113,9 @@ main,.hablemos{ overflow-x:clip; }
     min-width:0; display:none;
   }
   .nav__sub.is-open{ display:flex; }
+  /* al tocar "Servicios" el botón queda con foco/hover: sin esto se aplica el
+     corrimiento del desplegable de escritorio y las opciones quedan fuera de pantalla */
+  .nav__group:hover .nav__sub,.nav__group:focus-within .nav__sub{ transform:none; }
   .nav__sublink{ padding:10px 12px; font-size:16px; }
 
   .hero{ grid-template-columns:1fr; }
