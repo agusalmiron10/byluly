@@ -851,9 +851,17 @@ a{ color:inherit; }
 
 /* ---------- "Hablemos!" rosa (Branding y Redes, como sus PDF) ---------- */
 .hablemos--rosa{ background:var(--peony); color:var(--ink-dark); padding:clamp(12px,.8vw,16px) var(--pad) clamp(52px,4.4vw,85px); }
-.hablemos__badge--ly{ width:clamp(120px,16vw,308px); }
+.hablemos__badge--ly{ width:clamp(96px,10.5vw,200px); }
+.hablemos__badge--ly .hablemos__badge-ring{ animation-duration:9s; }
 /* logo "byluly" centrado dentro del círculo de texto */
-.hablemos__badge--ly .hablemos__badge-logo{ left:50%; top:50%; width:64%; height:auto; transform:translate(-50%,-50%); }
+.hablemos__badge--ly .hablemos__badge-logo{
+  left:50%; top:50%; width:64%; height:auto; transform:translate(-50%,-50%);
+  animation:ly-wiggle 3.2s ease-in-out infinite;
+}
+@keyframes ly-wiggle{
+  0%,100%{ rotate:-5deg; scale:1; }
+  50%{ rotate:5deg; scale:1.07; }
+}
 .hablemos__title--serif{
   font-family:var(--serif); color:var(--burgundy);
   font-size:clamp(64px,11.25vw,216px); line-height:.9; letter-spacing:-.035em; margin:.02em 0 .15em;
@@ -1012,7 +1020,7 @@ main,.hablemos{ overflow-x:clip; }
 @media (prefers-reduced-motion:reduce){
   .reveal,.stagger > *{ opacity:1; transform:none; transition:none; }
   html{ scroll-behavior:auto; }
-  .tira__track,.hero__star,.testimonios__corazon,.hablemos__badge-ring,
+  .tira__track,.hero__star,.testimonios__corazon,.hablemos__badge-ring,.hablemos__badge-logo,
   .float,.float-tilt,.spin-slow,.sway,.twinkle{ animation:none; }
 }
 
