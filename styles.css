@@ -1254,9 +1254,16 @@ body::before{
 .marcas__preview.is-on{ opacity:1; scale:1; rotate:-3deg; }
 @media (hover:none),(max-width:860px){
   .marcas__preview{ display:none; }
-  .marcas__thumb{ display:block; width:62px; height:62px; object-fit:cover; border-radius:10px; flex:0 0 auto; }
-  .marcas__row{ gap:14px; }
-  .marcas__cat{ margin-left:auto; }
+  /* en celular: foto chiquita a la izquierda, nombre y rubro apilados al lado */
+  .marcas__row{ display:grid; grid-template-columns:64px 1fr; column-gap:16px; row-gap:4px; align-items:center; padding:14px 2px; }
+  .marcas__thumb{ display:block; grid-column:1; grid-row:1 / 3; width:64px; height:64px; object-fit:cover; border-radius:10px; }
+  .marcas__name{ grid-column:2; grid-row:1; font-size:clamp(28px,8.2vw,40px); align-self:end; }
+  .marcas__cat{ grid-column:2; grid-row:2; text-align:left; align-self:start; font-size:12px; }
+  .marcas__row:hover{ padding-left:2px; }
+}
+@media (max-width:480px){
+  .filtros{ gap:6px; }
+  .filtros__btn{ font-size:13px; padding:.5em .75em; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -1290,6 +1297,12 @@ body::before{
   .pack-modal__cols{ grid-template-columns:1fr; }
   .pack-modal__left{ border-radius:28px 28px 0 0; }
   .pack-modal__right{ border-radius:0 0 28px 28px; }
+  /* en celular el detalle del pack es largo: el botón y la X quedan siempre a la vista */
+  .pack-modal__cta{ position:sticky; bottom:12px; z-index:2; }
+  .pack-modal__close{
+    position:fixed; top:24px; right:24px; width:38px; height:38px; border-radius:50%;
+    background:var(--cream-light); box-shadow:0 4px 12px rgba(84,3,20,.2);
+  }
 
   .payment__cols{ grid-template-columns:1fr; width:auto; text-align:center; gap:20px; }
   .payment__list li{ padding-left:0; }
@@ -1319,14 +1332,14 @@ body::before{
   .pack-feature__row--crec .pack-feature__media{ width:min(86%,420px); justify-self:center; }
   .pack-feature__row--voice .pack-feature__media{ width:100%; margin-right:0; }
 
-  .social-hero{ padding:40px var(--pad) 190px; }
+  .social-hero{ padding:40px var(--pad) 215px; }
   .social-hero__row{ grid-template-columns:1fr; text-align:center; gap:28px; }
   .social-hero__title-wrap{ margin:0 auto; }
   .social-hero__desc,.social-hero__body p{ margin-left:auto; margin-right:auto; max-width:30em; }
   .social-hero__br{ display:none; }
   .social-hero__heart{ left:-3%; top:66%; width:10%; }
   .social-hero__star{ left:84%; top:44%; width:12%; }
-  .social-hero__phone{ right:auto; left:50%; margin-left:-40px; bottom:-30px; width:80px; }
+  .social-hero__phone{ right:auto; left:50%; margin-left:-40px; bottom:18px; width:80px; }
 
   .contrata{ grid-template-columns:1fr; }
   .contrata__grid{ width:min(78%,440px); }
