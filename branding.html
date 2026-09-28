@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300..900;1,300..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=89100fe1">
+<link rel="stylesheet" href="styles.css?v=da5c7331">
 </head>
 <body data-page="branding">
 
@@ -76,6 +76,15 @@
   <a href="index.html#proyectos" class="btn btn--wide btn--peony reveal">Conoce AL CUADRADO</a>
 </section>
 
+<!-- cinta que se desliza sola: dos mitades iguales para que el loop no se note -->
+<div class="cinta" aria-hidden="true">
+  <div class="cinta__track">
+    <div class="cinta__half"><span>BRANDING</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>PACKAGING</span><i>✦</i><span>WEB</span><i>✦</i><span>BRANDING</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>PACKAGING</span><i>✦</i><span>WEB</span><i>✦</i><span>BRANDING</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>PACKAGING</span><i>✦</i><span>WEB</span><i>✦</i></div>
+    <div class="cinta__half"><span>BRANDING</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>PACKAGING</span><i>✦</i><span>WEB</span><i>✦</i><span>BRANDING</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>PACKAGING</span><i>✦</i><span>WEB</span><i>✦</i><span>BRANDING</span><i>✦</i><span>SOCIAL MEDIA</span><i>✦</i><span>PACKAGING</span><i>✦</i><span>WEB</span><i>✦</i></div>
+  </div>
+</div>
+
+
 <section class="pack-feature pack-feature--paper" id="packs">
   <div class="pack-feature__row pack-feature__row--core">
     <div class="pack-feature__text stagger">
@@ -88,15 +97,15 @@
     <div class="pack-feature__collage reveal reveal--right">
       <img class="pf-cards" src="img/branding-cards.jpg" alt="Papelería y tarjetas de Vive Liviano" loading="lazy">
       <img class="pf-aflore" src="img/branding-aflore.jpg" alt="Bouquet de flores de Afloré" loading="lazy">
-      <img class="pf-folders float" src="img/branding-folders.png" alt="" loading="lazy">
-      <img class="pf-star spin-slow" src="img/branding-star.png" alt="" loading="lazy">
+      <img class="pf-folders float" data-speed="-0.12" src="img/branding-folders.png" alt="" loading="lazy">
+      <img class="pf-star spin-slow" data-speed="0.18" src="img/branding-star.png" alt="" loading="lazy">
     </div>
   </div>
 
   <div class="pack-feature__row pack-feature__row--reverse pack-feature__row--object">
     <div class="pack-feature__media reveal reveal--left">
       <img src="img/branding-object.jpg" alt="Bolsa de papel de Vigno Bar entregada en mano" width="900" height="1125" loading="lazy">
-      <img class="pf-pin sway" src="img/branding-pin.png" alt="" loading="lazy">
+      <img class="pf-pin sway" data-speed="-0.14" src="img/branding-pin.png" alt="" loading="lazy">
     </div>
     <div class="pack-feature__text stagger">
       <p class="eyebrow">BRANDING - PACKAGING</p>
@@ -136,7 +145,7 @@
 
 <section class="pack-universe">
   <div class="pack-universe__inner stagger">
-    <img class="pack-universe__sparkle twinkle" src="img/contacto-sparkles.png" alt="" loading="lazy">
+    <img class="pack-universe__sparkle twinkle" data-speed="0.12" src="img/contacto-sparkles.png" alt="" loading="lazy">
     <p class="eyebrow">BRANDING + PACKAGING + SOCIAL MEDIA</p>
     <h2 class="pack-universe__title">THE UNIVERSE</h2>
     <p class="pack-universe__time">Duración: 5 semanas</p>
@@ -216,6 +225,6 @@
 </a>
 
 
-<script src="script.js?v=9055b289"></script>
+<script src="script.js?v=68009c54"></script>
 </body>
 </html>

@@ -54,7 +54,10 @@ def wpp_pack_url(pack):
     texto = 'Hola Byluly! Quiero el pack %s' % pack
     return 'https://wa.me/%s?text=%s' % (WPP_NUMERO, urllib.parse.quote(texto))
 
+CINTA = open('partials/cinta.html', encoding='utf-8').read()
+
 def wpp_fill(html):
+    html = html.replace('{{cinta}}', CINTA)
     html = html.replace('{{wpp_url}}', WPP_URL).replace('{{wpp_display}}', WPP_DISPLAY)
     html = re.sub(r'\{\{wpp_pack:([^}]+)\}\}', lambda m: wpp_pack_url(m.group(1)), html)
     for k, v in ICONS.items():

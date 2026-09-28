@@ -303,6 +303,168 @@
     });
   }
 
+  /* ---------- Transición entre páginas ----------
+     Al tocar un link a otra página del sitio, el velo crema (body::after) aparece
+     y recién ahí se navega; la página nueva lo desvanece sola al cargar.
+     En preview.html (una sola página con ruteo propio) no hace falta. */
+  if (!window.__bylulyInit) {
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      var url = new URL(a.href, location.href);
+      if (url.origin !== location.origin || url.pathname === location.pathname) return;
+      e.preventDefault();
+      document.body.classList.add('is-leaving');
+      setTimeout(function () { location.href = a.href; }, 280);
+    });
+    // al volver con el botón "atrás" el navegador restaura la página tal cual: saco el velo
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) document.body.classList.remove('is-leaving');
+    });
+  }
+
+  /* ---------- Parallax de los stickers ----------
+     Cada sticker con data-speed se corre en Y proporcional a cuánto se aleja
+     del centro de la pantalla. Solo en escritorio y si no piden menos movimiento. */
+  var pxEls = $$('[data-speed]');
+  var pxOk = window.matchMedia && matchMedia('(min-width: 981px) and (prefers-reduced-motion: no-preference)');
+  if (pxEls.length && pxOk) {
+    var pxTops = [];
+    var pageTop = function (el) {
+      var t = 0;
+      for (; el; el = el.offsetParent) t += el.offsetTop;
+      return t;
+    };
+    var measure = function () {
+      pxTops = pxEls.map(function (el) { return pageTop(el) + el.offsetHeight / 2; });
+    };
+    var pxTick = false;
+    var pxUpdate = function () {
+      pxTick = false;
+      var on = pxOk.matches;
+      var mid = window.scrollY + window.innerHeight / 2;
+      pxEls.forEach(function (el, n) {
+        var d = pxTops[n] - mid;
+        if (!on || Math.abs(d) > window.innerHeight * 1.5) { if (!on) el.style.removeProperty('--py'); return; }
+        el.style.setProperty('--py', (-d * parseFloat(el.dataset.speed)).toFixed(1) + 'px');
+      });
+    };
+    var pxQueue = function () {
+      if (!pxTick) { pxTick = true; requestAnimationFrame(pxUpdate); }
+    };
+    measure();
+    pxUpdate();
+    window.addEventListener('scroll', pxQueue, { passive: true });
+    window.addEventListener('resize', function () { measure(); pxQueue(); });
+    window.addEventListener('load', function () { measure(); pxQueue(); });
+  }
+
+  /* ---------- Visor de fotos del portafolio ---------- */
+  var galItems = $$('.gallery__item');
+  if (galItems.length) {
+    var fotos = galItems.map(function (f) {
+      var img = $('img', f);
+      var cap = $('figcaption', f);
+      var sub = cap ? $('span', cap) : null;
+      return {
+        src: img.getAttribute('src'),
+        alt: img.alt,
+        title: cap ? cap.firstChild.textContent.trim() : '',
+        sub: sub ? sub.textContent : ''
+      };
+    });
+
+    var oldVisor = $('#visor');
+    if (oldVisor) oldVisor.remove();
+    var visor = document.createElement('div');
+    visor.className = 'visor';
+    visor.id = 'visor';
+    visor.hidden = true;
+    visor.setAttribute('role', 'dialog');
+    visor.setAttribute('aria-modal', 'true');
+    visor.setAttribute('aria-label', 'Trabajo del portafolio');
+    visor.innerHTML =
+      '<button class="visor__close" aria-label="Cerrar">&times;</button>' +
+      '<button class="visor__btn visor__btn--prev" aria-label="Anterior">&#8249;</button>' +
+      '<figure class="visor__fig"><img class="visor__img" alt=""><figcaption class="visor__cap"></figcaption></figure>' +
+      '<button class="visor__btn visor__btn--next" aria-label="Siguiente">&#8250;</button>' +
+      '<p class="visor__count"></p>';
+    document.body.appendChild(visor);
+
+    var vImg = $('.visor__img', visor);
+    var vCap = $('.visor__cap', visor);
+    var vCount = $('.visor__count', visor);
+    var vClose = $('.visor__close', visor);
+    var vCur = 0;
+    var vBack = null;
+
+    var vSet = function () {
+      var f = fotos[vCur];
+      vImg.onload = function () { vImg.classList.remove('is-swapping'); };
+      vImg.src = f.src;
+      vImg.alt = f.alt;
+      vCap.textContent = f.title;
+      if (f.sub) {
+        var s = document.createElement('span');
+        s.textContent = f.sub;
+        vCap.appendChild(s);
+      }
+      vCount.textContent = (vCur + 1) + ' / ' + fotos.length;
+      if (vImg.complete) vImg.classList.remove('is-swapping');
+    };
+    var vShow = function (i, animate) {
+      vCur = (i + fotos.length) % fotos.length;
+      if (!animate) { vSet(); return; }
+      vImg.classList.add('is-swapping');
+      setTimeout(vSet, 200);
+    };
+    var vOpen = function (i) {
+      vBack = document.activeElement;
+      vShow(i, false);
+      visor.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      requestAnimationFrame(function () { visor.classList.add('is-open'); });
+      vClose.focus();
+    };
+    var vHide = function () {
+      visor.classList.remove('is-open');
+      document.documentElement.style.overflow = '';
+      setTimeout(function () { visor.hidden = true; }, 300);
+      if (vBack) vBack.focus();
+    };
+
+    galItems.forEach(function (f, i) {
+      f.tabIndex = 0;
+      f.setAttribute('role', 'button');
+      f.setAttribute('aria-label', 'Ver en grande: ' + fotos[i].title);
+      f.addEventListener('click', function () { vOpen(i); });
+      f.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); vOpen(i); }
+      });
+    });
+    $('.visor__btn--prev', visor).addEventListener('click', function () { vShow(vCur - 1, true); });
+    $('.visor__btn--next', visor).addEventListener('click', function () { vShow(vCur + 1, true); });
+    vClose.addEventListener('click', vHide);
+    visor.addEventListener('click', function (e) {
+      if (e.target === visor || e.target.classList.contains('visor__fig')) vHide();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (visor.hidden) return;
+      if (e.key === 'Escape') vHide();
+      else if (e.key === 'ArrowLeft') vShow(vCur - 1, true);
+      else if (e.key === 'ArrowRight') vShow(vCur + 1, true);
+    });
+    var vx0 = null;
+    visor.addEventListener('touchstart', function (e) { vx0 = e.touches[0].clientX; }, { passive: true });
+    visor.addEventListener('touchend', function (e) {
+      if (vx0 === null) return;
+      var dx = e.changedTouches[0].clientX - vx0;
+      if (Math.abs(dx) > 45) vShow(vCur + (dx < 0 ? 1 : -1), true);
+      vx0 = null;
+    });
+  }
+
   /* ---------- Gancho de limpieza (lo usa preview.html) ---------- */
   window.__bylulyCleanup = function () { clearInterval(timer); clearTimeout(popupTimer); };
 
