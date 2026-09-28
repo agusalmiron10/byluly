@@ -484,6 +484,31 @@
   /* ---------- Pantalla de carga ----------
      Se ve solo la primera vez de la sesión: queda al menos 0.8 s (para que el
      logo llegue a aparecer) y se va cuando la página terminó de cargar. */
+  /* ---------- Lluvia de corazones de bienvenida ----------
+     La primera vez que alguien entra (justo cuando se va la pantalla de carga)
+     caen corazones repartidos parejo por todo el ancho de la pantalla. */
+  var CORAZON = '<svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 25.5S2.5 18.6 2.5 10.6A5.6 5.6 0 0 1 14 7.9a5.6 5.6 0 0 1 11.5 2.7c0 8-11.5 14.9-11.5 14.9z"/></svg>';
+  var lluvia = function () {
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var colores = ['#E0AAB8', '#EF0066', '#770523', '#FAD2E1', '#E0AAB8', '#EF0066'];
+    var total = window.innerWidth < 700 ? 30 : 60;
+    for (var k = 0; k < total; k++) {
+      var p = document.createElement('span');
+      p.className = 'lluvia';
+      p.innerHTML = CORAZON;
+      // cada corazón en su franja del ancho, así cubren toda la pantalla sin amontonarse
+      p.style.left = (((k + Math.random()) / total) * 100).toFixed(2) + 'vw';
+      p.style.color = colores[Math.floor(Math.random() * colores.length)];
+      p.style.width = (16 + Math.random() * 22).toFixed(0) + 'px';
+      p.style.setProperty('--dur', (2.6 + Math.random() * 2.2).toFixed(2) + 's');
+      p.style.setProperty('--delay', (Math.random() * 1.6).toFixed(2) + 's');
+      p.style.setProperty('--sx', (Math.random() * 80 - 40).toFixed(0) + 'px');
+      p.style.setProperty('--rt', (Math.random() * 120 - 60).toFixed(0) + 'deg');
+      p.addEventListener('animationend', function () { this.remove(); });
+      document.body.appendChild(p);
+    }
+  };
+
   var loader = $('#loader');
   if (loader && !document.documentElement.classList.contains('no-loader')) {
     var loaderStart = Date.now();
@@ -491,6 +516,7 @@
       setTimeout(function () {
         loader.classList.add('is-done');
         try { sessionStorage.setItem('byluly_loader', '1'); } catch (err) {}
+        lluvia();
       }, Math.max(0, 800 - (Date.now() - loaderStart)));
     };
     if (document.readyState === 'complete') hideLoader();
@@ -670,7 +696,7 @@
   /* ---------- Brillitos al hacer clic ---------- */
   if (!calma && !window.__bylulyChispas) {
     window.__bylulyChispas = true;
-    var CHISPAS = ['✦', '♥', '✦', '♥', '✧', '✦'];
+    var CHISPAS = ['✦', '♥\uFE0E', '✦', '♥\uFE0E', '✧', '✦'];
     var COLORES = ['#E0AAB8', '#EF0066', '#D0D996', '#E0AAB8', '#770523', '#EF0066'];
     document.addEventListener('pointerdown', function (e) {
       if (e.button !== 0) return;

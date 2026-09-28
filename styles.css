@@ -1120,6 +1120,19 @@ body.is-leaving::after{ animation:veil-in .28s ease both; }
 @keyframes loader-beat{ 0%,100%{ scale:1; } 50%{ scale:1.05; } }
 @keyframes loader-auto{ to{ opacity:0; visibility:hidden; } }
 
+/* ---------- lluvia de corazones de bienvenida ---------- */
+.lluvia{
+  position:fixed; top:-50px; z-index:9400; pointer-events:none; line-height:0;
+  margin-left:-12px; opacity:0; animation:caer var(--dur) cubic-bezier(.35,.1,.6,1) var(--delay) forwards;
+}
+.lluvia svg{ display:block; width:100%; height:auto; fill:currentColor; }
+@keyframes caer{
+  0%{ opacity:0; transform:translate(0,0) rotate(0); }
+  8%{ opacity:1; }
+  80%{ opacity:1; }
+  100%{ opacity:0; transform:translate(var(--sx), calc(100vh + 60px)) rotate(var(--rt)); }
+}
+
 /* ---------- números que suben solos (home) ---------- */
 .stats{
   display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,48px);
