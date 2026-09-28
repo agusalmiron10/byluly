@@ -511,7 +511,10 @@
   var loader = $('#loader');
   if (loader && !document.documentElement.classList.contains('no-loader')) {
     var loaderStart = Date.now();
+    var loaderGone = false;
     var hideLoader = function () {
+      if (loaderGone) return;
+      loaderGone = true;
       setTimeout(function () {
         loader.classList.add('is-done');
         try { sessionStorage.setItem('byluly_loader', '1'); } catch (err) {}
@@ -520,6 +523,8 @@
     };
     if (document.readyState === 'complete') hideLoader();
     else window.addEventListener('load', hideLoader);
+    // con conexión lenta no espero a que bajen todas las fotos: a los 2 s se va igual
+    setTimeout(hideLoader, 2000);
   }
 
   /* ---------- Números que suben solos ---------- */
