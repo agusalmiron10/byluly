@@ -302,7 +302,7 @@ a{ color:inherit; }
    TESTIMONIOS
    ============================================================ */
 .testimonios{
-  background:var(--fuchsia);
+  background:var(--wine);
   padding:clamp(32px,4vw,62px) var(--pad) clamp(36px,4vw,64px);
   text-align:center;
   overflow:hidden;
