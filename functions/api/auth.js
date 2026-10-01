@@ -30,7 +30,8 @@ const html = (body, status = 200) =>
   new Response(body, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
 
 // huella PBKDF2 de la contraseña del panel
-const CLAVE = { sal: '3ca5a46d7d99198ecce40b620dfcda92', vueltas: 310000, huella: 'e45ae0c8ba4c80b38575534a7cc1102579b6ef0433bd6d5d5b40676d2efddbe8' };
+// 100000 vueltas: es el máximo que acepta PBKDF2 en Cloudflare Workers
+const CLAVE = { sal: '836b0a16a40033354dcaabc4b2331f86', vueltas: 100000, huella: '10e3e5500881f558eed4540dd53cfbb5feee1a5b8ffbe066e2313c39f54918c5' };
 
 async function huella(clave) {
   const sal = new Uint8Array(CLAVE.sal.match(/../g).map((h) => parseInt(h, 16)));
