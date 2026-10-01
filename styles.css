@@ -679,7 +679,7 @@ a{ color:inherit; }
 .pack-feature__media > img:first-child{ width:100%; height:auto; }
 
 /* THE CORE: collage con las piezas en las mismas posiciones que el PDF */
-.pack-feature__row--core{ grid-template-columns:31.2vw 1fr; align-items:end; }
+.pack-feature__row--core{ grid-template-columns:31.2vw 1fr; align-items:center; }
 .pack-feature__collage{ position:relative; width:41.6vw; aspect-ratio:798/724; justify-self:end; }
 .pack-feature__collage img{ position:absolute; }
 .pf-cards{ left:44.1%; top:0; width:47.9%; }
@@ -688,7 +688,7 @@ a{ color:inherit; }
 .pf-folders{ left:78.9%; top:58.8%; width:21.1%; z-index:2; }
 
 /* THE OBJECT */
-.pack-feature__row--object{ grid-template-columns:37.5vw 1fr; align-items:end; }
+.pack-feature__row--object{ grid-template-columns:37.5vw 1fr; align-items:center; }
 .pack-feature__row--object .pack-feature__media{ width:31.8vw; justify-self:end; }
 .pf-pin{ position:absolute; left:88%; top:-8%; width:25%; z-index:1; }
 
