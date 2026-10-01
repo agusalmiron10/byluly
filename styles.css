@@ -590,6 +590,8 @@ a{ color:inherit; }
   font-size:clamp(17px,2.5vw,48px); line-height:1.1; margin:0;
 }
 .pack-feature .eyebrow--lg,.payment .eyebrow{ font-size:clamp(20px,3.44vw,66px); }
+.pack-feature .eyebrow,.pack-universe .eyebrow{ font-size:clamp(15px,1.8vw,34px); }
+.pack-feature .eyebrow--lg{ font-size:clamp(16px,2.2vw,42px); }
 
 .svc-hero .btn,.why .btn,.pack-feature .btn,.pack-universe .btn,
 .contrata .btn,.prod-band .btn,.hablemos--rosa .btn{
@@ -653,20 +655,20 @@ a{ color:inherit; }
 
 .pack-feature__title{
   font-family:var(--serif); font-weight:400; color:var(--dusty-rose);
-  font-size:clamp(46px,7.8vw,150px); line-height:.92; letter-spacing:-.04em; margin:0; white-space:nowrap;
+  font-size:clamp(40px,5.6vw,108px); line-height:.92; letter-spacing:-.04em; margin:0; white-space:nowrap;
 }
 .pack-feature__title--wine{ color:var(--wine); }
-.pack-feature__title--one{ font-size:clamp(40px,6.98vw,134px); }
-.pack-feature__title--sm{ font-size:clamp(34px,5.42vw,104px); line-height:.74; margin-bottom:.55em; }
+.pack-feature__title--one{ font-size:clamp(36px,5vw,96px); }
+.pack-feature__title--sm{ font-size:clamp(32px,3.9vw,75px); line-height:.74; margin-bottom:.55em; }
 .pack-feature__title sup{
   font-family:var(--poppins); font-size:.36em; letter-spacing:0;
   vertical-align:top; position:relative; top:-.1em; margin-left:.08em;
 }
 .pack-feature__time{
-  font-family:var(--poppins); font-size:clamp(17px,2.5vw,48px); line-height:1.1;
+  font-family:var(--poppins); font-size:clamp(16px,1.8vw,34px); line-height:1.1;
   color:var(--burgundy); margin:.12em 0 .35em;
 }
-.pack-feature__desc{ color:var(--ink-dark); font-size:clamp(15px,1.875vw,36px); line-height:1.2; margin:0 0 .8em; max-width:17.4em; }
+.pack-feature__desc{ color:var(--ink-dark); font-size:clamp(15px,1.35vw,26px); line-height:1.2; margin:0 0 .8em; max-width:17.4em; }
 .pack-feature__row--core .pack-feature__desc{ max-width:16.6em; }
 .pack-feature__row--space .pack-feature__desc{ max-width:18.3em; }
 .pack-feature__text{ position:relative; z-index:1; }
@@ -700,7 +702,7 @@ a{ color:inherit; }
 /* Redes: PLAN Base (texto a la izquierda aunque la foto vaya primero) y PLAN Crecimiento */
 .pack-feature--redes{ padding-block:clamp(44px,5.5vw,106px); }
 .pack-feature--redes .pack-feature__row + .pack-feature__row{ margin-top:clamp(56px,5.8vw,112px); }
-.pack-feature--redes .pack-feature__desc{ font-size:clamp(15px,1.77vw,34px); }
+.pack-feature--redes .pack-feature__desc{ font-size:clamp(15px,1.3vw,25px); }
 .pack-feature__row--base{ grid-template-columns:35vw 1fr; column-gap:8vw; }
 .pack-feature__row--base .pack-feature__text{ text-align:left; }
 .pack-feature__row--base .pack-feature__media{ width:31.8vw; justify-self:end; }
@@ -716,10 +718,10 @@ a{ color:inherit; }
 .pack-universe .eyebrow{ color:var(--peony); }
 .pack-universe__title{
   font-family:var(--serif); font-weight:400; color:var(--pistachio);
-  font-size:clamp(46px,7.8vw,150px); line-height:.92; letter-spacing:-.04em; margin:.05em 0 0;
+  font-size:clamp(40px,5.6vw,108px); line-height:.92; letter-spacing:-.04em; margin:.05em 0 0;
 }
-.pack-universe__time{ font-family:var(--poppins); font-size:clamp(17px,2.5vw,48px); line-height:1.1; color:var(--peony); margin:.12em 0 .4em; }
-.pack-universe__desc{ color:var(--paper); font-size:clamp(15px,1.875vw,36px); line-height:1.2; margin:0 auto .9em; max-width:24em; }
+.pack-universe__time{ font-family:var(--poppins); font-size:clamp(16px,1.8vw,34px); line-height:1.1; color:var(--peony); margin:.12em 0 .4em; }
+.pack-universe__desc{ color:var(--paper); font-size:clamp(15px,1.35vw,26px); line-height:1.2; margin:0 auto .9em; max-width:24em; }
 
 /* ---------- hero de Redes Sociales ---------- */
 .social-hero{
@@ -1487,3 +1489,22 @@ body::before{
   .nav__sublink.is-active{ background:rgba(255,255,255,.55); }
   .menu-open{ overflow:hidden; }
 }
+
+/* ============================================================
+   IDENTIDAD DE MARCA y REDES SOCIALES: todo un poco más chico
+   (pedido de Luly: los tamaños del PDF se veían muy grandes en pantalla)
+   ============================================================ */
+.svc-hero .eyebrow,.social-hero .eyebrow,.payment .eyebrow{ font-size:clamp(15px,1.8vw,34px); }
+.svc-hero__title{ font-size:clamp(34px,3.8vw,72px); }
+.svc-hero__sub,.social-hero__desc,.social-hero__body p,.contrata__text p,.prod-band__body p{ font-size:clamp(14px,1.05vw,20px); }
+.svc-hero .btn--big{ font-size:clamp(14px,1.25vw,24px); }
+.social-hero__title{ font-size:clamp(34px,5.2vw,100px); }
+.contrata__text .contrata__kicker{ font-size:clamp(15px,1.4vw,27px); }
+.contrata__title,.prod-band__title{ font-size:clamp(30px,3.8vw,72px); }
+.payment__title{ font-size:clamp(34px,4.8vw,92px); }
+.payment__desc,.payment__list li{ font-size:clamp(14px,1.3vw,25px); }
+.hablemos__title--serif{ font-size:clamp(54px,8vw,154px); }
+.hablemos__lead--rosa,.pasos--rosa li{ font-size:clamp(14px,1.15vw,22px); }
+.hablemos--rosa .btn--xl{ font-size:clamp(16px,1.7vw,32px); }
+.cinta span{ font-size:clamp(20px,2vw,38px); }
+.cinta i{ font-size:clamp(14px,1.25vw,24px); }
