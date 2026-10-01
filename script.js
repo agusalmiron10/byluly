@@ -177,107 +177,54 @@
   var packModal = $('#packModal');
   if (packModal) {
     var CALL = 'Con llamada de presentación';
-    var IDENTIDAD = {
-      h: 'Propuesta de Identidad de Marca',
-      items: ['Tipografías', 'Paleta de colores', 'Iconografía', 'Stickers/Ilustraciones de marca', 'Patrón de marca/Texturas', 'Slogan', 'Representaciones de Marca']
-    };
-    var ESTRATEGIA = {
-      h: 'Estrategia de Marketing + Dirección Creativa',
-      items: ['Brief', 'Estrategia de Marca', 'Análisis de competencia, definir la propuesta de valor, la visión, el propósito, los objetivos, la personalidad, el tono de voz como marca; público objetivo.', '2 Propuestas de Moodboard']
-    };
-    var EXTRAS_BASE = ['Regalo: 6 destacadas para Instagram', 'Manual de Marca', 'Archivos exportados en png, jpg, pdf y svg (aclarar si querés los editables en Illustrator)'];
-    var SEMANA1 = { h: 'Semana 1 — Conocernos', items: ['Preparación de Drive', 'Entrega de términos y condiciones / calendario / proporción de fotografía', 'Entrega del Brief', 'Investigación de mercado y análisis de marca', 'Entrega de los 2 Moodboard'], call: true };
+    // El detalle de cada pack se edita desde el panel (/admin) y llega en window.BYLULY_PACKS
+    // (lo escribe _build.py a partir de content/identidad-de-marca.json)
+    var PACKS = {};
+    var DATA = window.BYLULY_PACKS || {};
+    Object.keys(DATA).forEach(function (k) {
+      var d = DATA[k];
+      PACKS[k] = {
+        eyebrow: (d.categoria || '').replace(/ [+-] /g, ' · '),
+        title: d.nombre || '',
+        duration: d.duracion || '',
+        sections: (d.secciones || []).map(function (x) { return { h: x.titulo, items: x.items || [] }; }),
+        extras: d.extras || [],
+        tiers: (d.opciones && d.opciones.length) ? d.opciones.map(function (t) {
+          return { name: t.nombre, audience: t.ideal_para, items: t.items || [], price: t.precio };
+        }) : null,
+        weeks: (d.semanas || []).map(function (w) { return { h: w.titulo, items: w.items || [], call: !!w.llamada }; }),
+        price: d.precio || ''
+      };
+    });
 
-    var PACKS = {
-      core: {
-        eyebrow: 'IDENTIDAD DE MARCA', title: 'THE CORE', duration: 'Duración: 4 semanas',
-        sections: [ESTRATEGIA, IDENTIDAD], extras: EXTRAS_BASE,
-        weeks: [
-          SEMANA1,
-          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
-          { h: 'Semana 3 — Correcciones', items: ['1 ronda de cambios'], call: true },
-          { h: 'Semana 4 — Entrega final', items: ['Preparación de los archivos a entregar | Manual de Marca'] }
-        ],
-        price: 'Inversión: 350 USD', wpp: 'THE CORE'
-      },
-      object: {
-        eyebrow: 'IDENTIDAD DE MARCA · PACKAGING', title: 'THE OBJECT', duration: 'Duración: 4 semanas',
-        sections: [ESTRATEGIA, IDENTIDAD, { h: 'Packaging (hasta 6 a elección)', items: ['Ejemplos: cajas, vasos, servilletas, bolsas, ploteo para vidrio, cuadros, merchandising, etc.', 'Incluye el plano guía exportado listo para imprimir (las medidas y la maqueta)'] }],
-        extras: EXTRAS_BASE,
-        weeks: [
-          SEMANA1,
-          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
-          { h: 'Semana 3 — Correcciones', items: ['Preparación de los archivos a entregar | Manual de Marca', 'Incluye 1 ronda de cambios'] },
-          { h: 'Semana 4 — Entrega final', items: ['Preparación del packaging con las medidas respectivas y los planos guía', 'Incluye 1 ronda de cambios'], call: true }
-        ],
-        price: 'Inversión: 550 USD', wpp: 'THE OBJECT'
-      },
-      voice: {
-        eyebrow: 'IDENTIDAD DE MARCA · REDES SOCIALES', title: 'THE VOICE', duration: 'Duración: 4 semanas',
-        sections: [ESTRATEGIA, IDENTIDAD, { h: 'Plantillas para Redes Sociales', items: ['Entregadas en Illustrator o Canva', '9 posts para Instagram', '4 historias para Instagram', '2 portadas para Reels', '(puede incluir banners)'] }],
-        extras: EXTRAS_BASE,
-        weeks: [
-          SEMANA1,
-          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
-          { h: 'Semana 3 — Correcciones', items: ['1 ronda de cambios'], call: true },
-          { h: 'Semana 4 — Entrega final', items: ['Preparación de los archivos a entregar | Manual de Marca'] }
-        ],
-        price: 'Inversión: 430 USD', wpp: 'THE VOICE'
-      },
-      space: {
-        eyebrow: 'IDENTIDAD DE MARCA · WEB', title: 'THE SPACE', duration: 'Plan esencial + página web',
-        tiers: [
-          { name: 'Landing Page', audience: 'Ideal para: emprendedores, lanzamientos, servicios únicos, campañas en redes.', items: ['1 landing page estratégica', 'Diseño alineado al branding', 'Estructura pensada para conversión', 'Responsive (mobile)', 'Formulario de contacto o WhatsApp', 'Llamado a la acción claros', 'SEO básico', '1 ronda de cambios'], price: '600 USD' },
-          { name: 'Web profesional', audience: 'Ideal para: marcas que quieren presencia sólida y confianza.', items: ['Home + hasta 5 páginas (servicios, sobre, portfolio, blog básico, contacto)', 'Diseño alineado al branding', 'Copywriting', 'Responsive (mobile)', 'Formulario de contacto o WhatsApp', 'Llamado a la acción claros', 'SEO básico', '1 ronda de cambios'], price: '850 USD' },
-          { name: 'Tienda Online', audience: 'Ideal para: marcas que quieren vender y escalar.', items: ['Home + categorías + fichas de producto', 'Carga inicial de hasta 20 productos', 'Copy básico de productos', 'Carrito, checkout y pasarela de pago', 'Responsive, SEO básico'], price: '1050 USD' }
-        ],
-        weeks: [
-          SEMANA1,
-          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa + diseño web'], call: true },
-          { h: 'Semana 3 — Correcciones', items: ['Correcciones, construcción de la página'], call: true },
-          { h: 'Semana 4 — Entrega final', items: ['Preparación de los archivos finales, Manual de Marca y página web'] }
-        ],
-        wpp: 'THE SPACE'
-      },
-      universe: {
-        eyebrow: 'IDENTIDAD DE MARCA · PACKAGING · REDES SOCIALES', title: 'THE UNIVERSE', duration: 'Duración: 5 semanas',
-        sections: [ESTRATEGIA, IDENTIDAD,
-          { h: 'Plantillas para Redes Sociales', items: ['Entregadas en Illustrator o Canva', '9 posts para Instagram', '4 historias para Instagram', '2 portadas para Reels', '(puede incluir banners)'] },
-          { h: 'Packaging', items: ['Ejemplos: cajas, vasos, servilletas, bolsas, ploteo para vidrio, cuadros, merchandising, etc.', 'En el caso de restaurantes puede incluir menú', 'Incluye el plano guía exportado listo para imprimir (las medidas y la maqueta)'] }
-        ],
-        extras: EXTRAS_BASE,
-        weeks: [
-          SEMANA1,
-          { h: 'Semana 2 — Primeras pruebas', items: ['Diseño de la Identidad de Marca completa'], call: true },
-          { h: 'Semana 3 — Correcciones', items: ['Preparación de los archivos finales'] },
-          { h: 'Semanas 4 y 5 — Entrega final', items: ['Preparación del packaging con las medidas respectivas y los planos guía', 'Preparación de las plantillas para redes sociales'] }
-        ],
-        price: 'Inversión: 690 USD', wpp: 'THE UNIVERSE'
-      }
+    // los textos vienen del panel: se escapan para que nunca se interpreten como HTML
+    var esc = function (t) {
+      return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
     };
-
     var listHtml = function (items) {
-      return '<ul>' + items.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
+      return '<ul>' + items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>';
     };
     var leftHtml = function (p) {
-      var h = '<p class="eyebrow">' + p.eyebrow + '</p><h3 id="packModalTitle">' + p.title + '</h3><p class="pack-modal__duration">' + p.duration + '</p>';
+      var h = '<p class="eyebrow">' + esc(p.eyebrow) + '</p><h3 id="packModalTitle">' + esc(p.title) + '</h3><p class="pack-modal__duration">' + esc(p.duration) + '</p>';
       if (p.tiers) {
         h += p.tiers.map(function (t) {
-          return '<div class="pack-modal__tier"><h4>' + t.name + '</h4><p class="pack-modal__audience">' + t.audience + '</p>' + listHtml(t.items) + '<p class="pack-modal__tier-price">Inversión: ' + t.price + '</p></div>';
+          return '<div class="pack-modal__tier"><h4>' + esc(t.name) + '</h4><p class="pack-modal__audience">' + esc(t.audience) + '</p>' + listHtml(t.items) + (t.price ? '<p class="pack-modal__tier-price">Inversión: ' + esc(t.price) + '</p>' : '') + '</div>';
         }).join('');
       } else {
-        h += p.sections.map(function (s) { return '<h4>' + s.h + '</h4>' + listHtml(s.items); }).join('');
-        h += p.extras.map(function (e) { return '<p class="pack-modal__extra">' + e + '</p>'; }).join('');
+        h += p.sections.map(function (s) { return '<h4>' + esc(s.h) + '</h4>' + listHtml(s.items); }).join('');
+        h += p.extras.map(function (e) { return '<p class="pack-modal__extra">' + esc(e) + '</p>'; }).join('');
       }
       return h;
     };
     var rightHtml = function (p, wppHref) {
       var h = '<h4 class="pack-modal__proceso">Proceso</h4>';
       h += p.weeks.map(function (w) {
-        return '<div class="pack-modal__week"><h5>' + w.h + '</h5>' + listHtml(w.items) + (w.call ? '<p class="pack-modal__call">' + CALL + '</p>' : '') + '</div>';
+        return '<div class="pack-modal__week"><h5>' + esc(w.h) + '</h5>' + listHtml(w.items) + (w.call ? '<p class="pack-modal__call">' + CALL + '</p>' : '') + '</div>';
       }).join('');
-      if (p.price) h += '<p class="pack-modal__total">' + p.price + '</p>';
-      h += '<a href="' + wppHref + '" target="_blank" rel="noopener" class="btn btn--fuchsia pack-modal__cta">TRABAJEMOS JUNTOS</a>';
+      if (p.price) h += '<p class="pack-modal__total">' + esc(p.price) + '</p>';
+      h += '<a href="' + esc(wppHref) + '" target="_blank" rel="noopener" class="btn btn--fuchsia pack-modal__cta">TRABAJEMOS JUNTOS</a>';
       return h;
     };
 

@@ -1,0 +1,27 @@
+{
+  "planes": {
+    "base": {
+      "categoria": "REDES SOCIALES",
+      "nombre": "PLAN Base AL²",
+      "descripcion": "Una propuesta para construir una presencia digital con identidad, estrategia y coherencia, creando contenido que represente a tu marca y conecte con las personas que querés alcanzar.",
+      "boton": "LO NECESITOOOOO",
+      "foto": "img/redes-plan-base.jpg"
+    },
+    "crecimiento": {
+      "categoria": "REDES SOCIALES",
+      "nombre": "PLAN\nCRECIMIENTO AL²",
+      "descripcion": "Una propuesta para marcas que buscan ganar presencia, generar movimiento y crecer en redes, llevando su comunicación a un nivel más activo, estratégico y creativo.",
+      "boton": "LO NECESITOOOOO",
+      "foto": "img/redes-plan-crecimiento.jpg"
+    }
+  },
+  "pagos": {
+    "titulo": "Se trabaja en 1 pagos",
+    "descripcion": "Los servicios de Redes Sociales se abonan por adelantado y de forma mensual, antes de comenzar cada período de trabajo.",
+    "metodos": [
+      "Transferencia Bancaria",
+      "Mercadopago",
+      "Western Union"
+    ]
+  }
+}

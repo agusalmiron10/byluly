@@ -56,7 +56,76 @@ def wpp_pack_url(pack):
 
 CINTA = open('partials/cinta.html', encoding='utf-8').read()
 
+# ---------- contenido editable desde el panel (/admin) ----------
+# Los textos y fotos de packs, planes y portafolio viven en content/*.json.
+# En las páginas se usan así:
+#   {{c:identidad-de-marca.packs.core.nombre}}   -> texto (con **negrita**, saltos de línea y ²)
+#   {{a:identidad-de-marca.packs.object.foto}}   -> valor tal cual, para atributos (src, alt)
+#   {{portafolio_items}} / {{packs_json}} / {{lista:...}} -> bloques armados acá
+import html as _html
+import json as _json
+
+CONTENT = {f[:-5]: _json.load(open('content/' + f, encoding='utf-8'))
+           for f in sorted(os.listdir('content')) if f.endswith('.json')}
+
+def _get(path):
+    archivo, *claves = path.strip().split('.')
+    v = CONTENT[archivo]
+    for k in claves:
+        v = v[int(k)] if isinstance(v, list) else v[k]
+    return v
+
+def md(texto):
+    """Formato mínimo para que Luly escriba sin HTML: **negrita**, Enter = salto de línea, ² = superíndice."""
+    t = _html.escape(str(texto), quote=False)
+    t = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', t, flags=re.S)
+    t = t.replace('²', '<sup>2</sup>').replace('\r\n', '\n').replace('\n', '<br>')
+    return t
+
+def _foto(src):
+    # el panel guarda las fotos subidas como /img/subidas/...; las páginas usan rutas relativas
+    return str(src).lstrip('/')
+
+CAT_PORTAFOLIO = {'branding': 'Identidad de marca', 'packaging': 'Packaging', 'redes': 'Redes'}
+
+def portafolio_items():
+    out = []
+    for p in CONTENT['portafolio']['proyectos']:
+        fotos = [_foto(f) for f in p.get('fotos') or []]
+        if not fotos:
+            continue
+        esc = lambda v: _html.escape(str(v or ''), quote=True)
+        out.append(
+            '    <figure class="gallery__item reveal" data-cat="%s" data-fotos="%s">\n'
+            '      <img src="%s" alt="%s" loading="lazy">\n'
+            '      <figcaption>%s<span>%s</span><small class="gallery__desc">%s</small></figcaption>\n'
+            '    </figure>' % (esc(' '.join(p.get('categorias') or [])), esc('|'.join(fotos)), esc(fotos[0]),
+                              esc(p.get('texto_alternativo') or p.get('nombre')), _html.escape(p.get('nombre') or ''),
+                              _html.escape(p.get('rubro') or ''), _html.escape(p.get('descripcion') or '')))
+    return '\n'.join(out)
+
+def packs_json():
+    """Detalle de cada pack (el "qué incluye" del modal) para script.js."""
+    packs = {}
+    for clave, p in CONTENT['identidad-de-marca']['packs'].items():
+        d = dict(p.get('detalle') or {})
+        d.update(categoria=p.get('categoria', ''), nombre=p.get('nombre', ''))
+        packs[clave] = d
+    return '<script>window.BYLULY_PACKS = %s;</script>' % _json.dumps(packs, ensure_ascii=False).replace('</', '<\\/')
+
+def content_fill(html):
+    if '{{portafolio_items}}' in html:
+        html = html.replace('{{portafolio_items}}', portafolio_items())
+    if '{{packs_json}}' in html:
+        html = html.replace('{{packs_json}}', packs_json())
+    html = re.sub(r'\{\{lista:([^}]+)\}\}',
+                  lambda m: ''.join('<li>%s</li>' % md(x) for x in _get(m.group(1))), html)
+    html = re.sub(r'\{\{a:([^}]+)\}\}', lambda m: _html.escape(_foto(_get(m.group(1))), quote=True), html)
+    html = re.sub(r'\{\{c:([^}]+)\}\}', lambda m: md(_get(m.group(1))), html)
+    return html
+
 def wpp_fill(html):
+    html = content_fill(html)
     html = html.replace('{{cinta}}', CINTA)
     html = html.replace('{{wpp_url}}', WPP_URL).replace('{{wpp_display}}', WPP_DISPLAY)
     html = re.sub(r'\{\{wpp_pack:([^}]+)\}\}', lambda m: wpp_pack_url(m.group(1)), html)

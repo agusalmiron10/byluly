@@ -1,0 +1,396 @@
+# Panel de contenido (Decap CMS). Se entra por https://byluly.pages.dev/admin
+backend:
+  name: github
+  repo: agusalmiron10/byluly
+  branch: main
+  base_url: https://byluly.pages.dev
+  auth_endpoint: api/auth
+  commit_messages:
+    update: 'Panel: actualiza {{slug}}'
+    uploadMedia: 'Panel: sube {{path}}'
+    create: 'Panel: crea {{slug}}'
+    delete: 'Panel: borra {{slug}}'
+    deleteMedia: 'Panel: borra {{path}}'
+locale: es
+site_url: https://byluly.pages.dev
+display_url: https://byluly.pages.dev
+logo_url: /img/logo-byluly.png
+media_folder: img/subidas
+public_folder: /img/subidas
+collections:
+- name: contenido
+  label: Contenido de la web
+  editor:
+    preview: false
+  files:
+  - name: identidad
+    label: Identidad de marca (packs)
+    file: content/identidad-de-marca.json
+    fields:
+    - name: packs
+      label: Packs
+      widget: object
+      fields:
+      - name: core
+        label: THE CORE
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del pack
+          widget: string
+          required: true
+        - name: duracion
+          label: Duración
+          widget: string
+          required: true
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - &id001
+          name: detalle
+          label: Qué incluye (ventana de "VER QUE INCLUYE")
+          widget: object
+          collapsed: true
+          fields:
+          - name: duracion
+            label: Duración que se muestra en la ventana
+            widget: string
+            required: true
+          - name: secciones
+            label: Secciones
+            widget: list
+            required: false
+            fields:
+            - name: titulo
+              label: Título de la sección
+              widget: string
+              required: true
+            - name: items
+              label: Ítems
+              widget: list
+              field:
+                name: item
+                label: Ítem
+                widget: string
+          - name: extras
+            label: Extras (regalos, archivos, etc.)
+            widget: list
+            field:
+              name: item
+              label: Ítem
+              widget: string
+          - name: opciones
+            label: Opciones con precio propio (solo THE SPACE)
+            widget: list
+            required: false
+            hint: Si el pack tiene opciones (Landing, Web, Tienda) se muestran en lugar de las secciones.
+            fields:
+            - name: nombre
+              label: Nombre
+              widget: string
+              required: true
+            - name: ideal_para
+              label: Ideal para
+              widget: string
+              required: true
+            - name: items
+              label: Ítems
+              widget: list
+              field:
+                name: item
+                label: Ítem
+                widget: string
+            - name: precio
+              label: Precio
+              widget: string
+              hint: 'Ej: 600 USD'
+              required: false
+          - name: semanas
+            label: Proceso (semanas)
+            widget: list
+            fields:
+            - name: titulo
+              label: Título
+              widget: string
+              required: true
+            - name: items
+              label: Ítems
+              widget: list
+              field:
+                name: item
+                label: Ítem
+                widget: string
+            - name: llamada
+              label: ¿Incluye llamada de presentación?
+              widget: boolean
+              default: false
+          - name: precio
+            label: Precio total
+            widget: string
+            hint: 'Ej: Inversión: 350 USD. Dejalo vacío para no mostrarlo.'
+            required: false
+      - name: object
+        label: THE OBJECT
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del pack
+          widget: string
+          required: true
+        - name: duracion
+          label: Duración
+          widget: string
+          required: true
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - name: foto
+          label: Foto del pack
+          widget: image
+        - *id001
+      - name: voice
+        label: THE VOICE
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del pack
+          widget: string
+          required: true
+        - name: duracion
+          label: Duración
+          widget: string
+          required: true
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - name: foto
+          label: Foto del pack
+          widget: image
+        - *id001
+      - name: space
+        label: THE SPACE
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del pack
+          widget: string
+          required: true
+        - name: duracion
+          label: Duración
+          widget: string
+          required: true
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - name: foto
+          label: Foto del pack
+          widget: image
+        - *id001
+      - name: universe
+        label: THE UNIVERSE
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del pack
+          widget: string
+          required: true
+        - name: duracion
+          label: Duración
+          widget: string
+          required: true
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - *id001
+    - name: pagos
+      label: Medios de pago
+      widget: object
+      collapsed: true
+      fields:
+      - name: titulo
+        label: Título
+        widget: string
+        required: true
+      - name: descripcion
+        label: Descripción
+        widget: text
+        hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+      - name: metodos
+        label: Medios de pago aceptados
+        widget: list
+        field:
+          name: item
+          label: Ítem
+          widget: string
+  - name: redes
+    label: Redes Sociales (planes)
+    file: content/redes-sociales.json
+    fields:
+    - name: planes
+      label: Planes
+      widget: object
+      fields:
+      - name: base
+        label: PLAN Base
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del plan
+          widget: text
+          hint: Escribí ² para el "al cuadrado". Cada Enter es un salto de línea.
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - name: foto
+          label: Foto del plan
+          widget: image
+      - name: crecimiento
+        label: PLAN Crecimiento
+        widget: object
+        collapsed: true
+        fields:
+        - name: categoria
+          label: Categoría (texto chico arriba)
+          widget: string
+          required: true
+        - name: nombre
+          label: Nombre del plan
+          widget: text
+          hint: Escribí ² para el "al cuadrado". Cada Enter es un salto de línea.
+        - name: descripcion
+          label: Descripción
+          widget: text
+          hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+        - name: boton
+          label: Texto del botón
+          widget: string
+          required: true
+        - name: foto
+          label: Foto del plan
+          widget: image
+    - name: pagos
+      label: Medios de pago
+      widget: object
+      collapsed: true
+      fields:
+      - name: titulo
+        label: Título
+        widget: string
+        required: true
+      - name: descripcion
+        label: Descripción
+        widget: text
+        hint: 'Para poner en negrita, escribí el texto entre dos asteriscos: **así**. Cada Enter es un salto de línea.'
+      - name: metodos
+        label: Medios de pago aceptados
+        widget: list
+        field:
+          name: item
+          label: Ítem
+          widget: string
+  - name: portafolio
+    label: Portafolio
+    file: content/portafolio.json
+    fields:
+    - name: proyectos
+      label: Proyectos
+      label_singular: proyecto
+      widget: list
+      summary: '{{fields.nombre}} — {{fields.rubro}}'
+      hint: Arrastrá los proyectos para cambiar el orden en que aparecen.
+      fields:
+      - name: nombre
+        label: Nombre de la marca
+        widget: string
+        required: true
+      - name: rubro
+        label: Rubro (texto en mayúsculas debajo del nombre)
+        widget: string
+        required: true
+      - name: categorias
+        label: Filtros donde aparece
+        widget: select
+        multiple: true
+        options:
+        - label: Identidad de marca
+          value: branding
+        - label: Packaging
+          value: packaging
+        - label: Redes
+          value: redes
+      - name: descripcion
+        label: Descripción
+        widget: text
+      - name: texto_alternativo
+        label: Descripción de la foto (para buscadores y lectores de pantalla)
+        widget: string
+        required: false
+      - name: fotos
+        label: Fotos
+        label_singular: foto
+        widget: list
+        hint: La primera es la portada del proyecto.
+        field:
+          name: foto
+          label: Foto
+          widget: image

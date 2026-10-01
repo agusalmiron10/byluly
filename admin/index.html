@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Panel | Studio Byluly</title>
+<link rel="icon" href="/img/favicon.png">
+</head>
+<body>
+<!-- Panel de contenido (Decap CMS). Se entra con la contraseña del panel (functions/api/auth.js):
+     los cambios se guardan solos y la web se vuelve a publicar en un par de minutos. -->
+<script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
+<script>
+  // el botón de ingreso dice "Iniciar sesión con GitHub": acá se entra con contraseña, así que lo renombro
+  new MutationObserver(function () {
+    document.querySelectorAll('button').forEach(function (b) {
+      if (/github/i.test(b.textContent) && b.textContent !== 'Entrar al panel') b.textContent = 'Entrar al panel';
+    });
+  }).observe(document.body, { childList: true, subtree: true });
+</script>
+</body>
+</html>

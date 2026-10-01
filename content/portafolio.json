@@ -1,0 +1,142 @@
+{
+  "proyectos": [
+    {
+      "nombre": "Vive Liviano",
+      "rubro": "Identidad visual",
+      "categorias": [
+        "branding"
+      ],
+      "descripcion": "Identidad para una marca de bienestar y alimentación consciente: logo, paleta verde oliva, papelería y plantillas para redes que transmiten calma y vida sana.",
+      "texto_alternativo": "Identidad visual y papelería de Vive Liviano",
+      "fotos": [
+        "img/mk-viveliviano.jpg",
+        "img/proj/vive-1.jpg",
+        "img/branding-cards.jpg",
+        "img/proj/vive-2.jpg"
+      ]
+    },
+    {
+      "nombre": "Alegría BeWell",
+      "rubro": "Identidad de marca & merch",
+      "categorias": [
+        "branding",
+        "packaging"
+      ],
+      "descripcion": "Marca alegre y cercana para un espacio de bienestar: logo con carita sonriente, tarjetas, tote bags y piezas digitales con colores cálidos.",
+      "texto_alternativo": "Tote bag de Alegría BeWell",
+      "fotos": [
+        "img/mk-tote-alegria.jpg",
+        "img/proj/alegria-1.jpg",
+        "img/proj/alegria-2.jpg",
+        "img/proj/alegria-3.jpg"
+      ]
+    },
+    {
+      "nombre": "grETa",
+      "rubro": "Identidad de marca & packaging",
+      "categorias": [
+        "branding",
+        "packaging"
+      ],
+      "descripcion": "Identidad para un coffee spot: un azul intenso con tipografía divertida, aplicada en vasos, delantales, bolsas y packaging para que la marca se vea en cada café.",
+      "texto_alternativo": "Branding de grETa coffee spot",
+      "fotos": [
+        "img/mk-greta.jpg",
+        "img/proj/greta-1.jpg",
+        "img/proj/greta-2.jpg",
+        "img/proj/greta-3.jpg",
+        "img/proj/greta-4.jpg"
+      ]
+    },
+    {
+      "nombre": "Eleva",
+      "rubro": "Packaging",
+      "categorias": [
+        "packaging"
+      ],
+      "descripcion": "Packaging e identidad para una boutique de zapatos: bordó profundo, tipografía elegante y bolsas, perchas y piezas que hacen que la compra se sienta especial.",
+      "texto_alternativo": "Packaging de Eleva",
+      "fotos": [
+        "img/mk-eleva.jpg",
+        "img/proj/eleva-1.jpg",
+        "img/proj/eleva-2.jpg",
+        "img/proj/eleva-3.jpg",
+        "img/proj/eleva-4.jpg"
+      ]
+    },
+    {
+      "nombre": "Vigno Bar",
+      "rubro": "Identidad & ilustración",
+      "categorias": [
+        "branding"
+      ],
+      "descripcion": "Identidad e ilustración para un bar de vinos: logo manuscrito, ilustraciones propias, bolsas, cuadros y web con un estilo relajado y de autor.",
+      "texto_alternativo": "Tote bag ilustrado de Vigno Bar",
+      "fotos": [
+        "img/mk-vigno.jpg",
+        "img/branding-object.jpg",
+        "img/proj/vigno-1.jpg",
+        "img/proj/vigno-2.jpg",
+        "img/proj/vigno-3.jpg"
+      ]
+    },
+    {
+      "nombre": "Afloré",
+      "rubro": "Redes sociales",
+      "categorias": [
+        "redes"
+      ],
+      "descripcion": "Contenido para redes de una florería: grilla de Instagram con tipografías románticas, ilustraciones de flores y fotos que cuentan la historia detrás de cada ramo.",
+      "texto_alternativo": "Feed de Instagram diseñado para Afloré",
+      "fotos": [
+        "img/mk-aflore.jpg",
+        "img/proj/aflore-1.jpg",
+        "img/proj/aflore-2.jpg",
+        "img/proj/aflore-3.jpg",
+        "img/proj/aflore-4.jpg"
+      ]
+    },
+    {
+      "nombre": "Flash de Vida",
+      "rubro": "Identidad visual",
+      "categorias": [
+        "branding"
+      ],
+      "descripcion": "Identidad visual para un proyecto de fotografía: logo vibrante, recursos gráficos en colores vivos y piezas para redes que capturan momentos que perduran.",
+      "texto_alternativo": "Flash de Vida",
+      "fotos": [
+        "img/mk-flashdevida.jpg",
+        "img/proj/flash-1.jpg",
+        "img/proj/flash-2.jpg",
+        "img/proj/flash-3.jpg",
+        "img/proj/flash-4.jpg"
+      ]
+    },
+    {
+      "nombre": "Débora Pedace",
+      "rubro": "Papelería de marca",
+      "categorias": [
+        "branding"
+      ],
+      "descripcion": "Papelería de marca: flyers, guías y piezas impresas con la misma identidad, pensadas para entregar a clientes y acompañar cada consulta.",
+      "texto_alternativo": "Papelería y piezas de marca",
+      "fotos": [
+        "img/mk-cards-wood.jpg",
+        "img/proj/debora-1.jpg",
+        "img/proj/debora-2.jpg"
+      ]
+    },
+    {
+      "nombre": "Mãe",
+      "rubro": "Piezas gráficas",
+      "categorias": [
+        "redes"
+      ],
+      "descripcion": "Piezas gráficas para comunicar una campaña de regalos: composición editorial con tipografía grande y fotos de producto.",
+      "texto_alternativo": "Pieza gráfica: el regalo que sigue sorprendiendo",
+      "fotos": [
+        "img/mk-regalo.jpg"
+      ]
+    }
+  ]
+}
