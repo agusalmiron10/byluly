@@ -1,6 +1,7 @@
 // Inicio de sesión del panel (/admin) con contraseña, sin cuentas.
-// Variables a cargar en Cloudflare Pages (Settings > Variables and Secrets, como "Secret"):
-//   ADMIN_PASSWORD  la contraseña del panel
+// La contraseña del panel viene incorporada (abajo, solo su huella: el código es público y
+// la contraseña en sí no se guarda). Para cambiarla sin tocar código, cargar ADMIN_PASSWORD en Cloudflare.
+// Lo único obligatorio en Cloudflare Pages (Settings > Variables and Secrets, como "Secret"):
 //   GITHUB_TOKEN    llave de GitHub con permiso de escritura SOLO sobre este repositorio
 // Si la contraseña es correcta, se le pasa la llave al panel (protocolo de Decap CMS)
 // y el panel guarda los cambios en GitHub; Cloudflare vuelve a publicar la web.
@@ -28,6 +29,21 @@ const PAGINA = (mensaje) => `<!doctype html>
 const html = (body, status = 200) =>
   new Response(body, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
 
+// huella PBKDF2 de la contraseña del panel
+const CLAVE = { sal: '3ca5a46d7d99198ecce40b620dfcda92', vueltas: 310000, huella: 'e45ae0c8ba4c80b38575534a7cc1102579b6ef0433bd6d5d5b40676d2efddbe8' };
+
+async function huella(clave) {
+  const sal = new Uint8Array(CLAVE.sal.match(/../g).map((h) => parseInt(h, 16)));
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(clave), 'PBKDF2', false, ['deriveBits']);
+  const bits = await crypto.subtle.deriveBits({ name: 'PBKDF2', hash: 'SHA-256', salt: sal, iterations: CLAVE.vueltas }, base, 256);
+  return [...new Uint8Array(bits)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function claveCorrecta(clave, env) {
+  if (env.ADMIN_PASSWORD) return iguales(clave, env.ADMIN_PASSWORD);
+  return iguales(await huella(clave), CLAVE.huella);
+}
+
 // comparación que tarda lo mismo acierte o no (para no dar pistas sobre la contraseña)
 function iguales(a, b) {
   const x = new TextEncoder().encode(a), y = new TextEncoder().encode(b);
@@ -37,8 +53,8 @@ function iguales(a, b) {
 }
 
 export async function onRequestGet({ env }) {
-  if (!env.ADMIN_PASSWORD || !env.GITHUB_TOKEN) {
-    return html(PAGINA('Falta configurar el panel en Cloudflare (ADMIN_PASSWORD y GITHUB_TOKEN).'), 500);
+  if (!env.GITHUB_TOKEN) {
+    return html(PAGINA('El panel todavía no está conectado: falta cargar GITHUB_TOKEN en Cloudflare.'), 500);
   }
   return html(PAGINA(''));
 }
@@ -46,9 +62,12 @@ export async function onRequestGet({ env }) {
 export async function onRequestPost({ request, env }) {
   const datos = await request.formData();
   const clave = String(datos.get('password') || '');
-  if (!env.ADMIN_PASSWORD || !env.GITHUB_TOKEN || !iguales(clave, env.ADMIN_PASSWORD)) {
+  if (!(await claveCorrecta(clave, env))) {
     await new Promise((r) => setTimeout(r, 1200)); // frena a quien pruebe contraseñas al azar
     return html(PAGINA('Contraseña incorrecta'), 401);
+  }
+  if (!env.GITHUB_TOKEN) {
+    return html(PAGINA('Contraseña correcta, pero el panel todavía no está conectado: falta cargar GITHUB_TOKEN en Cloudflare.'), 500);
   }
   const origin = new URL(request.url).origin;
   const mensaje = 'authorization:github:success:' + JSON.stringify({ token: env.GITHUB_TOKEN, provider: 'github' });
