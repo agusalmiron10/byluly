@@ -68,11 +68,16 @@ CONTENT = {f[:-5]: _json.load(open('content/' + f, encoding='utf-8'))
            for f in sorted(os.listdir('content')) if f.endswith('.json')}
 
 def _get(path):
+    """Si algo se borró desde el panel, devuelve vacío en vez de romper el armado de la web."""
     archivo, *claves = path.strip().split('.')
-    v = CONTENT[archivo]
-    for k in claves:
-        v = v[int(k)] if isinstance(v, list) else v[k]
-    return v
+    v = CONTENT.get(archivo, {})
+    try:
+        for k in claves:
+            v = v[int(k)] if isinstance(v, list) else v[k]
+    except (KeyError, IndexError, ValueError, TypeError):
+        print('  aviso: falta', path)
+        return ''
+    return '' if v is None else v
 
 def md(texto):
     """Formato mínimo para que Luly escriba sin HTML: **negrita**, Enter = salto de línea, ² = superíndice."""
@@ -118,10 +123,16 @@ def parrafos(texto, clase=''):
     attr = ' class="%s"' % clase if clase else ''
     return '\n'.join('<p%s>%s</p>' % (attr, md(x.strip())) for x in re.split(r'\n\s*\n', str(texto or '')) if x.strip())
 
+def _entero(v):
+    try:
+        return int(float(v))
+    except (TypeError, ValueError):
+        return 0
+
 def numeros_items():
     return '\n'.join(
         '  <div class="stats__item reveal"><p class="stats__num">+<span class="count" data-to="%d">%d</span></p>'
-        '<p class="stats__label">%s</p></div>' % (int(n.get('numero') or 0), int(n.get('numero') or 0), md(n.get('etiqueta')))
+        '<p class="stats__label">%s</p></div>' % (_entero(n.get('numero')), _entero(n.get('numero')), md(n.get('etiqueta') or ''))
         for n in CONTENT['home']['numeros'])
 
 def testimonios_items():
@@ -179,14 +190,14 @@ def content_fill(html):
         if token in html:
             html = html.replace(token, fn())
     html = re.sub(r'\{\{p:([^}|]+)(?:\|([^}]*))?\}\}', lambda m: parrafos(_get(m.group(1)), m.group(2) or ''), html)
-    html = re.sub(r'\{\{opciones:([^}]+)\}\}', lambda m: '\n'.join('          <option>%s</option>' % _html.escape(x) for x in _get(m.group(1))), html)
+    html = re.sub(r'\{\{opciones:([^}]+)\}\}', lambda m: '\n'.join('          <option>%s</option>' % _html.escape(x) for x in (_get(m.group(1)) or [])), html)
     html = re.sub(r'\{\{cbr:([^}]+)\}\}', lambda m: md(_get(m.group(1))).replace('<br>', '<br class="d-only">'), html)
     if '{{portafolio_items}}' in html:
         html = html.replace('{{portafolio_items}}', portafolio_items())
     if '{{packs_json}}' in html:
         html = html.replace('{{packs_json}}', packs_json())
     html = re.sub(r'\{\{lista:([^}]+)\}\}',
-                  lambda m: ''.join('<li>%s</li>' % md(x) for x in _get(m.group(1))), html)
+                  lambda m: ''.join('<li>%s</li>' % md(x) for x in (_get(m.group(1)) or [])), html)
     html = re.sub(r'\{\{a:([^}]+)\}\}', lambda m: _html.escape(_foto(_get(m.group(1))), quote=True), html)
     html = re.sub(r'\{\{c:([^}]+)\}\}', lambda m: md(_get(m.group(1))), html)
     return html

@@ -13,6 +13,7 @@
   var datos = null;        // lo que se está editando
   var original = '';       // cómo estaba al cargar (para saber si hay cambios)
   var sha = '';
+  var recien = {};       // fotos subidas en esta sesión: se muestran desde acá hasta que se publiquen
 
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var el = function (tag, attrs, hijos) {
@@ -168,7 +169,7 @@
         btn.textContent = 'Subiendo foto ' + n + ' de ' + fotos.length + '…';
         var f = par[0][par[1]];
         return api('/api/subir', { method: 'POST', body: { nombre: f.nombre, base64: f.__subir.split(',')[1] } })
-          .then(function (r) { par[0][par[1]] = r.ruta; });
+          .then(function (r) { recien[r.ruta] = f.__subir; par[0][par[1]] = r.ruta; });
       });
     }, Promise.resolve());
     subir.then(function () {
@@ -190,6 +191,7 @@
   function urlFoto(v) {
     if (!v) return '';
     if (v.__subir) return v.__subir;
+    if (recien[v]) return recien[v];
     return '/' + String(v).replace(/^\//, '');
   }
 
