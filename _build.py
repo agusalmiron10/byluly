@@ -20,11 +20,12 @@ def file_ver(path):
 VER_CSS = file_ver('styles.css')
 VER_JS  = file_ver('script.js')
 
-# WhatsApp: se cambia acá y se actualiza en todo el sitio.
-# El formato del link es 54 (país) + 9 (celular) + 11 (área, sin el 0) + número (sin el 15).
-WPP_NUMERO  = '5491160169886'
-WPP_TEXTO   = 'Hola Byluly! Quiero hablar de mi proyecto'
-WPP_DISPLAY = '+54 9 11 6016-9886'
+# WhatsApp, mail y redes se editan desde el panel (content/general.json)
+import json as _json
+_GENERAL = _json.load(open('content/general.json', encoding='utf-8'))['contacto']
+WPP_NUMERO  = ''.join(ch for ch in str(_GENERAL['whatsapp_numero']) if ch.isdigit())
+WPP_TEXTO   = _GENERAL['whatsapp_mensaje']
+WPP_DISPLAY = _GENERAL['whatsapp_visible']
 
 ICONS = {
  'ico_instagram': '<svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.43.42.7.82.92 1.4.17.42.37 1.05.42 2.24.06 1.28.07 1.66.07 4.88 0 3.2 0 3.6-.07 4.88-.05 1.2-.25 1.82-.42 2.24-.22.58-.49.98-.91 1.4-.43.42-.83.68-1.4.9-.43.17-1.06.37-2.25.42-1.27.06-1.65.07-4.88.07s-3.6 0-4.88-.07c-1.2-.05-1.82-.25-2.24-.42-.58-.22-.98-.48-1.4-.9a3.8 3.8 0 0 1-.91-1.4c-.17-.42-.37-1.05-.42-2.24C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.88c.05-1.2.25-1.82.42-2.24.22-.58.48-.98.9-1.4.43-.42.83-.68 1.4-.9.43-.17 1.06-.37 2.25-.42C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.15 0-3.5.01-4.74.07-1.14.05-1.76.24-2.17.4-.55.21-.94.47-1.35.87-.4.4-.66.8-.87 1.35-.16.4-.35 1.03-.4 2.17-.06 1.23-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.14.24 1.76.4 2.17.21.55.47.94.87 1.35.4.4.8.66 1.35.87.4.16 1.03.35 2.17.4 1.23.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.14-.05 1.76-.24 2.17-.4.55-.21.94-.47 1.35-.87.4-.4.66-.8.87-1.35.16-.4.35-1.03.4-2.17.06-1.23.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.14-.24-1.76-.4-2.17a3.6 3.6 0 0 0-.87-1.35 3.6 3.6 0 0 0-1.35-.87c-.4-.16-1.03-.35-2.17-.4C15.5 4 15.15 4 12 4Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm6.2-8.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0Z"/></svg>',
@@ -54,8 +55,6 @@ def wpp_pack_url(pack):
     texto = 'Hola Byluly! Quiero el pack %s' % pack
     return 'https://wa.me/%s?text=%s' % (WPP_NUMERO, urllib.parse.quote(texto))
 
-CINTA = open('partials/cinta.html', encoding='utf-8').read()
-
 # ---------- contenido editable desde el panel (/admin) ----------
 # Los textos y fotos de packs, planes y portafolio viven en content/*.json.
 # En las páginas se usan así:
@@ -79,6 +78,7 @@ def md(texto):
     """Formato mínimo para que Luly escriba sin HTML: **negrita**, Enter = salto de línea, ² = superíndice."""
     t = _html.escape(str(texto), quote=False)
     t = re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', t, flags=re.S)
+    t = re.sub(r'\*(.+?)\*', r'<em>\1</em>', t, flags=re.S)
     t = t.replace('²', '<sup>2</sup>').replace('\r\n', '\n').replace('\n', '<br>')
     return t
 
@@ -113,7 +113,74 @@ def packs_json():
         packs[clave] = d
     return '<script>window.BYLULY_PACKS = %s;</script>' % _json.dumps(packs, ensure_ascii=False).replace('</', '<\\/')
 
+def parrafos(texto, clase=''):
+    """Una línea en blanco separa párrafos."""
+    attr = ' class="%s"' % clase if clase else ''
+    return '\n'.join('<p%s>%s</p>' % (attr, md(x.strip())) for x in re.split(r'\n\s*\n', str(texto or '')) if x.strip())
+
+def numeros_items():
+    return '\n'.join(
+        '  <div class="stats__item reveal"><p class="stats__num">+<span class="count" data-to="%d">%d</span></p>'
+        '<p class="stats__label">%s</p></div>' % (int(n.get('numero') or 0), int(n.get('numero') or 0), md(n.get('etiqueta')))
+        for n in CONTENT['home']['numeros'])
+
+def testimonios_items():
+    out = []
+    for i, m in enumerate(CONTENT['home']['testimonios']['mensajes']):
+        pos = 'abcdefghij'[i % 10]
+        color = re.sub(r'[^#0-9a-fA-F]', '', m.get('color') or '') or '#770523'
+        nombre = _html.escape(m.get('nombre') or '')
+        hora = '<time>%s</time>' % _html.escape(m['hora']) if m.get('hora') else ''
+        if nombre and m.get('nombre_en_el_texto'):
+            cuerpo = '<p><b class="chat__de chat__de--inline" style="--de:%s">%s</b> %s</p>' % (color, nombre, md(m.get('texto')))
+        else:
+            cuerpo = ('<p class="chat__de" style="--de:%s">%s</p>' % (color, nombre) if nombre else '') + '<p>%s</p>' % md(m.get('texto'))
+        out.append('    <article class="chat chat--%s">%s%s</article>' % (pos, cuerpo, hora))
+    return '\n'.join(out)
+
+def marcas_items():
+    out = []
+    for m in CONTENT['home']['marcas']['lista']:
+        f = _html.escape(_foto(m.get('foto') or ''), quote=True)
+        out.append('    <li><a class="marcas__row" href="portafolio.html" data-img="%s"><span class="marcas__name">%s</span>'
+                   '<span class="marcas__cat">%s</span><img class="marcas__thumb" src="%s" alt="" loading="lazy"></a></li>'
+                   % (f, _html.escape(m.get('nombre') or ''), _html.escape(m.get('rubro') or ''), f))
+    return '\n'.join(out)
+
+def cinta_html():
+    grupo = ''.join('<span>%s</span><i>✦</i>' % _html.escape(w) for w in CONTENT['general']['cinta']['palabras'])
+    mitad = grupo * max(1, -(-12 // max(1, len(CONTENT['general']['cinta']['palabras']))))
+    return ('<div class="cinta" aria-hidden="true">\n  <div class="cinta__track">\n'
+            '    <div class="cinta__half">%s</div>\n    <div class="cinta__half">%s</div>\n  </div>\n</div>' % (mitad, mitad))
+
+def pasos_items():
+    return '\n'.join('    <li><span>%d</span>%s</li>' % (i + 1, md(x)) for i, x in enumerate(CONTENT['general']['hablemos']['pasos']))
+
+def aviso_html():
+    a = CONTENT['general'].get('aviso') or {}
+    if not a.get('activo') or not a.get('texto'):
+        return ''
+    txt = md(a['texto'])
+    if a.get('link'):
+        txt = '<a href="%s">%s</a>' % (_html.escape(a['link'], quote=True), txt)
+    return '<div class="aviso">%s</div>' % txt
+
+def porque_items():
+    return '\n'.join('    <article class="why__card reveal">\n      <h3>%s</h3>\n      <p>%s</p>\n    </article>' % (md(t.get('titulo')), md(t.get('texto')))
+                     for t in CONTENT['identidad-de-marca']['porque']['tarjetas'])
+
+def popup_activo():
+    return bool((CONTENT['general'].get('popup') or {}).get('activo'))
+
 def content_fill(html):
+    for token, fn in (('{{numeros_items}}', numeros_items), ('{{testimonios_items}}', testimonios_items),
+                      ('{{marcas_items}}', marcas_items), ('{{cinta}}', cinta_html),
+                      ('{{pasos_items}}', pasos_items), ('{{aviso}}', aviso_html), ('{{porque_items}}', porque_items)):
+        if token in html:
+            html = html.replace(token, fn())
+    html = re.sub(r'\{\{p:([^}|]+)(?:\|([^}]*))?\}\}', lambda m: parrafos(_get(m.group(1)), m.group(2) or ''), html)
+    html = re.sub(r'\{\{opciones:([^}]+)\}\}', lambda m: '\n'.join('          <option>%s</option>' % _html.escape(x) for x in _get(m.group(1))), html)
+    html = re.sub(r'\{\{cbr:([^}]+)\}\}', lambda m: md(_get(m.group(1))).replace('<br>', '<br class="d-only">'), html)
     if '{{portafolio_items}}' in html:
         html = html.replace('{{portafolio_items}}', portafolio_items())
     if '{{packs_json}}' in html:
@@ -126,7 +193,6 @@ def content_fill(html):
 
 def wpp_fill(html):
     html = content_fill(html)
-    html = html.replace('{{cinta}}', CINTA)
     html = html.replace('{{wpp_url}}', WPP_URL).replace('{{wpp_display}}', WPP_DISPLAY)
     html = re.sub(r'\{\{wpp_pack:([^}]+)\}\}', lambda m: wpp_pack_url(m.group(1)), html)
     for k, v in ICONS.items():
@@ -186,7 +252,7 @@ for out, (title, desc, active) in PAGES.items():
         + hablemos + '\n'
         + footer + '\n'
         + wpp_fill(wpp_float) + '\n'
-        + (popup_tpl if out == 'index.html' else '') +
+        + (wpp_fill(popup_tpl) if out == 'index.html' and popup_activo() else '') +
         '\n<script src="script.js?v=' + VER_JS + '"></script>\n</body>\n</html>\n'
     )
     with open(out, 'w', encoding='utf-8') as f:

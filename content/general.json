@@ -1,0 +1,44 @@
+{
+  "contacto": {
+    "whatsapp_numero": "5491160169886",
+    "whatsapp_visible": "+54 9 11 6016-9886",
+    "whatsapp_mensaje": "Hola Byluly! Quiero hablar de mi proyecto",
+    "email": "byluly.dsg@gmail.com",
+    "instagram": "https://www.instagram.com/bylulystudio/",
+    "tiktok": "https://www.tiktok.com/@luly.dgs",
+    "pinterest": "https://ar.pinterest.com/bylulydsg/"
+  },
+  "aviso": {
+    "activo": false,
+    "texto": "Este mes 10% off en THE CORE ✦ escribinos por WhatsApp",
+    "link": ""
+  },
+  "cinta": {
+    "palabras": [
+      "IDENTIDAD DE MARCA",
+      "REDES SOCIALES",
+      "PACKAGING",
+      "WEB"
+    ]
+  },
+  "hablemos": {
+    "titulo": "Hablemos!",
+    "texto": "Toma el siguiente paso en tu negocio. Juntas lograremos una comunicación acertada para tu cliente.",
+    "pasos": [
+      "Rellena el Formulario y en cuestión de un día me estaré comunicando con vos.",
+      "Agendaremos una llamada para hablar de tus necesidades.",
+      "Armamos juntas la propuesta y arrancamos."
+    ]
+  },
+  "popup": {
+    "activo": true,
+    "titulo": "Descarga la plantilla\nque mas necesites",
+    "texto": "Ingresa tu email y selecciona el recurso gratuito que necesitas y en unos dias te lo mandamos",
+    "recursos": [
+      "Calendario de contenido",
+      "Agenda del día",
+      "Agenda semanal",
+      "Checklist de identidad de marca"
+    ]
+  }
+}

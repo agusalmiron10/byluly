@@ -1508,3 +1508,11 @@ body::before{
 .hablemos--rosa .btn--xl{ font-size:clamp(16px,1.7vw,32px); }
 .cinta span{ font-size:clamp(20px,2vw,38px); }
 .cinta i{ font-size:clamp(14px,1.25vw,24px); }
+
+/* ---------- aviso opcional arriba de todo (se prende desde el panel) ---------- */
+.aviso{
+  background:var(--wine); color:var(--cream-light); text-align:center;
+  font-family:var(--poppins); font-size:clamp(12.5px,1vw,15px); letter-spacing:.02em;
+  padding:.65em var(--pad); line-height:1.35;
+}
+.aviso a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }

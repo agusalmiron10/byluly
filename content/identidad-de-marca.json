@@ -1,4 +1,29 @@
 {
+  "inicio": {
+    "categoria": "IDENTIDAD DE MARCA",
+    "titulo": "Damos vida a la\nmarca de tus sueños.",
+    "texto": "Identidad visual, packaging y sistemas de marca que se sostienen en el tiempo.\nTambién se puede personalizar según tus necesidades.",
+    "boton": "Conoce nuestros planes"
+  },
+  "porque": {
+    "titulo": "¿Por qué necesitás una *identidad de marca*?",
+    "tarjetas": [
+      {
+        "titulo": "Porque tu marca es más que un logo.",
+        "texto": "Un logo llama la atención, pero una marca es lo que la gente siente cuando te encuentra.\n**Es tu forma de hablar, de mostrarte, de hacer las cosas.**\nCuando todo eso va en la misma dirección, te reconocen al toque."
+      },
+      {
+        "titulo": "Porque querés vender, pero a tu manera.",
+        "texto": "Una marca clara genera confianza.\ny cuando la gente confía, elige, vuelve y te recomienda.\n**No hace falta gritar más fuerte:** hace falta que se entienda quién sos."
+      },
+      {
+        "titulo": "Porque querés que tu marca se quede.",
+        "texto": "No solo por lo que vendés hoy, sino por lo que dejás en la gente con el tiempo.\nLas marcas honestas son las que se recuerdan."
+      }
+    ],
+    "cierre": "Eso es lo que hacemos en AL cuadrado, mi agencia creativa, con cada marca que llega.",
+    "boton": "Conoce AL CUADRADO"
+  },
   "packs": {
     "core": {
       "categoria": "IDENTIDAD DE MARCA",

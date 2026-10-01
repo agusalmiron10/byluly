@@ -1,0 +1,152 @@
+{
+  "inicio": {
+    "titulo_1": "identidad de marca",
+    "titulo_2": "diseño",
+    "texto": "Siempre digo que el **diseño llegó a mi vida**\n**para mostrarme que las ideas se pueden tocar.**\nEmpecé sola, aprendiendo a los golpes:\ncuánto cobrar, cómo presentar, cómo decir que no.\nde todo eso nació **AL cuadrado,**\nmi agencia creativa desde buenos aires.",
+    "boton": "QUIERO EMPEZAR",
+    "foto": "img/hero-luly.jpg",
+    "etiqueta_foto": "Diseño con intención para marcas con intención"
+  },
+  "identidad": {
+    "categoria": "IDENTIDAD DE MARCA",
+    "titulo": "Creando marcas\ndiferentes con *alma\ny estrategia*",
+    "texto": "Hay muchísimas marcas dando vueltas. las que se quedan en la cabeza de la gente\nno son las que más gritan, son las que saben quiénes son.\nUna idea clara, una voz propia y una imagen que se reconoce sola.\neso es lo que construyo con cada marca.",
+    "boton": "trabajemos juntos"
+  },
+  "redes": {
+    "categoria": "REDES SOCIALES",
+    "titulo": "Llevamos tu cuenta *a\notro nivel*",
+    "texto": "Las redes no son solo para mostrar lindo. Son el lugar donde tu trabajo puede llegar a gente que todavía no sabe que te necesita.\n\nNo hace falta volverse influencer ni subir todos los días. Hace falta animarse a mostrar lo que hacés y contarlo a tu manera.\n\nAsí la gente correcta te encuentra.",
+    "boton": "LO NECESITOOOOO",
+    "foto": "img/mk-aflore.jpg"
+  },
+  "numeros": [
+    {
+      "numero": 10,
+      "etiqueta": "marcas"
+    },
+    {
+      "numero": 3,
+      "etiqueta": "años"
+    },
+    {
+      "numero": 200,
+      "etiqueta": "piezas"
+    }
+  ],
+  "testimonios": {
+    "titulo": "Lo que dicen\nmis clientes",
+    "mensajes": [
+      {
+        "nombre": "Oscar Martell",
+        "color": "#2f7fd1",
+        "texto": "Muy delicado todo! me fascina!",
+        "hora": "Editado 12:26 p. m."
+      },
+      {
+        "nombre": "Heidi",
+        "color": "#1f9d55",
+        "texto": "Cada una de las foto y videos me reee gusta, es la onda que queria 😌",
+        "hora": "12:23 p. m."
+      },
+      {
+        "nombre": "Belu |CTI Secretaria Administracion",
+        "color": "#d3325b",
+        "texto": "Que placeeerrrr 💗 🥹\nAmando esto!!",
+        "hora": "17:19"
+      },
+      {
+        "nombre": "",
+        "color": "",
+        "texto": "Hola chicos!! Que lindo quedó 💖",
+        "hora": "11:16"
+      },
+      {
+        "nombre": "Debo Pedace | Vive Liviano",
+        "color": "#6a5acd",
+        "texto": "Es increíble lo que hacen, me da ganas de ser vive liviano !!  Jajaja",
+        "hora": "11:23 a. m."
+      },
+      {
+        "nombre": "",
+        "color": "",
+        "texto": "Que genios!! Hermoso 😍✨",
+        "hora": "18:49"
+      },
+      {
+        "nombre": "",
+        "color": "",
+        "texto": "Que lindo se ve con el nuevo logo de Alegría BeWell ⭐⭐⭐⭐⭐",
+        "hora": "8:19 p. m."
+      },
+      {
+        "nombre": "",
+        "color": "",
+        "texto": "Que lindo todo Lu! Excelente 💕 desde las imágenes, como se lucen los productos, un 1000",
+        "hora": "18:49"
+      },
+      {
+        "nombre": "Paula Giles | Clienta",
+        "color": "#c47f2a",
+        "texto": "Hola chicos, como están? Que bueno quedó! Me encanta el concepto",
+        "hora": ""
+      },
+      {
+        "nombre": "@Ludmila Arevalo | AL2",
+        "color": "#1f9d55",
+        "texto": "quedó divinoooo lo destacado ! Me encantó! Gracias !!!!!",
+        "hora": "18:48",
+        "nombre_en_el_texto": true
+      }
+    ]
+  },
+  "proyectos": {
+    "titulo": "Proyectos que realizamos\nen mi *Agencia creativa*",
+    "texto": "Desde AL cuadrado, mi agencia creativa, acompaño a marcas a encontrar su identidad y a contarla de una forma que se sienta propia. Marcas como **ALEGRIA BEWELL, DEBORA PEDACE , CENTRO TERAPEUTICO INTEGRAL** y muchas marcas más confiaron en nosotros para darle forma a lo que querían mostrar.\nNo busco que las marcas se vean lindas y nada más. **Busco que se vean como son, y que la gente las reconozca y las elija**"
+  },
+  "marcas": {
+    "titulo": "MARCAS CON LAS QUE TRABAJAMOS",
+    "lista": [
+      {
+        "nombre": "Vive Liviano",
+        "rubro": "Identidad visual",
+        "foto": "img/mk-viveliviano.jpg"
+      },
+      {
+        "nombre": "grETa",
+        "rubro": "Identidad de marca & packaging",
+        "foto": "img/mk-greta.jpg"
+      },
+      {
+        "nombre": "Afloré",
+        "rubro": "Redes sociales",
+        "foto": "img/mk-aflore.jpg"
+      },
+      {
+        "nombre": "Vigno Bar",
+        "rubro": "Identidad & ilustración",
+        "foto": "img/mk-vigno.jpg"
+      },
+      {
+        "nombre": "Eleva",
+        "rubro": "Packaging",
+        "foto": "img/mk-eleva.jpg"
+      },
+      {
+        "nombre": "Alegría BeWell",
+        "rubro": "Identidad de marca & merch",
+        "foto": "img/mk-tote-alegria.jpg"
+      },
+      {
+        "nombre": "Flash de Vida",
+        "rubro": "Identidad visual",
+        "foto": "img/mk-flashdevida.jpg"
+      },
+      {
+        "nombre": "Mãe",
+        "rubro": "Piezas gráficas",
+        "foto": "img/mk-regalo.jpg"
+      }
+    ]
+  }
+}

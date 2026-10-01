@@ -3,15 +3,13 @@
     <img class="hablemos__badge-ring" src="img/badge-ring.png" alt="" width="620" height="620" loading="lazy">
     <img class="hablemos__badge-logo" src="img/badge-logo.png" alt="" width="270" height="152" loading="lazy">
   </div>
-  <h2 class="hablemos__title">Hablemos!</h2>
+  <h2 class="hablemos__title">{{c:general.hablemos.titulo}}</h2>
 
   <div class="hablemos__grid">
     <div class="hablemos__left">
-      <p class="hablemos__lead">Toma el siguiente paso en tu negocio. Juntas lograremos una comunicación acertada para tu cliente.</p>
+      <p class="hablemos__lead">{{c:general.hablemos.texto}}</p>
       <ol class="pasos">
-        <li><span>1</span>Rellena el Formulario y en cuestión de un día me estaré comunicando con vos.</li>
-        <li><span>2</span>Agendaremos una llamada para hablar de tus necesidades.</li>
-        <li><span>3</span>Armamos juntas la propuesta y arrancamos.</li>
+{{pasos_items}}
       </ol>
       <a class="btn btn--wpp" href="{{wpp_url}}" target="_blank" rel="noopener">{{ico_whatsapp}} Escribime por WhatsApp</a>
       <p class="hablemos__or">o dejame tus datos y te escribo yo</p>

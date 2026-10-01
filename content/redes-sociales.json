@@ -1,4 +1,10 @@
 {
+  "inicio": {
+    "categoria": "REDES SOCIALES",
+    "titulo": "Llevamos tu\nmarca a otro\nnivel.",
+    "bajada": "Las redes no son solo un lugar donde publicar.\nSon el espacio donde tu marca toma voz, genera deseo y llega a las personas correctas.",
+    "texto": "En **By Luly + Al Cuadrado** combinamos estrategia, creatividad y comunicación para crear contenido que tenga identidad y propósito.\n\nNo se trata de publicar por publicar.\nSe trata de construir una presencia que haga que tu marca se vea, se recuerde y se elija.\n\nTu marca tiene algo para decir.\nNosotras hacemos que se escuche."
+  },
   "planes": {
     "base": {
       "categoria": "REDES SOCIALES",
@@ -14,6 +20,18 @@
       "boton": "LO NECESITOOOOO",
       "foto": "img/redes-plan-crecimiento.jpg"
     }
+  },
+  "contrata": {
+    "chico": "Planes mensuales de diseño",
+    "titulo": "CONTRATÁ A TU\nDISEÑADORA",
+    "texto": "¿Ya tenés CM pero te falta diseño?\nSumá a By Luly a tu equipo.\n\nDiseño de contenido + edición de video en planes mensuales pensados para tu marca.",
+    "boton": "trabajemos juntos",
+    "foto": "img/mk-aflore.jpg"
+  },
+  "producciones": {
+    "titulo": "PRODUCCIONES",
+    "texto": "Contenido que hace que tu marca se vea.\n\nProducciones de fotos y videos pensadas para potenciar tu identidad y llevar tu presencia en redes al próximo nivel.\n\nDisponible para negocios de Buenos Aires y CABA.",
+    "boton": "VER QUE INCLUYE"
   },
   "pagos": {
     "titulo": "Se trabaja en 1 pagos",

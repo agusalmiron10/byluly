@@ -43,10 +43,12 @@ build = __import__('_build')
 
 head_ok = True
 header = open('partials/header.html', encoding='utf-8').read()
+# el header lleva el aviso y los links de redes, que vienen del panel
 for key in build.ACTIVE_KEYS:
     header = header.replace('{{a_%s}}' % key, '')
 for k, v in build.ICONS.items():
     header = header.replace('{{%s}}' % k, v)
+header = build.wpp_fill(header)
 
 footer = build.wpp_fill(open('partials/site-footer.html', encoding='utf-8').read())
 
@@ -70,7 +72,8 @@ def hablemos_for(out):
 routes = {out: build.wpp_fill(inline(open('pages/' + out, encoding='utf-8').read()
                                      + '\n' + hablemos_for(out)))
           for out in build.PAGES}
-routes['index.html'] += '\n' + popup
+if build.popup_activo():
+    routes['index.html'] += '\n' + build.wpp_fill(inline(popup))
 titles = {out: meta[0] for out, meta in build.PAGES.items()}
 actives = {out: meta[2] for out, meta in build.PAGES.items()}
 

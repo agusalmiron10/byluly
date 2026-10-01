@@ -2,26 +2,19 @@
 <section class="hero">
   <div class="hero__left">
     <h1 class="hero__title">
-      <span class="ht-1">identidad de marca</span>
+      <span class="ht-1">{{c:home.inicio.titulo_1}}</span>
       <span class="ht-2">&amp;</span>
-      <span class="ht-3">diseño<img class="hero__mac" src="img/mac-cafe.png" alt="" width="712" height="440"></span>
+      <span class="ht-3">{{c:home.inicio.titulo_2}}<img class="hero__mac" src="img/mac-cafe.png" alt="" width="712" height="440"></span>
     </h1>
-    <p class="hero__text">
-      Siempre digo que el <b>diseño llegó a mi vida</b><br>
-      <b>para mostrarme que las ideas se pueden tocar.</b><br>
-      Empecé sola, aprendiendo a los golpes:<br>
-      cuánto cobrar, cómo presentar, cómo decir que no.<br>
-      de todo eso nació <b>AL cuadrado,</b><br>
-      mi agencia creativa desde buenos aires.
-    </p>
-    <a class="btn btn--peony" href="contacto.html">QUIERO EMPEZAR</a>
+    <p class="hero__text">{{c:home.inicio.texto}}</p>
+    <a class="btn btn--peony" href="contacto.html">{{c:home.inicio.boton}}</a>
   </div>
 
   <div class="hero__right">
     <img class="hero__star" src="img/star-pink.png" alt="" width="320" height="304">
     <figure class="hero__photo">
-      <img src="img/hero-luly.jpg" alt="Luly, diseñadora de Studio Byluly" width="900" height="1204">
-      <figcaption class="sticker"><span>Diseño con intención para marcas con intención</span></figcaption>
+      <img src="{{a:home.inicio.foto}}" alt="Luly, diseñadora de Studio Byluly" width="900" height="1204">
+      <figcaption class="sticker"><span>{{c:home.inicio.etiqueta_foto}}</span></figcaption>
     </figure>
   </div>
 </section>
@@ -34,72 +27,47 @@
   <img class="deco deco--bl4" src="img/mk-cards-wood.jpg" alt="Papelería de marca" loading="lazy">
 
   <div class="bloque__centro">
-    <p class="eyebrow">IDENTIDAD DE MARCA</p>
-    <h2 class="display">Creando marcas<br>diferentes con <em>alma<br>y estrategia</em> <img class="star-inline" src="img/star-gold.png" alt="" loading="lazy"></h2>
-    <p class="bloque__texto">
-      Hay muchísimas marcas dando vueltas. las que se quedan en la cabeza de la gente<br>
-      no son las que más gritan, son las que saben quiénes son.<br>
-      Una idea clara, una voz propia y una imagen que se reconoce sola.<br>
-      eso es lo que construyo con cada marca.
-    </p>
-    <a class="btn btn--peony" href="branding.html">trabajemos juntos</a>
+    <p class="eyebrow">{{c:home.identidad.categoria}}</p>
+    <h2 class="display">{{c:home.identidad.titulo}} <img class="star-inline" src="img/star-gold.png" alt="" loading="lazy"></h2>
+    <p class="bloque__texto">{{c:home.identidad.texto}}</p>
+    <a class="btn btn--peony" href="branding.html">{{c:home.identidad.boton}}</a>
   </div>
 </section>
 
 <!-- ============ SOCIAL MEDIA ============ -->
 <section class="redes reveal">
   <div class="redes__texto">
-    <p class="eyebrow">REDES SOCIALES</p>
-    <h2 class="display">Llevamos tu cuenta <em>a<br>otro nivel</em></h2>
-    <p>Las redes no son solo para mostrar lindo.Son el lugar donde tu trabajo puede llegar a gente que todavía no sabe que te necesita.</p>
-    <p>No hace falta volverse influencer ni subir todos los días. Hace falta animarse a mostrar lo que hacés y contarlo a tu manera.</p>
-    <p>Así la gente correcta te encuentra.</p>
-    <a class="btn btn--peony" href="redes-sociales.html">LO NECESITOOOOO</a>
+    <p class="eyebrow">{{c:home.redes.categoria}}</p>
+    <h2 class="display">{{c:home.redes.titulo}}</h2>
+    {{p:home.redes.texto}}
+    <a class="btn btn--peony" href="redes-sociales.html">{{c:home.redes.boton}}</a>
   </div>
   <div class="redes__visual">
-    <img class="redes__grid" src="img/mk-aflore.jpg" alt="Feed de Instagram diseñado para Afloré" loading="lazy">
+    <img class="redes__grid" src="{{a:home.redes.foto}}" alt="Feed de Instagram diseñado para Afloré" loading="lazy">
     <img class="redes__tulipanes" src="img/tulips.png" alt="" loading="lazy">
   </div>
 </section>
 
 <!-- ============ NÚMEROS ============ -->
 <section class="stats" aria-label="Studio Byluly en números">
-  <div class="stats__item reveal"><p class="stats__num">+<span class="count" data-to="10">10</span></p><p class="stats__label">marcas</p></div>
-  <div class="stats__item reveal"><p class="stats__num">+<span class="count" data-to="3">3</span></p><p class="stats__label">años</p></div>
-  <div class="stats__item reveal"><p class="stats__num">+<span class="count" data-to="200">200</span></p><p class="stats__label">piezas</p></div>
+{{numeros_items}}
 </section>
 
 <!-- ============ TESTIMONIOS ============ -->
 <section class="testimonios reveal">
   <img class="testimonios__corazon" src="img/heart.png" alt="" width="260" height="251" loading="lazy">
-  <h2 class="display testimonios__title">Lo que dicen<br>mis clientes</h2>
+  <h2 class="display testimonios__title">{{c:home.testimonios.titulo}}</h2>
 
   <div class="chats">
-    <article class="chat chat--a"><p class="chat__de" style="--de:#2f7fd1">Oscar Martell</p><p>Muy delicado todo! me fascina!</p><time>Editado 12:26 p. m.</time></article>
-    <article class="chat chat--b"><p class="chat__de" style="--de:#1f9d55">Heidi</p><p>Cada una de las foto y videos me reee gusta, es la onda que queria 😌</p><time>12:23 p. m.</time></article>
-    <article class="chat chat--c"><p class="chat__de" style="--de:#d3325b">Belu |CTI Secretaria Administracion</p><p>Que placeeerrrr 💗 🥹<br>Amando esto!!</p><time>17:19</time></article>
-    <article class="chat chat--d"><p>Hola chicos!! Que lindo quedó 💖</p><time>11:16</time></article>
-    <article class="chat chat--e"><p class="chat__de" style="--de:#6a5acd">Debo Pedace | Vive Liviano</p><p>Es increíble lo que hacen, me da ganas de ser vive liviano !!&nbsp; Jajaja</p><time>11:23 a. m.</time></article>
-    <article class="chat chat--f"><p>Que genios!! Hermoso 😍✨</p><time>18:49</time></article>
-    <article class="chat chat--g"><p>Que lindo se ve con el nuevo logo de Alegría BeWell ⭐⭐⭐⭐⭐</p><time>8:19 p. m.</time></article>
-    <article class="chat chat--h"><p>Que lindo todo Lu! Excelente 💕 desde las imágenes, como se lucen los productos, un 1000</p><time>18:49</time></article>
-    <article class="chat chat--i"><p class="chat__de" style="--de:#c47f2a">Paula Giles | Clienta</p><p>Hola chicos, como están? Que bueno quedó! Me encanta el concepto</p></article>
-    <article class="chat chat--j"><p><b class="chat__de chat__de--inline" style="--de:#1f9d55">@Ludmila Arevalo | AL2</b> quedó divinoooo lo destacado ! Me encantó! Gracias !!!!!</p><time>18:48</time></article>
+{{testimonios_items}}
   </div>
 </section>
 
 <!-- ============ PROYECTOS ============ -->
 <section class="proyectos reveal" id="proyectos">
   <div class="proyectos__head">
-    <h2 class="display">Proyectos que realizamos<br>en mi <em>Agencia creativa</em></h2>
-    <p class="proyectos__texto">
-      Desde AL cuadrado, mi agencia creativa, acompaño a marcas a encontrar su identidad
-      y a contarla de una forma que se sienta propia. Marcas como <b>ALEGRIA BEWELL,
-      DEBORA PEDACE , CENTRO TERAPEUTICO INTEGRAL</b> y muchas marcas más
-      confiaron en nosotros para darle forma a lo que querían mostrar.<br>
-      No busco que las marcas se vean lindas y nada más. <b>Busco que se vean como son,
-      y que la gente las reconozca y las elija</b>
-    </p>
+    <h2 class="display">{{c:home.proyectos.titulo}}</h2>
+    <p class="proyectos__texto">{{c:home.proyectos.texto}}</p>
   </div>
 </section>
 
@@ -119,16 +87,9 @@
 
 <!-- ============ MARCAS (al pasar el mouse aparece la foto del trabajo) ============ -->
 <section class="marcas">
-  <p class="eyebrow marcas__eyebrow reveal">MARCAS CON LAS QUE TRABAJAMOS</p>
+  <p class="eyebrow marcas__eyebrow reveal">{{c:home.marcas.titulo}}</p>
   <ul class="marcas__list">
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-viveliviano.jpg"><span class="marcas__name">Vive Liviano</span><span class="marcas__cat">Identidad visual</span><img class="marcas__thumb" src="img/mk-viveliviano.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-greta.jpg"><span class="marcas__name">grETa</span><span class="marcas__cat">Identidad de marca &amp; packaging</span><img class="marcas__thumb" src="img/mk-greta.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-aflore.jpg"><span class="marcas__name">Afloré</span><span class="marcas__cat">Redes sociales</span><img class="marcas__thumb" src="img/mk-aflore.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-vigno.jpg"><span class="marcas__name">Vigno Bar</span><span class="marcas__cat">Identidad &amp; ilustración</span><img class="marcas__thumb" src="img/mk-vigno.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-eleva.jpg"><span class="marcas__name">Eleva</span><span class="marcas__cat">Packaging</span><img class="marcas__thumb" src="img/mk-eleva.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-tote-alegria.jpg"><span class="marcas__name">Alegría BeWell</span><span class="marcas__cat">Identidad de marca &amp; merch</span><img class="marcas__thumb" src="img/mk-tote-alegria.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-flashdevida.jpg"><span class="marcas__name">Flash de Vida</span><span class="marcas__cat">Identidad visual</span><img class="marcas__thumb" src="img/mk-flashdevida.jpg" alt="" loading="lazy"></a></li>
-    <li><a class="marcas__row" href="portafolio.html" data-img="img/mk-regalo.jpg"><span class="marcas__name">Mãe</span><span class="marcas__cat">Piezas gráficas</span><img class="marcas__thumb" src="img/mk-regalo.jpg" alt="" loading="lazy"></a></li>
+{{marcas_items}}
   </ul>
-  <img class="marcas__preview" id="marcasPreview" src="img/mk-viveliviano.jpg" alt="" aria-hidden="true">
+  <img class="marcas__preview" id="marcasPreview" src="{{a:home.marcas.lista.0.foto}}" alt="" aria-hidden="true">
 </section>

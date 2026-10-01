@@ -4,14 +4,10 @@
   <div class="about__body">
     <div class="about__text reveal">
       <h1 class="about__hello"><img class="about__flower" src="img/contacto-flower.png" alt="" width="140" height="135">Hola, soy <img class="about__luly" src="img/contacto-luly.png" alt="luly" width="460" height="282"></h1>
-      <p><b>Hace 4 años empecé</b> a diseñar y, desde entonces, el diseño se convirtió en mucho más que una profesión: <b>es mi forma de crear, comunicar y darle vida a las ideas.</b></p>
-      <p>Durante este tiempo trabajé con marcas, creé identidades, contenido y estrategias, aprendí de cada proyecto y descubrí todo lo que sucede detrás de una idea antes de verla terminada.</p>
-      <p>Hoy estoy en el proceso de construir <b>mi propia agencia creativa, AL CUADRADO,</b> mientras sigo explorando mi lado más personal como diseñadora: creando, sacando fotos, editando, buscando inspiración y compartiendo todo lo que pasa detrás de cada proyecto.</p>
-      <p>Creo en las ideas que <b>tienen intención, pero también en la creatividad que nace de lo cotidiano.</b> De una charla, una referencia guardada, un lugar nuevo, una canción o simplemente de mirar las cosas desde otro lugar.</p>
-      <p><b>by luly</b> es ese espacio donde comparto <b>mi proceso creativo, mi trabajo y todo lo que voy descubriendo</b> mientras construyo mi camino en el mundo del diseño.</p>
+      {{p:contacto.sobre_mi.texto}}
     </div>
     <div class="about__media reveal">
-      <img src="img/contacto-hero.jpg" alt="Luly, diseñadora gráfica de Studio Byluly, sentada con su notebook y celular" width="820" height="1109">
+      <img src="{{a:contacto.sobre_mi.foto}}" alt="Luly, diseñadora gráfica de Studio Byluly, sentada con su notebook y celular" width="820" height="1109">
       <img class="about__pin" src="img/contacto-pin.png" alt="" width="260" height="544">
       <img class="about__sparkles" src="img/contacto-sparkles.png" alt="" width="180" height="198">
     </div>
@@ -23,12 +19,10 @@
     <img class="hablemos__badge-ring" src="img/badge-peony-ring.png" alt="" width="290" height="287" loading="lazy">
     <img class="hablemos__badge-logo" src="img/badge-logo.png" alt="" width="270" height="152" loading="lazy">
   </div>
-  <h2 class="hablemos__title hablemos__title--light">Hablemos!</h2>
-  <p class="hablemos__lead hablemos__lead--center">Toma el siguiente paso en tu negocio. Juntas lograremos una comunicación acertada para tu cliente.</p>
+  <h2 class="hablemos__title hablemos__title--light">{{c:general.hablemos.titulo}}</h2>
+  <p class="hablemos__lead hablemos__lead--center">{{c:general.hablemos.texto}}</p>
   <ol class="pasos pasos--center">
-    <li><span>1</span>Rellena el Formulario y en cuestión de un día me estaré comunicando con vos.</li>
-    <li><span>2</span>Agendaremos una llamada para hablar de tus necesidades.</li>
-    <li><span>3</span>Armamos juntas la propuesta y arrancamos.</li>
+{{pasos_items}}
   </ol>
 
   <form class="form-contacto form-contacto--light" id="formContacto" novalidate>
