@@ -22,7 +22,8 @@
       }
     ],
     "cierre": "Eso es lo que hacemos en AL cuadrado, mi agencia creativa, con cada marca que llega.",
-    "boton": "Conoce AL CUADRADO"
+    "boton": "Conoce AL CUADRADO",
+    "fondo": "img/branding-grass.jpg"
   },
   "packs": {
     "core": {
@@ -96,7 +97,9 @@
           }
         ],
         "precio": "Inversión: 350 USD"
-      }
+      },
+      "foto_tarjetas": "img/branding-cards.jpg",
+      "foto_flores": "img/branding-aflore.jpg"
     },
     "object": {
       "categoria": "IDENTIDAD DE MARCA - PACKAGING",

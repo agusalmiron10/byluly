@@ -40,5 +40,60 @@
       "Agenda semanal",
       "Checklist de identidad de marca"
     ]
+  },
+  "botones": {
+    "medios_de_pago": "MEDIOS DE PAGO",
+    "whatsapp": "Escribime por WhatsApp",
+    "dejame": "o dejame tus datos y te escribo yo",
+    "trabajemos": "TRABAJEMOS JUNTOS"
+  },
+  "formulario": {
+    "nombre": "Nombre",
+    "apellido": "Apellido",
+    "pais": "País",
+    "ciudad": "Ciudad",
+    "celular": "Celular (con código de área)",
+    "email": "Email",
+    "negocio": "¿Qué negocio tenés? Adjuntá tu Instagram o web",
+    "presupuesto": "¿Cuál es tu presupuesto para este proyecto?",
+    "presupuestos": [
+      "Menos de 500 USD",
+      "500 - 1.000 USD",
+      "1.000 - 2.000 USD",
+      "Más de 2.000 USD",
+      "Prefiero contarte por WhatsApp"
+    ],
+    "mensaje": "Cuéntanos más sobre tu proyecto o marca",
+    "servicio": "¿Qué servicio necesitás?",
+    "servicios": [
+      "Identidad Visual",
+      "Diseño de redes",
+      "Packaging"
+    ],
+    "privacidad": "Al enviar este formulario, aceptás que almacenemos tus datos para gestionar tu consulta. Consultá nuestra **Política de privacidad.**",
+    "boton_contacto": "Trabajemos juntos",
+    "boton_hablemos": "Listo!"
+  },
+  "google": {
+    "inicio": {
+      "titulo": "Studio Byluly | Identidad de marca",
+      "descripcion": "Studio de identidad de marca y diseño para marcas conscientes: veganas, sostenibles, con proyectos sociales o de bienestar."
+    },
+    "identidad": {
+      "titulo": "Identidad de marca | Studio Byluly",
+      "descripcion": "Packs de identidad de marca: The Core, The Object, The Voice, The Space y The Universe. Identidad visual con estrategia."
+    },
+    "redes": {
+      "titulo": "Redes Sociales | Studio Byluly",
+      "descripcion": "Gestión de redes sociales: diseño, edición y estrategia para que tu marca conecte con su comunidad."
+    },
+    "contacto": {
+      "titulo": "Contacto | Studio Byluly",
+      "descripcion": "Hello, soy Byluly, diseñadora gráfica. Contame de tu proyecto y armamos juntas la propuesta."
+    },
+    "portafolio": {
+      "titulo": "Portafolio | Studio Byluly",
+      "descripcion": "Trabajos de identidad de marca, identidad visual, packaging y redes sociales de Studio Byluly."
+    }
   }
 }

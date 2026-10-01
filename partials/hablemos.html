@@ -11,25 +11,23 @@
       <ol class="pasos">
 {{pasos_items}}
       </ol>
-      <a class="btn btn--wpp" href="{{wpp_url}}" target="_blank" rel="noopener">{{ico_whatsapp}} Escribime por WhatsApp</a>
-      <p class="hablemos__or">o dejame tus datos y te escribo yo</p>
+      <a class="btn btn--wpp" href="{{wpp_url}}" target="_blank" rel="noopener">{{ico_whatsapp}} {{c:general.botones.whatsapp}}</a>
+      <p class="hablemos__or">{{c:general.botones.dejame}}</p>
     </div>
 
     <form class="form-contacto" id="formContacto" novalidate>
-      <label class="field"><span>Nombre</span><input type="text" name="nombre" required></label>
-      <label class="field"><span>País</span><input type="text" name="pais"></label>
-      <label class="field"><span>Email</span><input type="email" name="email" required></label>
-      <label class="field"><span>Número de celular (con codigo de area)</span><input type="tel" name="tel"></label>
-      <label class="field"><span>¿Qué negocio tenés? Adjuntá tu Instagram o web</span><input type="text" name="negocio"></label>
+      <label class="field"><span>{{c:general.formulario.nombre}}</span><input type="text" name="nombre" required></label>
+      <label class="field"><span>{{c:general.formulario.pais}}</span><input type="text" name="pais"></label>
+      <label class="field"><span>{{c:general.formulario.email}}</span><input type="email" name="email" required></label>
+      <label class="field"><span>{{c:general.formulario.celular}}</span><input type="tel" name="tel"></label>
+      <label class="field"><span>{{c:general.formulario.negocio}}</span><input type="text" name="negocio"></label>
 
       <fieldset class="checks">
-        <legend>Que servicio necesitas?</legend>
-        <label><input type="checkbox" name="servicio" value="Identidad Visual"><i></i>Identidad Visual</label>
-        <label><input type="checkbox" name="servicio" value="Diseño de redes"><i></i>Diseño de redes</label>
-        <label><input type="checkbox" name="servicio" value="Packaging"><i></i>Packaging</label>
+        <legend>{{c:general.formulario.servicio}}</legend>
+{{servicios_items}}
       </fieldset>
 
-      <button type="submit" class="btn btn--pistacho">Listo!</button>
+      <button type="submit" class="btn btn--pistacho">{{c:general.formulario.boton_hablemos}}</button>
       <p class="form-msg" id="formContactoMsg" role="status"></p>
     </form>
   </div>

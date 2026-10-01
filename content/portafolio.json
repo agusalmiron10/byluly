@@ -1,4 +1,9 @@
 {
+  "inicio": {
+    "chico": "Trabajos",
+    "titulo": "My Portfolio",
+    "texto": "Bienvenida a mi portafolio. Acá vas a encontrar el estilo gráfico que me define. Chusmeá todo lo que quieras y descubrí cómo podemos trabajar juntas para darle vida a tus ideas."
+  },
   "proyectos": [
     {
       "nombre": "Vive Liviano",
@@ -138,5 +143,9 @@
         "img/mk-regalo.jpg"
       ]
     }
-  ]
+  ],
+  "final": {
+    "titulo": "¿Te gusta lo que ves?",
+    "boton": "Trabajemos juntas"
+  }
 }

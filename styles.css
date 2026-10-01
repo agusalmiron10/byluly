@@ -616,7 +616,7 @@ a{ color:inherit; }
   position:relative; overflow:hidden;
   padding:clamp(40px,4.7vw,90px) 6.25vw clamp(48px,5.2vw,100px);
   text-align:center; color:var(--paper);
-  background:#2c3a24 url("img/branding-grass.jpg") center/cover no-repeat;
+  background:#2c3a24 var(--fondo, url("img/branding-grass.jpg")) center/cover no-repeat;
 }
 .why::before{ content:""; position:absolute; inset:0; background:rgba(20,28,16,.12); }
 .why > *{ position:relative; z-index:1; }
@@ -1516,3 +1516,6 @@ body::before{
   padding:.65em var(--pad); line-height:1.35;
 }
 .aviso a{ color:inherit; text-decoration:underline; text-underline-offset:3px; }
+
+/* si desde el panel se quita una foto fija, ese lugar se oculta en vez de mostrar una imagen rota */
+img[src=""]{ display:none; }

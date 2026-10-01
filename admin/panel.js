@@ -104,8 +104,11 @@
     $('#guardar').hidden = true;
     window.scrollTo(0, 0);
     api('/api/contenido?archivo=' + archivo).then(function (r) {
-      datos = r.datos; sha = r.sha; original = JSON.stringify(datos);
+      datos = r.datos; sha = r.sha;
       pintar();
+      // pintar completa campos vacíos (listas, etc.): recién ahí se toma la foto de "cómo estaba"
+      original = JSON.stringify(datos);
+      actualizarBarra();
     }).catch(function (err) { cont.innerHTML = '<div class="cargando">' + err.message + '</div>'; });
   }
 
@@ -145,6 +148,8 @@
     if (!confirm('¿Descartar los cambios que no guardaste?')) return;
     datos = JSON.parse(original);
     pintar();
+    original = JSON.stringify(datos);
+    actualizarBarra();
   });
 
   $('#guardarBtn').addEventListener('click', guardar);

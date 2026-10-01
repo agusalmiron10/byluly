@@ -180,13 +180,28 @@ def porque_items():
     return '\n'.join('    <article class="why__card reveal">\n      <h3>%s</h3>\n      <p>%s</p>\n    </article>' % (md(t.get('titulo')), md(t.get('texto')))
                      for t in CONTENT['identidad-de-marca']['porque']['tarjetas'])
 
+def tira_items():
+    return '\n'.join('    <img src="%s" alt="" loading="lazy">' % _html.escape(_foto(f), quote=True)
+                     for f in (CONTENT['home'].get('tira') or {}).get('fotos') or [] if f)
+
+def servicios_items():
+    return '\n'.join('        <label><input type="checkbox" name="servicio" value="%s"><i></i>%s</label>' % (_html.escape(x, quote=True), _html.escape(x))
+                     for x in CONTENT['general']['formulario'].get('servicios') or [])
+
+GOOGLE = {'index.html': 'inicio', 'branding.html': 'identidad', 'redes-sociales.html': 'redes',
+          'contacto.html': 'contacto', 'portafolio.html': 'portafolio'}
+
+def titulo_google(out, title, desc):
+    g = (CONTENT['general'].get('google') or {}).get(GOOGLE.get(out, ''), {})
+    return (g.get('titulo') or title), (g.get('descripcion') or desc)
+
 def popup_activo():
     return bool((CONTENT['general'].get('popup') or {}).get('activo'))
 
 def content_fill(html):
     for token, fn in (('{{numeros_items}}', numeros_items), ('{{testimonios_items}}', testimonios_items),
                       ('{{marcas_items}}', marcas_items), ('{{cinta}}', cinta_html),
-                      ('{{pasos_items}}', pasos_items), ('{{aviso}}', aviso_html), ('{{porque_items}}', porque_items)):
+                      ('{{pasos_items}}', pasos_items), ('{{aviso}}', aviso_html), ('{{porque_items}}', porque_items), ('{{tira_items}}', tira_items), ('{{servicios_items}}', servicios_items)):
         if token in html:
             html = html.replace(token, fn())
     html = re.sub(r'\{\{p:([^}|]+)(?:\|([^}]*))?\}\}', lambda m: parrafos(_get(m.group(1)), m.group(2) or ''), html)
@@ -229,7 +244,8 @@ PAGES_HABLEMOS_ROSA = {'branding.html', 'redes-sociales.html'}
 PAGES_SIN_HABLEMOS_COMPARTIDO = {'contacto.html'}
 
 for out, (title, desc, active) in PAGES.items():
-    head = head_tpl.replace('{{title}}', title).replace('{{desc}}', desc).replace('{{ver_css}}', VER_CSS)
+    title, desc = titulo_google(out, title, desc)
+    head = head_tpl.replace('{{title}}', _html.escape(title)).replace('{{desc}}', _html.escape(desc, quote=True)).replace('{{ver_css}}', VER_CSS)
 
     header = header_tpl
     for key in ACTIVE_KEYS:

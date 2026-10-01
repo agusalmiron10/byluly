@@ -71,6 +71,18 @@
       "name": "boton",
       "label": "Texto del botón",
       "widget": "string"
+     },
+     {
+      "name": "fotos_costado",
+      "label": "Fotos de costado (4)",
+      "label_singular": "foto",
+      "widget": "list",
+      "field": {
+       "name": "foto",
+       "label": "Foto",
+       "widget": "image"
+      },
+      "hint": "Las 4 fotitas que acompañan el bloque en computadora, en este orden: arriba izquierda, abajo izquierda, arriba derecha, abajo derecha."
      }
     ]
    },
@@ -207,6 +219,31 @@
     ]
    },
    {
+    "name": "tira",
+    "label": "Tira de fotos que se desliza",
+    "widget": "object",
+    "collapsed": true,
+    "fields": [
+     {
+      "name": "fotos",
+      "label": "Fotos",
+      "label_singular": "foto",
+      "widget": "list",
+      "field": {
+       "name": "foto",
+       "label": "Foto",
+       "widget": "image"
+      },
+      "hint": "Se deslizan solas debajo de \"Proyectos que realizamos\" (y también en Contacto)."
+     },
+     {
+      "name": "boton",
+      "label": "Texto del botón de abajo",
+      "widget": "string"
+     }
+    ]
+   },
+   {
     "name": "marcas",
     "label": "Lista de marcas (foto al pasar el mouse)",
     "widget": "object",
@@ -322,6 +359,12 @@
       "name": "boton",
       "label": "Texto del botón",
       "widget": "string"
+     },
+     {
+      "name": "fondo",
+      "label": "Foto de fondo",
+      "widget": "image",
+      "hint": "Va detrás del título y las tarjetas: conviene una foto oscura o con poco detalle para que se lea el texto."
      }
     ]
    },
@@ -365,6 +408,16 @@
         "label": "Texto del botón",
         "widget": "string",
         "required": true
+       },
+       {
+        "name": "foto_tarjetas",
+        "label": "Foto grande del collage (arriba a la derecha)",
+        "widget": "image"
+       },
+       {
+        "name": "foto_flores",
+        "label": "Foto chica del collage (abajo a la izquierda)",
+        "widget": "image"
        },
        {
         "name": "detalle",
@@ -1397,8 +1450,32 @@
   "archivo": "portafolio",
   "titulo": "Portafolio",
   "url": "portafolio.html",
-  "descripcion": "Los trabajos: agregá, borrá u ordená proyectos y sus fotos.",
+  "descripcion": "El principio de la página, los trabajos (agregá, borrá u ordená proyectos y sus fotos) y la franja de abajo.",
   "campos": [
+   {
+    "name": "inicio",
+    "label": "Principio de la página",
+    "widget": "object",
+    "collapsed": true,
+    "fields": [
+     {
+      "name": "chico",
+      "label": "Texto chico arriba",
+      "widget": "string"
+     },
+     {
+      "name": "titulo",
+      "label": "Título",
+      "widget": "string"
+     },
+     {
+      "name": "texto",
+      "label": "Texto",
+      "widget": "text",
+      "hint": "Seleccioná una palabra y tocá Negrita o Cursiva para resaltarla. Cada Enter es un salto de línea."
+     }
+    ]
+   },
    {
     "name": "proyectos",
     "label": "Proyectos",
@@ -1461,6 +1538,24 @@
        "label": "Foto",
        "widget": "image"
       }
+     }
+    ]
+   },
+   {
+    "name": "final",
+    "label": "Franja de abajo (\"¿Te gusta lo que ves?\")",
+    "widget": "object",
+    "collapsed": true,
+    "fields": [
+     {
+      "name": "titulo",
+      "label": "Título",
+      "widget": "string"
+     },
+     {
+      "name": "boton",
+      "label": "Texto del botón",
+      "widget": "string"
      }
     ]
    }
@@ -1653,6 +1748,238 @@
       }
      }
     ]
+   },
+   {
+    "name": "botones",
+    "label": "Títulos y botones sueltos",
+    "widget": "object",
+    "collapsed": true,
+    "fields": [
+     {
+      "name": "medios_de_pago",
+      "label": "Título de \"Medios de pago\"",
+      "widget": "string"
+     },
+     {
+      "name": "whatsapp",
+      "label": "Botón de WhatsApp (Home y Portafolio)",
+      "widget": "string"
+     },
+     {
+      "name": "dejame",
+      "label": "Texto debajo del botón de WhatsApp",
+      "widget": "string"
+     },
+     {
+      "name": "trabajemos",
+      "label": "Botón grande de \"Hablemos!\" (Identidad y Redes)",
+      "widget": "string"
+     }
+    ]
+   },
+   {
+    "name": "formulario",
+    "label": "Formulario de contacto",
+    "widget": "object",
+    "collapsed": true,
+    "fields": [
+     {
+      "name": "nombre",
+      "label": "Pregunta: nombre",
+      "widget": "string"
+     },
+     {
+      "name": "apellido",
+      "label": "Pregunta: apellido (solo Contacto)",
+      "widget": "string"
+     },
+     {
+      "name": "pais",
+      "label": "Pregunta: país",
+      "widget": "string"
+     },
+     {
+      "name": "ciudad",
+      "label": "Pregunta: ciudad (solo Contacto)",
+      "widget": "string"
+     },
+     {
+      "name": "celular",
+      "label": "Pregunta: celular",
+      "widget": "string"
+     },
+     {
+      "name": "email",
+      "label": "Pregunta: email",
+      "widget": "string"
+     },
+     {
+      "name": "negocio",
+      "label": "Pregunta: negocio",
+      "widget": "string"
+     },
+     {
+      "name": "presupuesto",
+      "label": "Pregunta: presupuesto (solo Contacto)",
+      "widget": "string"
+     },
+     {
+      "name": "presupuestos",
+      "label": "Opciones de presupuesto",
+      "widget": "list",
+      "field": {
+       "name": "item",
+       "label": "Ítem",
+       "widget": "string"
+      }
+     },
+     {
+      "name": "mensaje",
+      "label": "Pregunta: contanos más (solo Contacto)",
+      "widget": "string"
+     },
+     {
+      "name": "servicio",
+      "label": "Pregunta: qué servicio necesita (Home y Portafolio)",
+      "widget": "string"
+     },
+     {
+      "name": "servicios",
+      "label": "Servicios para elegir",
+      "widget": "list",
+      "field": {
+       "name": "item",
+       "label": "Ítem",
+       "widget": "string"
+      }
+     },
+     {
+      "name": "privacidad",
+      "label": "Texto legal debajo del formulario",
+      "widget": "text",
+      "hint": "Seleccioná una palabra y tocá Negrita o Cursiva para resaltarla. Cada Enter es un salto de línea."
+     },
+     {
+      "name": "boton_contacto",
+      "label": "Botón de enviar (Contacto)",
+      "widget": "string"
+     },
+     {
+      "name": "boton_hablemos",
+      "label": "Botón de enviar (Home y Portafolio)",
+      "widget": "string"
+     }
+    ],
+    "hint": "Las preguntas y opciones de los formularios. Los datos que se piden no cambian, solo cómo se preguntan."
+   },
+   {
+    "name": "google",
+    "label": "Cómo se ve en Google",
+    "widget": "object",
+    "collapsed": true,
+    "fields": [
+     {
+      "name": "inicio",
+      "label": "Home",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+       {
+        "name": "titulo",
+        "label": "Título (pestaña del navegador y Google)",
+        "widget": "string",
+        "hint": "Ideal: menos de 60 letras."
+       },
+       {
+        "name": "descripcion",
+        "label": "Descripción en Google",
+        "widget": "text",
+        "hint": "Ideal: entre 120 y 160 letras."
+       }
+      ]
+     },
+     {
+      "name": "identidad",
+      "label": "Identidad de marca",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+       {
+        "name": "titulo",
+        "label": "Título (pestaña del navegador y Google)",
+        "widget": "string",
+        "hint": "Ideal: menos de 60 letras."
+       },
+       {
+        "name": "descripcion",
+        "label": "Descripción en Google",
+        "widget": "text",
+        "hint": "Ideal: entre 120 y 160 letras."
+       }
+      ]
+     },
+     {
+      "name": "redes",
+      "label": "Redes Sociales",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+       {
+        "name": "titulo",
+        "label": "Título (pestaña del navegador y Google)",
+        "widget": "string",
+        "hint": "Ideal: menos de 60 letras."
+       },
+       {
+        "name": "descripcion",
+        "label": "Descripción en Google",
+        "widget": "text",
+        "hint": "Ideal: entre 120 y 160 letras."
+       }
+      ]
+     },
+     {
+      "name": "contacto",
+      "label": "Contacto",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+       {
+        "name": "titulo",
+        "label": "Título (pestaña del navegador y Google)",
+        "widget": "string",
+        "hint": "Ideal: menos de 60 letras."
+       },
+       {
+        "name": "descripcion",
+        "label": "Descripción en Google",
+        "widget": "text",
+        "hint": "Ideal: entre 120 y 160 letras."
+       }
+      ]
+     },
+     {
+      "name": "portafolio",
+      "label": "Portafolio",
+      "widget": "object",
+      "collapsed": true,
+      "fields": [
+       {
+        "name": "titulo",
+        "label": "Título (pestaña del navegador y Google)",
+        "widget": "string",
+        "hint": "Ideal: menos de 60 letras."
+       },
+       {
+        "name": "descripcion",
+        "label": "Descripción en Google",
+        "widget": "text",
+        "hint": "Ideal: entre 120 y 160 letras."
+       }
+      ]
+     }
+    ],
+    "hint": "El título y la descripción que aparecen en los resultados de búsqueda y en la pestaña del navegador."
    }
   ]
  }

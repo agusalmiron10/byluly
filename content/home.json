@@ -11,7 +11,13 @@
     "categoria": "IDENTIDAD DE MARCA",
     "titulo": "Creando marcas\ndiferentes con *alma\ny estrategia*",
     "texto": "Hay muchísimas marcas dando vueltas. las que se quedan en la cabeza de la gente\nno son las que más gritan, son las que saben quiénes son.\nUna idea clara, una voz propia y una imagen que se reconoce sola.\neso es lo que construyo con cada marca.",
-    "boton": "trabajemos juntos"
+    "boton": "trabajemos juntos",
+    "fotos_costado": [
+      "img/mk-viveliviano.jpg",
+      "img/mk-tote-alegria.jpg",
+      "img/mk-flashdevida.jpg",
+      "img/mk-cards-wood.jpg"
+    ]
   },
   "redes": {
     "categoria": "REDES SOCIALES",
@@ -103,6 +109,16 @@
   "proyectos": {
     "titulo": "Proyectos que realizamos\nen mi *Agencia creativa*",
     "texto": "Desde AL cuadrado, mi agencia creativa, acompaño a marcas a encontrar su identidad y a contarla de una forma que se sienta propia. Marcas como **ALEGRIA BEWELL, DEBORA PEDACE , CENTRO TERAPEUTICO INTEGRAL** y muchas marcas más confiaron en nosotros para darle forma a lo que querían mostrar.\nNo busco que las marcas se vean lindas y nada más. **Busco que se vean como son, y que la gente las reconozca y las elija**"
+  },
+  "tira": {
+    "fotos": [
+      "img/mk-regalo.jpg",
+      "img/mk-eleva.jpg",
+      "img/mk-greta.jpg",
+      "img/mk-vigno.jpg",
+      "img/mk-viveliviano.jpg"
+    ],
+    "boton": "Conocenos más"
   },
   "marcas": {
     "titulo": "MARCAS CON LAS QUE TRABAJAMOS",
