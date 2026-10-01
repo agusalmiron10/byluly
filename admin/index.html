@@ -6,18 +6,50 @@
 <meta name="robots" content="noindex">
 <title>Panel | Studio Byluly</title>
 <link rel="icon" href="/img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tinos:ital@0;1&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="panel.css">
 </head>
 <body>
-<!-- Panel de contenido (Decap CMS). Se entra con la contraseña del panel (functions/api/auth.js):
-     los cambios se guardan solos y la web se vuelve a publicar en un par de minutos. -->
-<script src="https://cdn.jsdelivr.net/npm/decap-cms@3/dist/decap-cms.js"></script>
-<script>
-  // el botón de ingreso dice "Iniciar sesión con GitHub": acá se entra con contraseña, así que lo renombro
-  new MutationObserver(function () {
-    document.querySelectorAll('button').forEach(function (b) {
-      if (/github/i.test(b.textContent) && b.textContent !== 'Entrar al panel') b.textContent = 'Entrar al panel';
-    });
-  }).observe(document.body, { childList: true, subtree: true });
-</script>
+
+<!-- ingreso -->
+<main class="login" id="login" hidden>
+  <form class="login__box" id="loginForm">
+    <img src="/img/logo-byluly.png" alt="byluly" class="login__logo">
+    <h1>Panel de tu web</h1>
+    <p class="login__sub">Cambiá textos, fotos y proyectos sin tocar código.</p>
+    <input type="password" id="loginPass" placeholder="Contraseña" autocomplete="current-password" required>
+    <button type="submit" class="boton boton--primario" id="loginBtn">Entrar</button>
+    <p class="login__error" id="loginError" role="alert"></p>
+  </form>
+</main>
+
+<!-- panel -->
+<div class="app" id="app" hidden>
+  <header class="barra">
+    <a class="barra__marca" href="/admin/"><img src="/img/logo-byluly.png" alt="byluly"><span>Panel</span></a>
+    <div class="barra__acciones">
+      <a class="boton boton--suave" href="/" target="_blank" rel="noopener">Ver la web ↗</a>
+      <button class="boton boton--suave" id="salir" type="button">Salir</button>
+    </div>
+  </header>
+
+  <nav class="menu" id="menu" aria-label="Secciones"></nav>
+
+  <main class="contenido" id="contenido">
+    <div class="cargando">Cargando…</div>
+  </main>
+
+  <footer class="guardar" id="guardar" hidden>
+    <p class="guardar__texto" id="guardarTexto">Tenés cambios sin guardar</p>
+    <button class="boton boton--suave" id="descartar" type="button">Descartar</button>
+    <button class="boton boton--primario" id="guardarBtn" type="button">Guardar cambios</button>
+  </footer>
+</div>
+
+<div class="aviso-flotante" id="toast" role="status" hidden></div>
+
+<script src="panel.js"></script>
 </body>
 </html>
