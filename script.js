@@ -190,7 +190,7 @@
 
     var PACKS = {
       core: {
-        eyebrow: 'BRANDING', title: 'THE CORE', duration: 'Duración: 4 semanas',
+        eyebrow: 'IDENTIDAD DE MARCA', title: 'THE CORE', duration: 'Duración: 4 semanas',
         sections: [ESTRATEGIA, IDENTIDAD], extras: EXTRAS_BASE,
         weeks: [
           SEMANA1,
@@ -201,7 +201,7 @@
         price: 'Inversión: 350 USD', wpp: 'THE CORE'
       },
       object: {
-        eyebrow: 'BRANDING · PACKAGING', title: 'THE OBJECT', duration: 'Duración: 4 semanas',
+        eyebrow: 'IDENTIDAD DE MARCA · PACKAGING', title: 'THE OBJECT', duration: 'Duración: 4 semanas',
         sections: [ESTRATEGIA, IDENTIDAD, { h: 'Packaging (hasta 6 a elección)', items: ['Ejemplos: cajas, vasos, servilletas, bolsas, ploteo para vidrio, cuadros, merchandising, etc.', 'Incluye el plano guía exportado listo para imprimir (las medidas y la maqueta)'] }],
         extras: EXTRAS_BASE,
         weeks: [
@@ -213,7 +213,7 @@
         price: 'Inversión: 550 USD', wpp: 'THE OBJECT'
       },
       voice: {
-        eyebrow: 'BRANDING · SOCIAL MEDIA', title: 'THE VOICE', duration: 'Duración: 4 semanas',
+        eyebrow: 'IDENTIDAD DE MARCA · REDES SOCIALES', title: 'THE VOICE', duration: 'Duración: 4 semanas',
         sections: [ESTRATEGIA, IDENTIDAD, { h: 'Plantillas para Redes Sociales', items: ['Entregadas en Illustrator o Canva', '9 posts para Instagram', '4 historias para Instagram', '2 portadas para Reels', '(puede incluir banners)'] }],
         extras: EXTRAS_BASE,
         weeks: [
@@ -225,7 +225,7 @@
         price: 'Inversión: 430 USD', wpp: 'THE VOICE'
       },
       space: {
-        eyebrow: 'BRANDING · WEB', title: 'THE SPACE', duration: 'Plan esencial + página web',
+        eyebrow: 'IDENTIDAD DE MARCA · WEB', title: 'THE SPACE', duration: 'Plan esencial + página web',
         tiers: [
           { name: 'Landing Page', audience: 'Ideal para: emprendedores, lanzamientos, servicios únicos, campañas en redes.', items: ['1 landing page estratégica', 'Diseño alineado al branding', 'Estructura pensada para conversión', 'Responsive (mobile)', 'Formulario de contacto o WhatsApp', 'Llamado a la acción claros', 'SEO básico', '1 ronda de cambios'], price: '600 USD' },
           { name: 'Web profesional', audience: 'Ideal para: marcas que quieren presencia sólida y confianza.', items: ['Home + hasta 5 páginas (servicios, sobre, portfolio, blog básico, contacto)', 'Diseño alineado al branding', 'Copywriting', 'Responsive (mobile)', 'Formulario de contacto o WhatsApp', 'Llamado a la acción claros', 'SEO básico', '1 ronda de cambios'], price: '850 USD' },
@@ -240,7 +240,7 @@
         wpp: 'THE SPACE'
       },
       universe: {
-        eyebrow: 'BRANDING · PACKAGING · SOCIAL MEDIA', title: 'THE UNIVERSE', duration: 'Duración: 5 semanas',
+        eyebrow: 'IDENTIDAD DE MARCA · PACKAGING · REDES SOCIALES', title: 'THE UNIVERSE', duration: 'Duración: 5 semanas',
         sections: [ESTRATEGIA, IDENTIDAD,
           { h: 'Plantillas para Redes Sociales', items: ['Entregadas en Illustrator o Canva', '9 posts para Instagram', '4 historias para Instagram', '2 portadas para Reels', '(puede incluir banners)'] },
           { h: 'Packaging', items: ['Ejemplos: cajas, vasos, servilletas, bolsas, ploteo para vidrio, cuadros, merchandising, etc.', 'En el caso de restaurantes puede incluir menú', 'Incluye el plano guía exportado listo para imprimir (las medidas y la maqueta)'] }
@@ -369,15 +369,18 @@
   /* ---------- Visor de fotos del portafolio ---------- */
   var galItems = $$('.gallery__item');
   if (galItems.length) {
+    // cada proyecto: sus fotos (data-fotos, separadas por "|"), título, rubro y descripción
     var fotos = galItems.map(function (f) {
       var img = $('img', f);
       var cap = $('figcaption', f);
       var sub = cap ? $('span', cap) : null;
+      var desc = cap ? $('.gallery__desc', cap) : null;
       return {
-        src: img.getAttribute('src'),
+        list: (f.dataset.fotos || img.getAttribute('src')).split('|'),
         alt: img.alt,
         title: cap ? cap.firstChild.textContent.trim() : '',
-        sub: sub ? sub.textContent : ''
+        sub: sub ? sub.textContent : '',
+        desc: desc ? desc.textContent : ''
       };
     });
 
@@ -393,51 +396,77 @@
     visor.innerHTML =
       '<button class="visor__close" aria-label="Cerrar">&times;</button>' +
       '<button class="visor__btn visor__btn--prev" aria-label="Anterior">&#8249;</button>' +
-      '<figure class="visor__fig"><img class="visor__img" alt=""><figcaption class="visor__cap"></figcaption></figure>' +
+      '<figure class="visor__fig"><img class="visor__img" alt="">' +
+      '<figcaption class="visor__cap"></figcaption><p class="visor__desc"></p>' +
+      '<div class="visor__thumbs"></div></figure>' +
       '<button class="visor__btn visor__btn--next" aria-label="Siguiente">&#8250;</button>' +
       '<p class="visor__count"></p>';
     document.body.appendChild(visor);
 
     var vImg = $('.visor__img', visor);
     var vCap = $('.visor__cap', visor);
+    var vDesc = $('.visor__desc', visor);
+    var vThumbs = $('.visor__thumbs', visor);
     var vCount = $('.visor__count', visor);
     var vClose = $('.visor__close', visor);
-    var vCur = 0;
+    var vCur = 0;   // proyecto
+    var vPic = 0;   // foto dentro del proyecto
     var vBack = null;
+    var vBuilt = -1;
 
     var vSet = function () {
       var f = fotos[vCur];
       vImg.onload = function () { vImg.classList.remove('is-swapping'); };
-      vImg.src = f.src;
+      vImg.src = f.list[vPic];
       vImg.alt = f.alt;
-      vCap.textContent = f.title;
-      if (f.sub) {
-        var s = document.createElement('span');
-        s.textContent = f.sub;
-        vCap.appendChild(s);
+      if (vBuilt !== vCur) {
+        vBuilt = vCur;
+        vCap.textContent = f.title;
+        if (f.sub) {
+          var s = document.createElement('span');
+          s.textContent = f.sub;
+          vCap.appendChild(s);
+        }
+        vDesc.textContent = f.desc;
+        vThumbs.innerHTML = '';
+        if (f.list.length > 1) {
+          f.list.forEach(function (src, k) {
+            var t = document.createElement('button');
+            t.type = 'button';
+            t.className = 'visor__thumb';
+            t.setAttribute('aria-label', 'Foto ' + (k + 1));
+            t.style.backgroundImage = 'url("' + src + '")';
+            t.addEventListener('click', function () { vShow(vCur, k, true); });
+            vThumbs.appendChild(t);
+          });
+        }
       }
-      var l = vList();
-      vCount.textContent = (l.indexOf(vCur) + 1) + ' / ' + l.length;
+      Array.prototype.forEach.call(vThumbs.children, function (t, k) { t.classList.toggle('is-active', k === vPic); });
+      vCount.textContent = f.list.length > 1 ? 'Foto ' + (vPic + 1) + ' de ' + f.list.length : '';
       if (vImg.complete) vImg.classList.remove('is-swapping');
     };
-    // con un filtro activo, las flechas recorren solo las fotos que se ven
+    // con un filtro activo, al terminar las fotos de un proyecto se pasa al siguiente que se ve
     var vList = function () {
       return galItems.map(function (f, i) { return i; })
         .filter(function (i) { return !galItems[i].classList.contains('is-filtered'); });
     };
     var vStep = function (d) {
+      var n = fotos[vCur].list.length;
+      if (vPic + d >= 0 && vPic + d < n) { vShow(vCur, vPic + d, true); return; }
       var l = vList();
-      vShow(l[(l.indexOf(vCur) + d + l.length) % l.length], true);
+      var next = l[(l.indexOf(vCur) + d + l.length) % l.length];
+      vShow(next, d > 0 ? 0 : fotos[next].list.length - 1, true);
     };
-    var vShow = function (i, animate) {
+    var vShow = function (i, k, animate) {
       vCur = i;
+      vPic = k || 0;
       if (!animate) { vSet(); return; }
       vImg.classList.add('is-swapping');
       setTimeout(vSet, 200);
     };
     var vOpen = function (i) {
       vBack = document.activeElement;
-      vShow(i, false);
+      vShow(i, 0, false);
       visor.hidden = false;
       document.documentElement.style.overflow = 'hidden';
       requestAnimationFrame(function () { visor.classList.add('is-open'); });

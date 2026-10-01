@@ -35,11 +35,11 @@ ICONS = {
 
 # archivo de salida -> (título, descripción, clave del link activo)
 PAGES = {
- 'index.html':          ('Studio Byluly | Branding', 'Studio de branding y diseño para marcas conscientes: veganas, sostenibles, con proyectos sociales o de bienestar.', 'home'),
- 'branding.html':       ('Branding | Studio Byluly', 'Packs de branding: The Core, The Object, The Voice, The Space y The Universe. Identidad visual con estrategia.', 'branding'),
+ 'index.html':          ('Studio Byluly | Identidad de marca', 'Studio de identidad de marca y diseño para marcas conscientes: veganas, sostenibles, con proyectos sociales o de bienestar.', 'home'),
+ 'branding.html':       ('Identidad de marca | Studio Byluly', 'Packs de identidad de marca: The Core, The Object, The Voice, The Space y The Universe. Identidad visual con estrategia.', 'branding'),
  'redes-sociales.html': ('Redes Sociales | Studio Byluly', 'Gestión de redes sociales: diseño, edición y estrategia para que tu marca conecte con su comunidad.', 'redes'),
  'contacto.html':       ('Contacto | Studio Byluly', 'Hello, soy Byluly, diseñadora gráfica. Contame de tu proyecto y armamos juntas la propuesta.', 'contacto'),
- 'portafolio.html':     ('Portafolio | Studio Byluly', 'Trabajos de branding, identidad visual, packaging y redes sociales de Studio Byluly.', 'porta'),
+ 'portafolio.html':     ('Portafolio | Studio Byluly', 'Trabajos de identidad de marca, identidad visual, packaging y redes sociales de Studio Byluly.', 'porta'),
 }
 
 ACTIVE_KEYS = ['home', 'serv', 'branding', 'redes', 'contacto', 'porta']

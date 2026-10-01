@@ -29,7 +29,10 @@ def enc(name):
     im.save(buf, 'JPEG', quality=70, optimize=True, progressive=True)
     return 'data:image/jpeg;base64,' + base64.b64encode(buf.getvalue()).decode()
 
-IMGS = {n: enc(n) for n in sorted(os.listdir('img')) if not n.endswith('.svg')}
+# incluye las subcarpetas (img/proj/ tiene las fotos de cada proyecto del portafolio)
+NOMBRES = sorted(os.path.relpath(os.path.join(r, f), 'img') for r, _, fs in os.walk('img') for f in fs
+                 if not f.endswith('.svg') and not f.startswith('.'))
+IMGS = {n: enc(n) for n in NOMBRES}
 def inline(html):
     for n, uri in IMGS.items():
         html = html.replace('img/' + n, uri)
@@ -131,7 +134,7 @@ js_fn = js.replace("(function () {\n  'use strict';", "window.__bylulyInit = fun
 js_fn = re.sub(r'\}\)\(\);\s*$', '};\n', js_fn)
 
 out = (
-    '<title>Studio Byluly | Branding</title>\n'
+    '<title>Studio Byluly | Identidad de marca</title>\n'
     '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
     '<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600'
