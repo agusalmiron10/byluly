@@ -1,6 +1,6 @@
 {
   "inicio": {
-    "categoria": "IDENTIDAD DE MARCA",
+    "categoria": "IDENTIDAD DE MARCA2",
     "titulo": "Damos vida a la\nmarca de tus sueños.",
     "texto": "Identidad visual, packaging y sistemas de marca que se sostienen en el tiempo.\nTambién se puede personalizar según tus necesidades.",
     "boton": "Conoce nuestros planes"
@@ -96,7 +96,8 @@
             "llamada": false
           }
         ],
-        "precio": "Inversión: 350 USD"
+        "precio": "Inversión: 350 USD",
+        "opciones": []
       },
       "foto_tarjetas": "img/branding-cards.jpg",
       "foto_flores": "img/branding-aflore.jpg"
@@ -181,7 +182,8 @@
             "llamada": true
           }
         ],
-        "precio": "Inversión: 550 USD"
+        "precio": "Inversión: 550 USD",
+        "opciones": []
       }
     },
     "voice": {
@@ -265,7 +267,8 @@
             "llamada": false
           }
         ],
-        "precio": "Inversión: 430 USD"
+        "precio": "Inversión: 430 USD",
+        "opciones": []
       }
     },
     "space": {
@@ -355,7 +358,9 @@
             "llamada": false
           }
         ],
-        "precio": ""
+        "precio": "",
+        "secciones": [],
+        "extras": []
       }
     },
     "universe": {
@@ -447,7 +452,8 @@
             "llamada": false
           }
         ],
-        "precio": "Inversión: 690 USD"
+        "precio": "Inversión: 690 USD",
+        "opciones": []
       }
     }
   },
